@@ -134,39 +134,52 @@ footer ul li a img {
 }
 
 
-
-
-
 .container{
     
-   
     display: flex;
     justify-content: space-around;
-    height: 400px;
-    border: red solid;
-    
-   
+    height: 1000px;
 
     }
-#p1{
+
+    
+   
+#p1 , #p2, #p3, #p4{
 
     padding: 20px;
     border-radius: 10px;
     text-align:right;
     color: #01353d;
     background:linear-gradient(to left, rgb(194, 249, 255),#438493);
-    max-height:140px;
-    max-width: 70%;
-   
+    height:120x;
+    width: 70%;
     
+}
 
+#p2{
+
+    margin-top: 70px;
 
 }
+#p3{
+
+    margin-top: 70px;
+
+}
+#p4{
+
+    margin-top: 70px;
+}
+
+
+
+
 .content3 img {
 
     margin-left: 50px;
     width: 170px; 
-    height: auto;     
+    height: auto;  
+    margin-top: -160px;
     float: left;
     box-shadow: -30px 30px 0px rgba(0, 0, 0, 0.5);
  
