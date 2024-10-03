@@ -102,7 +102,7 @@ footer ul li a img {
 #text1{
 
     padding-top: 50px;
-    color:#629ca9;
+    color:#7ce7ff;
     font-size: 48px;
     font-weight: bold;
     
@@ -134,6 +134,10 @@ footer ul li a img {
 }
 
 
+h2{
+
+    color:#7ce7ff;
+}
 .container{
     
     display: flex;
