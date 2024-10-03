@@ -115,6 +115,7 @@ footer ul li a img {
 
 }
 
+
 .content22{
     
     padding-top: 50px;
@@ -126,3 +127,51 @@ footer ul li a img {
     
   
 }
+.content22 img {
+    width: 150px; 
+    height: auto; 
+    
+}
+
+
+
+
+
+.container{
+    
+   
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+    border: red solid;
+    
+   
+
+    }
+#p1{
+
+    padding: 20px;
+    border-radius: 10px;
+    text-align:right;
+    color: #01353d;
+    background:linear-gradient(to left, rgb(194, 249, 255),#438493);
+    max-height:140px;
+    max-width: 70%;
+   
+    
+
+
+}
+.content3 img {
+
+    margin-left: 50px;
+    width: 170px; 
+    height: auto;     
+    float: left;
+    box-shadow: -30px 30px 0px rgba(0, 0, 0, 0.5);
+ 
+
+}
+
+
+
