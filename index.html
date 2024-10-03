@@ -26,7 +26,18 @@
           طبيب أو مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
           وما يصير خاطرك إلا طيب
         </p>
-        <button>أرفق الصورة</button>
+        <input
+          type="file"
+          id="imageUpload"
+          style="display: none"
+          accept="image/*"
+        />
+        <button id="uploadButton">أرفق الصورة</button>
+        <img
+          id="imagePreview"
+          style="display: none; margin-top: 20px; max-width: 200px"
+          alt="Image Preview"
+        />
       </div>
     </section>
 
@@ -43,5 +54,16 @@
         </li>
       </ul>
     </footer>
+    <script src="script.js"></script>
   </body>
+</div>
+<div class="BodyPart3">
+    <div class="Bubble Bubble1"></div>
+    <div class="Bubble Bubble2"></div>
+    <div class="Bubble Bubble3"></div>
+    <div class="Bubble Bubble4"></div>
+    <div class="TextMainBackground"></div>
+    <div class="SupportText">في حال واجهتك اي مشكلة<br/>لا تتردد بالاتصال بالدعم الفني</div>
+</div>
+<body>
 </html>
