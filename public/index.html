@@ -1,18 +1,13 @@
-<!--shatha START--> 
 <!DOCTYPE html>
 <html lang="ar">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>طمني</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body dir="rtl">
-
     <header>
-
       <nav>
         <ul>
           <li class="login"><a href="#">✩ التسجيل / تسجيل الدخول</a></li>
@@ -23,29 +18,18 @@
           <img src="mainlogo.png" alt="طمني Logo" />
         </ul>
       </nav>
-
     </header>
-
     <section class="back">
-
       <div class="content">
         <h1>تبي تطمن؟</h1>
         <p>
           طبيب أو مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
           وما يصير خاطرك إلا طيب
         </p>
-        <input
-          type="file"
-          id="imageUpload"
-          style="display: none"
-          accept="image/*"
-        />
-        <button id="uploadButton">أرفق الصورة</button>
-        <img
-          id="imagePreview"
-          style="display: none; margin-top: 20px; max-width: 200px"
-          alt="Image Preview"
-        />
+        <form id="upload-form" enctype="multipart/form-data">
+          <input type="file" name="image" accept="image/*" required>
+          <button type="submit">أرفق الصورة</button>
+      </form>
       </div>
     </section>
 
@@ -61,17 +45,9 @@
           <a href="#"><img src="facebookIconwhite.webp" alt="Facebook" /></a>
         </li>
       </ul>
+      <script src="script.js"></script>
+
     </footer>
-    <script src="script.js"></script>
- 
-  
-</div>
-
-<!--shatha END-->
-
-
-
-<!--REHAM START-->
 
     <div class="content2">
 
@@ -156,75 +132,52 @@
       </div>
 
     </div>
-    <!--REHAM END--> 
-
-    <!--Shatha START-->
-    <div class="BodyPart3">
-      <div class="Bubble Bubble1"></div>
-      <div class="Bubble Bubble2"></div>
-      <div class="Bubble Bubble3"></div>
-      <div class="Bubble Bubble4"></div>
-      <div class="TextMainBackground"></div>
-      <div class="SupportText">في حال واجهتك اي مشكلة<br/>لا تتردد بالاتصال بالدعم الفني</div>
-  </div>
-    <!--Shatha END-->
-
-   <!--REHAM START--> 
-<footer id="EndPageFooter">
-
-    <section class="footerContainer">
-
-      <div class="aboutUs">
-      <h3>من نحن </h3>
-      <h4>عن الشركة</h4>
-      <h4>عملائنا</h4>
-      <h4>شركاؤنا</h4>
-        
-      </div>
 
 
-    <div class="fastLink">
-      <h3>روابط سريعة</h3>
-      <h4>مقدمة</h4>
-      <h4>فريقنا</h4>
+<footer>
 
-    </div>
+<section class="footerContainer">
 
-    <div class="impotLink">
-    <h3>روابط مهمة</h3>
-    <h4>سياسة الخصوصية</h4>
-    <h4>الشروط والاحكام </h4>
-
-    </div>
-
-  <div class="contact">
-  <h3>معلومات الاتصال</h3>
+<div class="aboutUs">
+ <h3>من نحن </h3>
+ <h4>عن الشركة</h4>
+ <h4>عملائنا</h4>
+ <h4>شركاؤنا</h4>
   
-  <p>
-   <sub><img src="Map.png" alt="icon" style="width: 30x; height: 30px;"></sub> 
-    العنوان</p><p id="contactDesc">المملكة العربية السعودية</p>
-  <p>
-    <sub><img src="Phone.png" alt="icon" style="width: 30x; height: 30px;"></sub>
-    الهاتف</p><p id="contactDesc">0501234567</p>
-  <p>
-    <sub><img src="Mail.png" alt="icon" style="width: 30x; height: 30px;"> </sub> 
-    البريد </p><p id="contactDesc">tamni@gmail.com</p>
-  
-  
+</div>
 
 
-  </div>
+<div class="fastLink">
+  <h3>روابط سريعة</h3>
+  <h4>مقدمة</h4>
+  <h4>فريقنا</h4>
+
+
+</div>
+<div class="impotLink">
+<h3>روابط مهمة</h3>
+<h4>سياسة الخصوصية</h4>
+<h4>الشروط والاحكام </h4>
+
+</div>
+
+<div class="contact">
+<h3>معلومات الاتصال</h3>
+<p>العنوان</p>
+<p>الهاتف</p>
+<p>البريد</p>
+
+
+
+</div>
+
 
 
 </section>
 
-<section id="footerSec2">كل الحقوق محفوظة فريق طمني </section>
-</footer>
 
 
-     </body> 
-
-</html>
 
 
-  
+
+<section id="footerSec2">  كل الحقوق محفوظة فريق طمني &copy</section>

@@ -1,0 +1,24 @@
+{
+  "name": "software-process-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reham-Fagih/Software-Process-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reham-Fagih/Software-Process-Project/issues"
+  },
+  "homepage": "https://github.com/Reham-Fagih/Software-Process-Project#readme",
+  "dependencies": {
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}
