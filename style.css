@@ -1,3 +1,4 @@
+/* shatha start*/
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -86,7 +87,9 @@ footer ul li a img {
     height: 60px;
     margin-right: 40px;
 }
+/* shatha end*/
 
+/* Reham start*/
 .content2{
 
    
@@ -140,11 +143,13 @@ footer ul li a img {
    
 }
 
-
+/***********/
 h2{
 
     color:#7ce7ff;
 }
+/***********/
+
 .container{
     
     display: flex;
@@ -196,12 +201,15 @@ h2{
  
 
 }
-footer{
+
+/*******Assign id = EndPageFooter *********/
+#EndPageFooter{
    background-color:#144d52;
    padding: 0;
    display: flex;
    flex-direction: column;
 }
+/****************/
 
 .footerContainer{
  display: flex;
@@ -252,6 +260,9 @@ footer{
     font-size: larger;
 }
 
+/***Reham end****/
+
+/*****Shatha start*****/
 .BodyPart3 {
     width: 80%;
     max-width: 861px;
@@ -297,3 +308,4 @@ footer{
     transform: translateX(-50%);
     top: 35%;
 }
+/********Shatha end********/
