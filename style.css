@@ -206,7 +206,7 @@ footer{
 .footerContainer{
  display: flex;
  color:#01353d;
- background:linear-gradient(to left, #7ce7ff, #01353d);
+ background:linear-gradient(to left, #7ce7ff, #144d52);
  font-size: 20px;
 
 }
@@ -245,4 +245,9 @@ footer{
 }
 
 
+#footerSec2{
 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: larger;
+}
