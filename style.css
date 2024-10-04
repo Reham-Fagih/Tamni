@@ -196,6 +196,53 @@ h2{
  
 
 }
+footer{
+   background-color:#144d52;
+   padding: 0;
+   display: flex;
+   flex-direction: column;
+}
+
+.footerContainer{
+ display: flex;
+ color:#01353d;
+ background:linear-gradient(to left, #7ce7ff, #01353d);
+ font-size: 20px;
+
+}
+
+.aboutUs{
+    
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+.fastLink{
+
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+.impotLink{
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+.contact{
+
+   
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+
+.footerContainer h4 {
+  
+    text-decoration:underline;
+  
+   
+}
+.footerContainer p{
+
+    font-size: 18px;
+    font-weight: bold;
+}
 
 
 
