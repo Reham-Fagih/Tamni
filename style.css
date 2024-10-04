@@ -86,6 +86,172 @@ footer ul li a img {
     height: 60px;
     margin-right: 40px;
 }
+
+.content2{
+
+   
+    padding-right: 50px;
+    background-color: #01353d;
+    height: 200px;
+    width: auto;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    
+}
+#text1{
+
+    padding-top: 50px;
+    color:#7ce7ff;
+    font-size: 48px;
+    font-weight: bold;
+    
+}
+#text2{
+    
+    padding-top: 20px;
+    font-size: 35px;
+    font-weight: bold;
+
+}
+
+
+.content22{
+    
+    padding-top: 50px;
+    background-color: #01353d;
+    height: 350px;
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    
+  
+}
+.content22 img {
+    width: 150px; 
+    height: auto; 
+    
+}
+.picDesc{
+
+    font-size: 25px;
+    font-weight: bold;
+   margin-top: 20px;
+   
+}
+
+
+h2{
+
+    color:#7ce7ff;
+}
+.container{
+    
+    display: flex;
+    justify-content: space-around;
+    height: 1000px;
+
+    }
+
+    
+   
+#p1 , #p2, #p3, #p4{
+
+    padding: 20px;
+    border-radius: 10px;
+    text-align:right;
+    color: #01353d;
+    background:linear-gradient(to left, rgb(194, 249, 255),#438493);
+    height:120x;
+    width: 70%;
+    
+}
+
+#p2{
+
+    margin-top: 70px;
+
+}
+#p3{
+
+    margin-top: 70px;
+
+}
+#p4{
+
+    margin-top: 70px;
+}
+
+
+
+
+.content3 img {
+
+    margin-left: 50px;
+    width: 170px; 
+    height: auto;  
+    margin-top: -160px;
+    float: left;
+    box-shadow: -30px 30px 0px rgba(0, 0, 0, 0.5);
+ 
+
+}
+footer{
+   background-color:#144d52;
+   padding: 0;
+   display: flex;
+   flex-direction: column;
+}
+
+.footerContainer{
+ display: flex;
+ color:#01353d;
+ background:linear-gradient(to left, #7ce7ff, #144d52);
+ font-size: 20px;
+
+}
+
+.aboutUs{
+    
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+.fastLink{
+
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+.impotLink{
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+.contact{
+
+   
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+
+.footerContainer h4 {
+  
+    text-decoration:underline;
+  
+   
+}
+.footerContainer p{
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+#footerSec2{
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: larger;
+}
+
 .BodyPart3 {
     width: 80%;
     max-width: 861px;
