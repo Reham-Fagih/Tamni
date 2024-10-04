@@ -1,13 +1,18 @@
+<!--shatha START--> 
 <!DOCTYPE html>
 <html lang="ar">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>طمني</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body dir="rtl">
+
     <header>
+
       <nav>
         <ul>
           <li class="login"><a href="#">✩ التسجيل / تسجيل الدخول</a></li>
@@ -18,15 +23,29 @@
           <img src="mainlogo.png" alt="طمني Logo" />
         </ul>
       </nav>
+
     </header>
+
     <section class="back">
+
       <div class="content">
         <h1>تبي تطمن؟</h1>
         <p>
           طبيب أو مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
           وما يصير خاطرك إلا طيب
         </p>
-        <button>أرفق الصورة</button>
+        <input
+          type="file"
+          id="imageUpload"
+          style="display: none"
+          accept="image/*"
+        />
+        <button id="uploadButton">أرفق الصورة</button>
+        <img
+          id="imagePreview"
+          style="display: none; margin-top: 20px; max-width: 200px"
+          alt="Image Preview"
+        />
       </div>
     </section>
 
@@ -43,6 +62,16 @@
         </li>
       </ul>
     </footer>
+    <script src="script.js"></script>
+ 
+  
+</div>
+
+<!--shatha END-->
+
+
+
+<!--REHAM START-->
 
     <div class="content2">
 
@@ -127,9 +156,21 @@
       </div>
 
     </div>
+    <!--REHAM END--> 
 
+    <!--Shatha START-->
+    <div class="BodyPart3">
+      <div class="Bubble Bubble1"></div>
+      <div class="Bubble Bubble2"></div>
+      <div class="Bubble Bubble3"></div>
+      <div class="Bubble Bubble4"></div>
+      <div class="TextMainBackground"></div>
+      <div class="SupportText">في حال واجهتك اي مشكلة<br/>لا تتردد بالاتصال بالدعم الفني</div>
+  </div>
+    <!--Shatha END-->
 
-<footer>
+   <!--REHAM START--> 
+<footer id="EndPageFooter">
 
 <section class="footerContainer">
 
@@ -167,87 +208,15 @@
 </div>
 
 
-
 </section>
-
-
-
-
-
 
 <section id="footerSec2">كل الحقوق محفوظة فريق طمني </section>
 </footer>
 
-  </body>
+<!--REHAM END--> 
+     </body> 
 
 </html>
 
-<!DOCTYPE html>
-<html lang="ar">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>طمني</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body dir="rtl">
-    <header>
-      <nav>
-        <ul>
-          <li class="login"><a href="#">✩ التسجيل / تسجيل الدخول</a></li>
-          <li><a href="#">من نحن</a></li>
-          <li><a href="#">خدماتنا</a></li>
-          <li><a href="#">حساباتنا</a></li>
-          <li><a href="#">الدعم الفني</a></li>
-          <img src="mainlogo.png" alt="طمني Logo" />
-        </ul>
-      </nav>
-    </header>
-    <section class="back">
-      <div class="content">
-        <h1>تبي تطمن؟</h1>
-        <p>
-          طبيب أو مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
-          وما يصير خاطرك إلا طيب
-        </p>
-        <input
-          type="file"
-          id="imageUpload"
-          style="display: none"
-          accept="image/*"
-        />
-        <button id="uploadButton">أرفق الصورة</button>
-        <img
-          id="imagePreview"
-          style="display: none; margin-top: 20px; max-width: 200px"
-          alt="Image Preview"
-        />
-      </div>
-    </section>
 
-    <footer>
-      <ul>
-        <li>
-          <a href="#"><img src="xIconwhite.png" alt="Twitter" /></a>
-        </li>
-        <li>
-          <a href="#"><img src="igIconWhite.png" alt="Instagram" /></a>
-        </li>
-        <li>
-          <a href="#"><img src="facebookIconwhite.webp" alt="Facebook" /></a>
-        </li>
-      </ul>
-    </footer>
-    <script src="script.js"></script>
-  </body>
-</div>
-<div class="BodyPart3">
-    <div class="Bubble Bubble1"></div>
-    <div class="Bubble Bubble2"></div>
-    <div class="Bubble Bubble3"></div>
-    <div class="Bubble Bubble4"></div>
-    <div class="TextMainBackground"></div>
-    <div class="SupportText">في حال واجهتك اي مشكلة<br/>لا تتردد بالاتصال بالدعم الفني</div>
-</div>
-<body>
-</html>
+  
