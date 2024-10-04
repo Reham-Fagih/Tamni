@@ -169,25 +169,9 @@ h2{
     background:linear-gradient(to left, rgb(194, 249, 255),#438493);
     height:120x;
     width: 70%;
+    margin-top: 70px;
     
 }
-
-#p2{
-
-    margin-top: 70px;
-
-}
-#p3{
-
-    margin-top: 70px;
-
-}
-#p4{
-
-    margin-top: 70px;
-}
-
-
 
 
 .content3 img {
@@ -200,6 +184,10 @@ h2{
     box-shadow: -30px 30px 0px rgba(0, 0, 0, 0.5);
  
 
+}
+
+#p3pic3{
+   margin-top: 15px;
 }
 
 /*******Assign id = EndPageFooter *********/
