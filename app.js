@@ -6,10 +6,8 @@ const fs = require('fs');
 const app = express();
 const PORT = 5000;
 
-// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Set up storage for uploaded images
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
@@ -25,12 +23,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Serve the HTML file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Handle image upload
 app.post('/upload', upload.single('image'), (req, res) => {
     if (req.file) {
         res.json({ message: 'Image uploaded successfully!', filePath: req.file.path });
@@ -39,7 +35,6 @@ app.post('/upload', upload.single('image'), (req, res) => {
     }
 });
 
-// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
