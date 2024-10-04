@@ -234,10 +234,16 @@ h2{
     flex-basis: 100%;
 }
 .contact{
-
-   
     flex-grow: 1;
     flex-basis: 100%;
+}
+
+#contactDesc{
+
+    font-size: 15px;
+    font-weight: lighter;
+    margin-top: -15px;
+    margin-left: -100px;
 }
 
 .footerContainer h4 {
@@ -259,6 +265,7 @@ h2{
     padding-bottom: 20px;
     font-size: larger;
 }
+
 
 /***Reham end****/
 
