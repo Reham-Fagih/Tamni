@@ -5,11 +5,12 @@ const fs = require('fs');
 
 const app = express();
 const PORT = 5000;
-
 app.use(express.static('public'));
 
+app.use('/img', express.static(path.join(__dirname, 'img')));
+
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destinatsion: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir);
