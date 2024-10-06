@@ -37,7 +37,7 @@ nav ul li a {
 }
 
 .back {
-    background-image: url('../img/imgOfMainHeader.png');
+    background-image: url('/img/imgOfMainHeader.png');
     background-size: cover;
     background-position: center;
     padding: 80px 0;
