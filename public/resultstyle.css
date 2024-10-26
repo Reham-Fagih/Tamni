@@ -5,3 +5,21 @@ body {
     color: #fff;
     text-align: center;
 }
+div {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1A4A51;
+    color: #fff;
+    text-align: center;
+}
+h1 {
+    font-size: 64px;
+}
+h2 {
+    font-size: 48px;
+    text-align: right;
+}
+h3 {
+    font-size: 48px;
+    text-align: right;
+}
