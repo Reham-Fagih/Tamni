@@ -1,10 +1,9 @@
 {
   "name": "software-process-project",
   "version": "1.0.0",
-  "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,10 +17,11 @@
   },
   "homepage": "https://github.com/Reham-Fagih/Software-Process-Project#readme",
   "dependencies": {
-    "express": "^4.21.0",
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.3",
     "multer": "^1.4.5-lts.1"
   },
-  "scripts": {
-    "test": "jest"
-  }
+  "description": ""
 }

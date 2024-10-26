@@ -2,12 +2,16 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-
 const app = express();
 const PORT = 5000;
-app.use(express.static('public'));
 
+const bcrypt = require('bcrypt');
+const collection = require('./config');
+
+app.use(express.static('public'));
 app.use('/img', express.static(path.join(__dirname, 'img')));
+
+app.use(express.json());
 
 const storage = multer.diskStorage({
     destinatsion: (req, file, cb) => {
@@ -36,6 +40,24 @@ app.post('/upload', upload.single('image'), (req, res) => {
     }
 });
 
+app.get('/LogIn', (req, res) => {
+    res.render('LogIn');
+});
+
+app.get('/SignUp', (req, res) => {
+    res.render('SignUp');
+});
+
+app.post('/signup', async (req, res) => {
+    const data = {
+        name: req.body.username,
+        password: req.body.password
+    }
+    const userdata = await collection.insertMany(data);
+    comsole.log(userdata);
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
+
