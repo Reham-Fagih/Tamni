@@ -38,7 +38,7 @@ body {
     color: #fff;
     text-align: center;
 }
-div {
+section {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background-color: #1A4A51;
@@ -55,4 +55,32 @@ h2 {
 h3 {
     font-size: 48px;
     text-align: right;
+}
+button {
+    font-size: 36px;
+}
+.buttonscontainer {
+    text-align: center;
+}
+.button1 {
+    background-color: #0B2E34;
+    color: #49CAE0;
+    text-decoration-line: underline;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px; 
+}
+.button2 {
+    background-color: #3AA8B7;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px; 
+}
+.button3 {
+    background-color: #3AA8B7;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px; 
 }
