@@ -76,6 +76,8 @@ button {
     border: none;
     border-radius: 30px;
     padding: 10px 20px; 
+    margin-top: 50px;
+    margin-right: 10px;
 }
 .button3 {
     background-color: #3AA8B7;
