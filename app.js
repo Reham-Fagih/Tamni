@@ -56,13 +56,30 @@ app.post('/signup', async (req, res) => {
 
     const existingUser = await collection.findOne({name: data.name});
     if(existingUser){
-        res.send('User already exists');
+        res.send('User already exists');  
     }else {
         const saltRounds = 10; // num of salt round for bcrypt
         const hashedPassword = await bcrypt.hash(data.password, saltRounds);
         data.password = hashedPassword;
         const userdata = await collection.insertMany(data);
         comsole.log(userdata);
+    }
+});
+
+app.post('/login', async (req, res) => {
+    try{
+        const check = await collection.findOne({name: req.body.username});
+        if(!check){
+            res.send('User name cannot found');
+        }
+        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        if(isPasswordMatch){
+            res.render('/');
+        }else {
+            req.send('Wrong password')
+        }
+    }catch{
+        req.send('Wrong Details');
     }
 });
 
