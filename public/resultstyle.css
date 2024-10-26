@@ -48,12 +48,26 @@ section {
     color: #fff;
     text-align: center;
 }
+.percentage {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
 .textscontainer {
     margin-right: 210px;
 }
 h1 {
     font-size: 64px;
+    margin-right: 500px;
 }
+.textarea { 
+    background-color: #D43333;
+    border-radius: 100px;
+    width: 266px;
+    height: 88px;  
+    margin-left: 500px;
+}
+
 h2 {
     font-size: 48px;
     text-align: right;
@@ -68,7 +82,7 @@ h3 {
 }
 .textarea2 {
     width: 1351px;
-    height: 334px;
+    height: 246px;
 }
 /*Start of buttons css*/
 .buttonscontainer {
