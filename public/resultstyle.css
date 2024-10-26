@@ -1,3 +1,4 @@
+/*Start of header css*/
 header {
     background-color: #0B2E34;
     padding: 10px 0;
@@ -30,7 +31,9 @@ img {
     height: 60px;
     margin-right: 40px;
 }
+/*End of header css*/
 
+/*Start of Body css*/
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -45,6 +48,9 @@ section {
     color: #fff;
     text-align: center;
 }
+.textscontainer {
+    margin-right: 210px;
+}
 h1 {
     font-size: 64px;
 }
@@ -52,10 +58,19 @@ h2 {
     font-size: 48px;
     text-align: right;
 }
+.textarea1 {
+    width: 1351px;
+    height: 334px;
+}
 h3 {
     font-size: 48px;
     text-align: right;
 }
+.textarea2 {
+    width: 1351px;
+    height: 334px;
+}
+/*Start of buttons css*/
 .buttonscontainer {
     text-align: center;
 }
@@ -90,6 +105,7 @@ h3 {
     padding: 10px 20px;
     cursor: pointer; 
 }
+/*End of buttons css*/
 footer {
     font-size: 36px;
 }
