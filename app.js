@@ -53,8 +53,14 @@ app.post('/signup', async (req, res) => {
         name: req.body.username,
         password: req.body.password
     }
-    const userdata = await collection.insertMany(data);
-    comsole.log(userdata);
+
+    const existingUser = await collection.findOne({name: data.name});
+    if(existingUser){
+        res.send('User already exists');
+    }else {
+        const userdata = await collection.insertMany(data);
+        comsole.log(userdata);
+    }
 });
 
 app.listen(PORT, () => {
