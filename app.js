@@ -58,6 +58,9 @@ app.post('/signup', async (req, res) => {
     if(existingUser){
         res.send('User already exists');
     }else {
+        const saltRounds = 10; // num of salt round for bcrypt
+        const hashedPassword = await bcrypt.hash(data.password, saltRounds);
+        data.password = hashedPassword;
         const userdata = await collection.insertMany(data);
         comsole.log(userdata);
     }
