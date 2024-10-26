@@ -1,3 +1,36 @@
+header {
+    background-color: #0B2E34;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+.login a {
+    background-color: #44a2b6;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+img {
+    height: 60px;
+    margin-right: 40px;
+}
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
