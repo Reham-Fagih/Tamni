@@ -76,6 +76,7 @@ h3 {
     border: none;
     border-radius: 30px;
     padding: 10px 20px; 
+    margin-bottom: 100px;
     margin-top: 50px;
     margin-right: 10px;
     cursor: pointer;
@@ -88,4 +89,7 @@ h3 {
     border-radius: 30px;
     padding: 10px 20px;
     cursor: pointer; 
+}
+footer {
+    font-size: 36px;
 }
