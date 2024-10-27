@@ -1,0 +1,30 @@
+
+body{
+
+    background-color: #0B2E34;
+}
+
+.container{
+
+background-color: aliceblue;
+height: 650px;
+margin: 100px;
+border-radius: 10px;
+}
+
+/*h3 in content1*/
+h3{
+
+    display: flex;
+
+}
+
+h3:before , h3:after{
+
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
