@@ -5,12 +5,20 @@ body{
 }
 
 .container{
-
+    
+   
 background-color: aliceblue;
 height: 600px;
-width: auto;
-margin: 100px;
+width: 400px;
 border-radius: 10px;
+
+/* center the container */
+margin: 0 auto;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+
 }
 
 /*h3 in content1*/
@@ -57,12 +65,31 @@ h3:before , h3:after{
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: aliceblue;
+    border-color:gray
     
     
 }
 
-.content2{
-
+form {
+    margin-top: -65px;
     display: flex;
     flex-direction: column;
+    align-items: end;
+    padding: 30px;
+    gap: 10px;
+    
 }
+
+label{
+
+    font-size: 15px;
+} 
+
+input{
+
+    background-color: aliceblue;
+    border-width: 1px; border-color:gray;
+    border-radius: 5px;
+    width: 300px;
+}
+
