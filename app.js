@@ -15,16 +15,17 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
         if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir);
+            fs.mkdirSync(uploadDir); 
         }
         cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
+        cb(null, Date.now() + path.extname(file.originalname)); 
     }
 });
 
 const upload = multer({ storage });
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -46,22 +47,29 @@ app.get('/SignUp', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
 
+
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
         password: req.body.password
     };
 
-    const existingUser = await collection.findOne({ name: data.name });
-    if (existingUser) {
-        res.send('User already exists');
-    } else {
+    try {
+        const existingUser = await collection.findOne({ name: data.name });
+        if (existingUser) {
+            return res.status(409).send('User already exists'); // 409 Conflict
+        }
+
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(data.password, saltRounds);
         data.password = hashedPassword;
+
         const userdata = await collection.insertMany([data]);
         console.log(userdata);
-        res.send('User registered successfully');
+        res.status(201).send('User registered successfully'); // 201 Created
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error during registration'); // 500 Internal Server Error
     }
 });
 
@@ -69,20 +77,21 @@ app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });
         if (!check) {
-            res.send('Username not found');
+            return res.status(404).send('Username not found'); // 404 Not Found
+        }
+
+        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        if (isPasswordMatch) {
+            return res.redirect('/'); 
         } else {
-            const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-            if (isPasswordMatch) {
-                res.redirect('/');
-            } else {
-                res.send('Wrong password');
-            }
+            return res.status(401).send('Wrong password'); // 401 Unauthorized
         }
     } catch (error) {
-        res.send('Error during login');
         console.error(error);
+        res.status(500).send('Error during login'); // 500 Internal Server Error
     }
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);

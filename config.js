@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const connect = mongoose.connect('mongodb+srv://nofaos111:nnooNNOO11.@users.k4xvo.mongodb.net/YourDatabaseName?retryWrites=true&w=majority&appName=Users');
+const connect = mongoose.connect('mongodb+srv://nofaos111:nnooNNOO11.@users.k4xvo.mongodb.net/Users?retryWrites=true&w=majority&appName=Users');
+
+console.log('Attempting to connect to the database...');
 
 connect
   .then(() => {
