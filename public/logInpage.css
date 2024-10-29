@@ -70,6 +70,21 @@ h3:before , h3:after{
     margin-top: 5px;
 }
 
+a:any-link{
+
+  color: #0B2E34;  
+}
+a:visited{
+
+  color: #0B2E34; 
+
+}
+a:hover{
+
+    color:#69b8ca;
+
+}
+
 #button1{
 
     margin-top: 30px;
