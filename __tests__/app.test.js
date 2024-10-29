@@ -5,11 +5,9 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// Setup the server
 const app = express();
 const uploadDir = path.join(__dirname, '../uploads');
 
-// Set up multer for testing
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, uploadDir);
@@ -30,17 +28,14 @@ app.post('/upload', upload.single('image'), (req, res) => {
     }
 });
 
-// Test cases
 describe('Image Upload API', () => {
     beforeAll(() => {
-        // Create uploads directory if it doesn't exist
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir);
         }
     });
 
     afterAll(() => {
-        // Clean up uploaded files after tests
         fs.readdir(uploadDir, (err, files) => {
             if (err) return;
             files.forEach(file => {
@@ -54,8 +49,7 @@ describe('Image Upload API', () => {
     it('should upload an image successfully', async () => {
         const response = await request(app)
             .post('/upload')
-            .attach('image', path.join(__dirname, 'test_image.png')); // Use an actual image file here
-
+            .attach('image', path.join(__dirname, 'test_image.png'));
         expect(response.status).toBe(200);
         expect(response.body.message).toBe('Image uploaded successfully!');
     });

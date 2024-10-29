@@ -54,6 +54,11 @@ app.post('/signUp', async (req, res) => {
         password: req.body.password
     };
 
+    // Validate input
+    if (!data.name || !data.password) {
+        return res.status(400).send('Username and password are required'); // 400 Bad Request
+    }
+
     try {
         const existingUser = await collection.findOne({ name: data.name });
         if (existingUser) {
@@ -64,14 +69,15 @@ app.post('/signUp', async (req, res) => {
         const hashedPassword = await bcrypt.hash(data.password, saltRounds);
         data.password = hashedPassword;
 
-        const userdata = await collection.insertMany([data]);
+        const userdata = await collection.insertOne(data); // Changed to insertOne
         console.log(userdata);
         res.status(201).send('User registered successfully'); // 201 Created
     } catch (error) {
-        console.error(error);
+        console.error('Error during registration:', error); // Log error details
         res.status(500).send('Error during registration'); // 500 Internal Server Error
     }
 });
+
 
 app.post('/logInPage', async (req, res) => {
     try {
