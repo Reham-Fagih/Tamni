@@ -14,7 +14,7 @@ app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use(express.json());
 
 const storage = multer.diskStorage({
-    destinatsion: (req, file, cb) => {
+    destination: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir);
@@ -48,7 +48,7 @@ app.get('/SignUp', (req, res) => {
     res.render('SignUp');
 });
 
-app.post('/signup', async (req, res) => {
+app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
         password: req.body.password
@@ -56,7 +56,7 @@ app.post('/signup', async (req, res) => {
 
     const existingUser = await collection.findOne({name: data.name});
     if(existingUser){
-        res.send('User already exists');  
+        res.send('Wrong password');  
     }else {
         const saltRounds = 10; // num of salt round for bcrypt
         const hashedPassword = await bcrypt.hash(data.password, saltRounds);
@@ -66,7 +66,7 @@ app.post('/signup', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
+app.post('/logInPage', async (req, res) => {
     try{
         const check = await collection.findOne({name: req.body.username});
         if(!check){
@@ -76,7 +76,7 @@ app.post('/login', async (req, res) => {
         if(isPasswordMatch){
             res.render('/');
         }else {
-            req.send('Wrong password')
+            req.send('Wrong password');
         }
     }catch{
         req.send('Wrong Details');
