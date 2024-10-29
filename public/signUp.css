@@ -15,6 +15,21 @@ button{
 
 }
 
+a:any-link{
+
+    color: #0B2E34;  
+  }
+  a:visited{
+  
+    color: #0B2E34; 
+  
+  }
+  a:hover{
+  
+      color:#69b8ca;
+  
+  }
+
 .container{
     
    
