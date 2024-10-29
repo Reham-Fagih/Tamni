@@ -2,15 +2,13 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
+const collection = require('./config');
 const app = express();
 const PORT = 5000;
 
-const bcrypt = require('bcrypt');
-const collection = require('./config');
-
 app.use(express.static('public'));
 app.use('/img', express.static(path.join(__dirname, 'img')));
-
 app.use(express.json());
 
 const storage = multer.diskStorage({
@@ -41,49 +39,51 @@ app.post('/upload', upload.single('image'), (req, res) => {
 });
 
 app.get('/LogIn', (req, res) => {
-    res.render('LogIn');
+    res.sendFile(path.join(__dirname, 'public', 'logInPage.html'));
 });
 
 app.get('/SignUp', (req, res) => {
-    res.render('SignUp');
+    res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
 
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
         password: req.body.password
-    }
+    };
 
-    const existingUser = await collection.findOne({name: data.name});
-    if(existingUser){
-        res.send('Wrong password');  
-    }else {
-        const saltRounds = 10; // num of salt round for bcrypt
+    const existingUser = await collection.findOne({ name: data.name });
+    if (existingUser) {
+        res.send('User already exists');
+    } else {
+        const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(data.password, saltRounds);
         data.password = hashedPassword;
-        const userdata = await collection.insertMany(data);
-        comsole.log(userdata);
+        const userdata = await collection.insertMany([data]);
+        console.log(userdata);
+        res.send('User registered successfully');
     }
 });
 
 app.post('/logInPage', async (req, res) => {
-    try{
-        const check = await collection.findOne({name: req.body.username});
-        if(!check){
-            res.send('User name cannot found');
+    try {
+        const check = await collection.findOne({ name: req.body.username });
+        if (!check) {
+            res.send('Username not found');
+        } else {
+            const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+            if (isPasswordMatch) {
+                res.redirect('/');
+            } else {
+                res.send('Wrong password');
+            }
         }
-        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-        if(isPasswordMatch){
-            res.render('/');
-        }else {
-            req.send('Wrong password');
-        }
-    }catch{
-        req.send('Wrong Details');
+    } catch (error) {
+        res.send('Error during login');
+        console.error(error);
     }
 });
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
-
