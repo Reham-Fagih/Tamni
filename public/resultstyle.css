@@ -1,9 +1,12 @@
 /*Start of header css*/
-header {
+#head {
     background-color: #0B2E34;
     padding: 10px 0;
 }
-
+.login{
+    display: flex;
+    align-items: center
+}
 nav ul {
     list-style: none;
     padding: 0;
@@ -11,10 +14,14 @@ nav ul {
     display: flex;
     justify-content: center;
 }
+ul{
+    align-items: center
+}
 
 nav ul li {
     margin: 0 15px;
 }
+
 
 nav ul li a {
     text-decoration: none;
