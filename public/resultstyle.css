@@ -47,6 +47,9 @@ body {
     background-color: #0B2E34;
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 section {
     margin: 0;
@@ -54,6 +57,9 @@ section {
     background-color: #1A4A51;
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .percentage {
     display: flex; 
@@ -62,12 +68,16 @@ section {
 }
 .textscontainer {
     margin-right: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 h1 {
     font-size: 64px;
     margin-right: 500px;
 }
 .textarea { 
+    display: flex;
     background-color: #D43333;
     border-radius: 100px;
     width: 266px;
@@ -80,6 +90,7 @@ h2 {
     text-align: right;
 }
 .textarea1 {
+    display: flex;
     width: 1351px;
     height: 334px;
 }
@@ -88,6 +99,7 @@ h3 {
     text-align: right;
 }
 .textarea2 {
+    display: flex;
     width: 1351px;
     height: 246px;
 }
