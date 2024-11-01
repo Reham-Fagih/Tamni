@@ -10,7 +10,9 @@ const PORT = 5000;
 app.use(express.static('public'));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use(express.json());
+const bodyParser = require("body-parser")
 
+app.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
@@ -48,6 +50,7 @@ app.get('/SignUp', (req, res) => {
 });
 
 
+
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
@@ -65,15 +68,18 @@ app.post('/signUp', async (req, res) => {
             return res.status(409).send('User already exists'); // 409 Conflict
         }
 
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-        data.password = hashedPassword;
+        // Hash the password before saving
+        const hashedPassword = await bcrypt.hash(data.password, 10); // 10 is the salt rounds
+        const userData = {
+            name: data.name,
+            password: hashedPassword // Store the hashed password
+        };
 
-        const userdata = await collection.insertOne(data); // Changed to insertOne
-        console.log(userdata);
-        res.status(201).send('User registered successfully'); // 201 Created
+        const result = await collection.create(userData); // Use  for a single document
+        console.log('User registered:', result);
+        res.status(201).redirect('/'); // 201 Created
     } catch (error) {
-        console.error('Error during registration:', error); // Log error details
+        console.error('Registration error:', error);
         res.status(500).send('Error during registration'); // 500 Internal Server Error
     }
 });
@@ -82,18 +88,25 @@ app.post('/signUp', async (req, res) => {
 app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });
+        console.log('User found:', check); // Log user details
+
         if (!check) {
             return res.status(404).send('Username not found'); // 404 Not Found
         }
 
+        console.log('Input Password:', req.body.password); // Log input password
+        console.log('Stored Hash:', check.password); // Log stored password hash
+
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        console.log('Password Match:', isPasswordMatch); // Log result of comparison
+
         if (isPasswordMatch) {
             return res.redirect('/'); 
         } else {
             return res.status(401).send('Wrong password'); // 401 Unauthorized
         }
     } catch (error) {
-        console.error(error);
+        console.error('Login error:', error);
         res.status(500).send('Error during login'); // 500 Internal Server Error
     }
 });
