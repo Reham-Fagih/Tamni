@@ -1,7 +1,20 @@
 body{
 
     background-color: #0B2E34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    flex-wrap: wrap-reverse;
+    column-gap: 50px;
+
 }
+img{
+    
+
+    width: 300px;
+}
+
 
 button{
 
@@ -40,15 +53,16 @@ a:any-link{
 background-color: aliceblue;
 width: 400px;
 border-radius: 10px;
+}
+/* center the container 
 
-/* center the container */
 margin: 0 auto;
 position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 
-}
+}*/
 
 /*h3 in content1*/
 h3{
