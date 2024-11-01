@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connect = mongoose.connect('mongodb+srv://nofaos111:nnooNNOO11.@users.k4xvo.mongodb.net/Users?retryWrites=true&w=majority&appName=Users');
+const connect = mongoose.connect('mongodb+srv://process:Kkk@cluster0.fsrf5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 console.log('Attempting to connect to the database...');
 
