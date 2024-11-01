@@ -50,6 +50,7 @@ app.get('/SignUp', (req, res) => {
 });
 
 
+
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
@@ -67,15 +68,18 @@ app.post('/signUp', async (req, res) => {
             return res.status(409).send('User already exists'); // 409 Conflict
         }
 
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-        data.password = hashedPassword;
+        // Hash the password before saving
+        const hashedPassword = await bcrypt.hash(data.password, 10); // 10 is the salt rounds
+        const userData = {
+            name: data.name,
+            password: hashedPassword // Store the hashed password
+        };
 
-        const userdata = await collection.insertOne(data); // Changed to insertOne
-        console.log(userdata);
+        const result = await collection.create(userData); // Use  for a single document
+        console.log('User registered:', result);
         res.status(201).redirect('/'); // 201 Created
     } catch (error) {
-        console.error('Error during registration:', error); // Log error details
+        console.error('Registration error:', error);
         res.status(500).send('Error during registration'); // 500 Internal Server Error
     }
 });
