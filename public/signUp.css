@@ -12,7 +12,11 @@ button{
     align-self: center;
     width: 300px;
     margin-top: 100px;
+    
 
+}
+button:hover{
+    background-color:#0B2E34
 }
 
 a:any-link{

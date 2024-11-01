@@ -123,9 +123,10 @@ border: thin;
 color: aliceblue;
 margin-top: 30px;
 
-
-
-
 }
+#button2:hover{
+    background-color:#0B2E34
+}
+
 
 
