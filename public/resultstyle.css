@@ -1,9 +1,12 @@
 /*Start of header css*/
-header {
+#head {
     background-color: #0B2E34;
     padding: 10px 0;
 }
-
+.login{
+    display: flex;
+    align-items: center
+}
 nav ul {
     list-style: none;
     padding: 0;
@@ -11,10 +14,14 @@ nav ul {
     display: flex;
     justify-content: center;
 }
+ul{
+    align-items: center
+}
 
 nav ul li {
     margin: 0 15px;
 }
+
 
 nav ul li a {
     text-decoration: none;
@@ -40,6 +47,9 @@ body {
     background-color: #0B2E34;
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 section {
     margin: 0;
@@ -47,6 +57,10 @@ section {
     background-color: #1A4A51;
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .percentage {
     display: flex; 
@@ -54,13 +68,20 @@ section {
     justify-content: space-between;
 }
 .textscontainer {
-    margin-right: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
 }
 h1 {
     font-size: 64px;
     margin-right: 500px;
 }
 .textarea { 
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    display: flex;
     background-color: #D43333;
     border-radius: 100px;
     width: 266px;
@@ -73,6 +94,9 @@ h2 {
     text-align: right;
 }
 .textarea1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    display: flex;
     width: 1351px;
     height: 334px;
 }
@@ -81,12 +105,17 @@ h3 {
     text-align: right;
 }
 .textarea2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    display: flex;
     width: 1351px;
     height: 246px;
 }
 /*Start of buttons css*/
 .buttonscontainer {
     text-align: center;
+    align-items: center;
+    justify-content: space-between;
 }
 .button1 {
     font-size: 36px;
@@ -105,9 +134,6 @@ h3 {
     border: none;
     border-radius: 30px;
     padding: 10px 20px; 
-    margin-bottom: 100px;
-    margin-top: 50px;
-    margin-right: 10px;
     cursor: pointer;
 }
 .button3 {

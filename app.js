@@ -57,6 +57,11 @@ app.post('/signUp', async (req, res) => {
         password: req.body.password
     };
 
+    // Validate input
+    if (!data.name || !data.password) {
+        return res.status(400).send('Username and password are required'); // 400 Bad Request
+    }
+
     try {
         const existingUser = await collection.findOne({ name: data.name });
         if (existingUser) {
@@ -78,6 +83,7 @@ app.post('/signUp', async (req, res) => {
         res.status(500).send('Error during registration'); // 500 Internal Server Error
     }
 });
+
 
 app.post('/logInPage', async (req, res) => {
     try {
