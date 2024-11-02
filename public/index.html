@@ -27,7 +27,7 @@
           طبيب أو مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
           وما يصير خاطرك إلا طيب
         </p>
-        <form id="upload-form" enctype="multipart/form-data">
+        <form id="upload-form" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
           <input type="file" name="image" accept="image/*" required>
           <button type="submit">أرفق الصورة</button>
       </form>

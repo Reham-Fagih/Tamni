@@ -7,7 +7,7 @@ const collection = require('./config');
 const app = express();
 const PORT = 5000;
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use(express.json());
 const bodyParser = require("body-parser")
@@ -28,6 +28,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+app.get('/resultpage', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'resultpage.html'));
+});
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -35,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.post('/upload', upload.single('image'), (req, res) => {
     if (req.file) {
-        res.json({ message: 'Image uploaded successfully!', filePath: req.file.path }).redirect('public/resultpage.html');
+        res.json({ message: 'Image uploaded successfully!', redirectTo: '/resultpage' });
     } else {
         res.status(400).json({ message: 'Image upload failed!' });
     }
@@ -57,30 +60,28 @@ app.post('/signUp', async (req, res) => {
         password: req.body.password
     };
 
-    // Validate input
     if (!data.name || !data.password) {
-        return res.status(400).send('Username and password are required'); // 400 Bad Request
+        return res.status(400).send('Username and password are required'); 
     }
 
     try {
         const existingUser = await collection.findOne({ name: data.name });
         if (existingUser) {
-            return res.status(409).send('User already exists'); // 409 Conflict
+            return res.status(409).send('User already exists'); 
         }
 
-        // Hash the password before saving
-        const hashedPassword = await bcrypt.hash(data.password, 10); // 10 is the salt rounds
+        const hashedPassword = await bcrypt.hash(data.password, 10); 
         const userData = {
             name: data.name,
-            password: hashedPassword // Store the hashed password
+            password: hashedPassword 
         };
 
-        const result = await collection.create(userData); // Use  for a single document
+        const result = await collection.create(userData); 
         console.log('User registered:', result);
-        res.status(201).redirect('/'); // 201 Created
+        res.status(201).redirect('/'); 
     } catch (error) {
         console.error('Registration error:', error);
-        res.status(500).send('Error during registration'); // 500 Internal Server Error
+        res.status(500).send('Error during registration'); 
     }
 });
 
@@ -88,26 +89,26 @@ app.post('/signUp', async (req, res) => {
 app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });
-        console.log('User found:', check); // Log user details
+        console.log('User found:', check); 
 
         if (!check) {
-            return res.status(404).send('Username not found'); // 404 Not Found
+            return res.status(404).send('Username not found'); 
         }
 
-        console.log('Input Password:', req.body.password); // Log input password
-        console.log('Stored Hash:', check.password); // Log stored password hash
+        console.log('Input Password:', req.body.password); 
+        console.log('Stored Hash:', check.password); 
 
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-        console.log('Password Match:', isPasswordMatch); // Log result of comparison
+        console.log('Password Match:', isPasswordMatch); 
 
         if (isPasswordMatch) {
             return res.redirect('/'); 
         } else {
-            return res.status(401).send('Wrong password'); // 401 Unauthorized
+            return res.status(401).send('Wrong password'); 
         }
     } catch (error) {
         console.error('Login error:', error);
-        res.status(500).send('Error during login'); // 500 Internal Server Error
+        res.status(500).send('Error during login'); 
     }
 });
 
