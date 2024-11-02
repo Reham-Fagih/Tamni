@@ -1,5 +1,4 @@
-
-const image= document.getElementById('upload-form').addEventListener('submit', async (event) => {
+document.getElementById('upload-form').addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const response = await fetch('/upload', {

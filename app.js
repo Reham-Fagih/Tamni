@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 
 app.post('/upload', upload.single('image'), (req, res) => {
     if (req.file) {
-        res.json({ message: 'Image uploaded successfully!', filePath: req.file.path });
+        res.json({ message: 'Image uploaded successfully!', filePath: req.file.path }).redirect('public/resultpage.html');
     } else {
         res.status(400).json({ message: 'Image upload failed!' });
     }
