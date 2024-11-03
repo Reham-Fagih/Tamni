@@ -68,14 +68,15 @@ section {
     justify-content: space-between;
 }
 .textscontainer {
+    background-color:#0e3a42;
     display: flex;
     flex-direction: column;
     justify-content: center;
     justify-content: space-between;
 }
 h1 {
-    font-size: 64px;
-    margin-right: 500px;
+    font-size: 40px;
+    margin-right: 400px;
 }
 .textarea { 
     font-family: 'Arial', sans-serif;
@@ -84,32 +85,40 @@ h1 {
     display: flex;
     background-color: #D43333;
     border-radius: 100px;
-    width: 266px;
-    height: 88px;  
+    width: 150px;
+    height: 50px;  
     margin-left: 500px;
+    margin-right: 50px;
 }
 
 h2 {
-    font-size: 48px;
+    font-size: 30px;
+    background-color:#0B2E34;
     text-align: right;
 }
 .textarea1 {
+    background-color: #49CAE0;
+    color: #0B2E34;
     font-family: 'Arial', sans-serif;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
-    width: 1351px;
-    height: 334px;
+    width: 1000px;
+    height: 250px;
 }
 h3 {
-    font-size: 48px;
+    font-size: 30px;
+    background-color:#0B2E34;
     text-align: right;
 }
 .textarea2 {
+    background-color: #49CAE0;
+    color: #0B2E34;
     font-family: 'Arial', sans-serif;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
-    width: 1351px;
-    height: 246px;
+    width: 1000px;
+    height: 150px;
+    margin-bottom: 50px;
 }
 /*Start of buttons css*/
 .buttonscontainer {
@@ -118,26 +127,36 @@ h3 {
     justify-content: space-between;
 }
 .button1 {
-    font-size: 36px;
+    font-size: 20px;
+    width: 300px;
+    height: 50px;
     background-color: #0B2E34;
     color: #49CAE0;
     text-decoration-line: underline;
     border: none;
     border-radius: 30px;
     padding: 10px 20px; 
+    margin-bottom: 20px;
+    margin-top: 20px;
     cursor: pointer;
 }
 .button2 {
-    font-size: 32px;
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
     background-color: #3AA8B7;
     color: white;
     border: none;
     border-radius: 30px;
     padding: 10px 20px; 
+    margin-bottom: 50px;
+    margin-right: 30px;
     cursor: pointer;
 }
 .button3 {
-    font-size: 32px;
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
     background-color: #3AA8B7;
     color: white;
     border: none;
@@ -147,5 +166,5 @@ h3 {
 }
 /*End of buttons css*/
 footer {
-    font-size: 36px;
+    font-size: 20px;
 }
