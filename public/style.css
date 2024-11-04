@@ -304,3 +304,52 @@ h2{
     top: 35%;
 }
 /********Shatha end********/
+
+/*Mawadah start*/
+.inbox {
+    display: none;
+    width: 250px;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .inbox h2 {
+    font-size: 20px;
+    color: #0B2E34;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .patient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .patient {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px;
+    background-color: #44a2b6;
+    border-radius: 5px;
+  }
+  
+  .patient p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .patient button {
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #1a4a51;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }

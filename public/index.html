@@ -20,6 +20,25 @@
         </ul>
       </nav>
     </header>
+
+    <section class="inbox">
+      <h2>صندوق الوارد</h2>
+      <div class="patient-list">
+        <div class="patient">
+          <p>مريض 1</p>
+          <button>رد</button>
+        </div>
+        <div class="patient">
+          <p>مريض 2</p>
+          <button>رد</button>
+        </div>
+        <div class="patient">
+          <p>مريض 3</p>
+          <button>رد</button>
+        </div>
+      </div>
+    </section>
+
     <section class="back">
       <div class="content">
         <h1>تبي تطمن؟</h1>
@@ -27,7 +46,7 @@
           طبيب أو مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
           وما يصير خاطرك إلا طيب
         </p>
-        <form id="upload-form" enctype="multipart/form-data">
+        <form id="upload-form" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
           <input type="file" name="image" accept="image/*" required>
           <button type="submit">أرفق الصورة</button>
       </form>

@@ -7,10 +7,12 @@ const collection = require('./config');
 const app = express();
 const PORT = 5000;
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use(express.json());
+const bodyParser = require("body-parser")
 
+app.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
@@ -26,6 +28,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+app.get('/resultpage', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'resultpage.html'));
+});
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -33,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.post('/upload', upload.single('image'), (req, res) => {
     if (req.file) {
-        res.json({ message: 'Image uploaded successfully!', filePath: req.file.path });
+        res.json({ message: 'Image uploaded successfully!', redirectTo: '/resultpage' });
     } else {
         res.status(400).json({ message: 'Image upload failed!' });
     }
@@ -48,33 +53,35 @@ app.get('/SignUp', (req, res) => {
 });
 
 
+
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
         password: req.body.password
     };
 
-    // Validate input
     if (!data.name || !data.password) {
-        return res.status(400).send('Username and password are required'); // 400 Bad Request
+        return res.status(400).send('Username and password are required'); 
     }
 
     try {
         const existingUser = await collection.findOne({ name: data.name });
         if (existingUser) {
-            return res.status(409).send('User already exists'); // 409 Conflict
+            return res.status(409).send('User already exists'); 
         }
 
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-        data.password = hashedPassword;
+        const hashedPassword = await bcrypt.hash(data.password, 10); 
+        const userData = {
+            name: data.name,
+            password: hashedPassword 
+        };
 
-        const userdata = await collection.insertOne(data); // Changed to insertOne
-        console.log(userdata);
-        res.status(201).send('User registered successfully'); // 201 Created
+        const result = await collection.create(userData); 
+        console.log('User registered:', result);
+        res.status(201).redirect('/'); 
     } catch (error) {
-        console.error('Error during registration:', error); // Log error details
-        res.status(500).send('Error during registration'); // 500 Internal Server Error
+        console.error('Registration error:', error);
+        res.status(500).send('Error during registration'); 
     }
 });
 
@@ -82,19 +89,26 @@ app.post('/signUp', async (req, res) => {
 app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });
+        console.log('User found:', check); 
+
         if (!check) {
-            return res.status(404).send('Username not found'); // 404 Not Found
+            return res.status(404).send('Username not found'); 
         }
 
+        console.log('Input Password:', req.body.password); 
+        console.log('Stored Hash:', check.password); 
+
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        console.log('Password Match:', isPasswordMatch); 
+
         if (isPasswordMatch) {
             return res.redirect('/'); 
         } else {
-            return res.status(401).send('Wrong password'); // 401 Unauthorized
+            return res.status(401).send('Wrong password'); 
         }
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error during login'); // 500 Internal Server Error
+        console.error('Login error:', error);
+        res.status(500).send('Error during login'); 
     }
 });
 
