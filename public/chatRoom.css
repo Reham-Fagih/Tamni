@@ -11,6 +11,64 @@
     position: relative;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #0B2E34;
+    color: #ffffff;
+    border-radius: 10px 10px 0 0;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: space-between; 
+}
+
+.header .close-btn {
+    order: 4; 
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.header .close-btn:hover {
+    color: #ff0000;
+}
+
+.header .doctor-info {
+    order: 3; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center; 
+}
+
+.doctor-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.doctor-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header .back-btn {
+    order: 1; 
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.header .back-btn:hover {
+    color: #69b8ca;
+}
+
 .messages {
     flex-grow: 1;
     overflow-y: auto;
