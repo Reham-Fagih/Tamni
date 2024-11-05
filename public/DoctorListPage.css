@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+}
+
+.FindDoctorsScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    overflow: hidden;
+    position: relative;
+}
+
+.Bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.Ellipse142, .Ellipse143 {
+    position: absolute;
+    border-radius: 9999px;
+}
+
+.Ellipse142 {
+    width: 250px;
+    height: 250px;
+    background: rgba(96, 205, 255, 0.67);
+    top: -80px;
+    left: -80px;
+    filter: blur(100px);
+}
+
+.Ellipse143 {
+    width: 250px;
+    height: 250px;
+    background: rgba(14, 190, 126, 0.30);
+    bottom: -80px;
+    right: -80px;
+    filter: blur(100px);
+}
+
+.Search {
+    width: 90%;
+    max-width: 500px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.Rectangle17 {
+    width: 100%;
+    height: 50px;
+    background: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.SearchInput {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.Headline {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    z-index: 1;
+}
+
+.Group {
+    display: flex;
+    align-items: center;
+}
+
+.BackArrow {
+    font-size: 24px; /* Increase size */
+    color: #222;
+    margin-right: 8px;
+    cursor: default;
+}
+
+
+.HeadlineText {
+    color: #222;
+    font-size: 20px;
+}
+
+.AllDoctors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.Doctor {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.Image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.Text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.DoctorName {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+.Specialization {
+    font-size: 13px;
+    color: #44a2b6;
+    margin-top: 4px;
+}
+
+.Availability {
+    font-size: 12px;
+    color: #333;
+    margin-top: 6px;
+}
+
+.Available {
+    color: #0EBE7F;
+}
+
+.Unavailable {
+    color: #D9534F;
+}
+
+.Button {
+    width: 90px;
+    height: 30px;
+    background: #44a2b6;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

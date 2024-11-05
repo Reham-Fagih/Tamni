@@ -1,8 +1,4 @@
 node_modules/
-<<<<<<< HEAD
 config.js
 uploads/
-=======
-uploads/
 .env
->>>>>>> 5ee13f7f1ec0314c4c4dbcf58343d6862db1926d
