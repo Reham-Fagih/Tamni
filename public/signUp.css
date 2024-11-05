@@ -24,9 +24,12 @@ button{
     padding-bottom: 10px;
     align-self: center;
     width: 300px;
-    margin-top: 100px;
+    margin-top: 50px;
     
 
+}
+#doctorSignUp{
+    margin-top: -1px;
 }
 button:hover{
     background-color:#0B2E34

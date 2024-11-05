@@ -3,7 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
-const collection = require('./config');
+const collection = require('./db');
 const app = express();
 const PORT = 5000;
 
