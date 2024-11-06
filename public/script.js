@@ -18,3 +18,14 @@ async function handleSubmit(event) {
         }, 2000); 
     }
 }
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+const role = getQueryParam("role");
+if (role === "doctor") {
+    document.querySelector(".inbox").style.display = "block";
+    document.querySelector(".login").style.display = "none";
+  } else {
+    document.querySelector(".inbox").style.display = "none";
+  }
