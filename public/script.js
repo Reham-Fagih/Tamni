@@ -1,23 +1,40 @@
 async function handleSubmit(event) {
-    event.preventDefault(); 
+  event.preventDefault();  // Prevent form submission
 
-    const formData = new FormData(event.target);
+  const formData = new FormData(event.target);
 
-    const response = await fetch('/upload', {
-        method: 'POST',
-        body: formData,
-    });
+  // Send the POST request to the backend
+  const response = await fetch('/predict', {
+      method: 'POST',
+      body: formData,
+  });
 
-    const data = await response.json();
+  const data = await response.json();
+  console.log('Response from server:', data);  // Log the full response for debugging
 
-    alert(data.message);
+  // Check if the server responded with a message
+  const resultContainer = document.getElementById('result-container');
+  
+  if (data.message) {
+      // Append the success message
+      const messageElem = document.createElement('p');
+      messageElem.textContent = data.message;
+      resultContainer.appendChild(messageElem);
+  }
 
-    if (data.redirectTo) {
-        setTimeout(() => {
-            window.location.href = data.redirectTo;
-        }, 2000); 
-    }
+  if (data.prediction) {
+      // Append the prediction result
+      const predictionElem = document.createElement('p');
+      predictionElem.textContent = `Prediction: ${data.prediction}`;
+      resultContainer.appendChild(predictionElem);
+  } else {
+      console.error('No prediction data found:', data);
+  }
 }
+
+
+
+
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);

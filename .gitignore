@@ -2,3 +2,5 @@ node_modules/
 config.js
 uploads/
 .env
+.venv/
+venv/
