@@ -68,10 +68,7 @@ section {
     justify-content: space-between;
 }
 .textscontainer {
-<<<<<<< HEAD
-=======
     background-color:#0e3a42;
->>>>>>> 5ee13f7f1ec0314c4c4dbcf58343d6862db1926d
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,21 +97,13 @@ h2 {
     text-align: right;
 }
 .textarea1 {
-<<<<<<< HEAD
-    font-family: 'Arial', sans-serif;
-    font-size: 30px;
-    display: flex;
-    width: 1351px;
-    height: 334px;
-=======
-    background-color: #49CAE0;
+    background-color: #fff;
     color: #0B2E34;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
     display: flex;
     width: 1000px;
     height: 250px;
->>>>>>> 5ee13f7f1ec0314c4c4dbcf58343d6862db1926d
 }
 h3 {
     font-size: 30px;
@@ -122,14 +111,7 @@ h3 {
     text-align: right;
 }
 .textarea2 {
-<<<<<<< HEAD
-    font-family: 'Arial', sans-serif;
-    font-size: 30px;
-    display: flex;
-    width: 1351px;
-    height: 246px;
-=======
-    background-color: #49CAE0;
+    background-color: #fff;
     color: #0B2E34;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
@@ -137,22 +119,15 @@ h3 {
     width: 1000px;
     height: 150px;
     margin-bottom: 50px;
->>>>>>> 5ee13f7f1ec0314c4c4dbcf58343d6862db1926d
 }
 
 /* Start of buttons CSS */
 .buttonscontainer {
-<<<<<<< HEAD
-    text-align: center;
-    align-items: center;
-    justify-content: space-between;
-=======
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     margin-top: 20px;
->>>>>>> 5ee13f7f1ec0314c4c4dbcf58343d6862db1926d
 }
 
 .button1 {
@@ -181,10 +156,6 @@ h3 {
     color: white;
     border: none;
     border-radius: 30px;
-<<<<<<< HEAD
-    padding: 10px 20px; 
-=======
->>>>>>> 5ee13f7f1ec0314c4c4dbcf58343d6862db1926d
     cursor: pointer;
     margin-bottom: 50px;
 }
