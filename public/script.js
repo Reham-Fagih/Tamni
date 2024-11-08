@@ -42,7 +42,14 @@ function getQueryParam(param) {
 const role = getQueryParam("role");
 if (role === "doctor") {
     document.querySelector(".inbox").style.display = "block";
+    document.querySelector("#Hiuser").style.display = "block";
     document.querySelector(".login").style.display = "none";
-  } else {
+  }
+  else if (role == "patient") {
+    document.querySelector("#Hiuser").style.display = "block";
+    document.querySelector(".inbox").style.display = "none";
+    document.querySelector(".login").style.display = "none";
+  }
+  else {
     document.querySelector(".inbox").style.display = "none";
   }
