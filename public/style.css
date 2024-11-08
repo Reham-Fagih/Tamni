@@ -316,17 +316,15 @@ h2{
 /*Mawadah start*/
 .inbox {
     display: none;
-    width: 250px;
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 8px;
+    background-image: url('/img/imgOfMainHeader.png');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    margin: 0 auto;
   }
   
   .inbox h2 {
-    font-size: 20px;
+    font-size: 40px;
     color: #0B2E34;
     margin-bottom: 10px;
     text-align: center;
@@ -349,12 +347,12 @@ h2{
   
   .patient p {
     margin: 0;
-    font-size: 14px;
+    font-size: 20px;
   }
   
   .patient button {
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 20px;
     color: #ffffff;
     background-color: #1a4a51;
     border: none;

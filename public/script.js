@@ -44,6 +44,7 @@ if (role === "doctor") {
     document.querySelector(".inbox").style.display = "block";
     document.querySelector("#Hiuser").style.display = "block";
     document.querySelector(".login").style.display = "none";
+    document.querySelector(".back").style.display = "none";
   }
   else if (role == "patient") {
     document.querySelector("#Hiuser").style.display = "block";
