@@ -1,0 +1,185 @@
+body {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f3f3f3;
+}
+
+.MedicalRecordsScreen03 {
+    width: 80%;
+    max-width: 1200px;
+    position: relative;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.Bg {
+    width: 544px;
+    height: 905px;
+    position: absolute;
+    left: -99px;
+    top: -33px;
+}
+
+.Ellipse143, .Ellipse142 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+.Ellipse143 {
+    width: 257px;
+    height: 257px;
+    left: 287px;
+    top: 648px;
+    background: rgba(14, 190, 126, 0.30);
+}
+
+.Ellipse142 {
+    width: 216px;
+    height: 216px;
+    left: 0;
+    top: 0;
+    background: rgba(96, 205, 255, 0.72);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.go-back {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #44A2B6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 500;
+    color: #333333;
+    margin: 0;
+}
+
+.AllRecords {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.Record {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
+
+.Rectangle505 {
+    flex: 1;
+    height: 100%;
+}
+
+.Group740 {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.added-by {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    margin-left: 0;
+}
+
+.diagnosis {
+    font-size: 12px;
+    font-weight: 300;
+    color: #0EBE7F;
+    margin-top: 10px;
+    text-align: left;
+    grid-column: 1;
+}
+
+
+
+.Group739 {
+    position: relative;
+    width: 82px;
+    height: 88px;
+    text-align: center;
+}
+
+.Rectangle547 {
+    width: 82px;
+    height: 88px;
+    background: #44A2B6;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.date {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.delete-record {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: #FF0000;
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.Button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.add-report {
+    width: 270px;
+    height: 58px;
+    background: #44A2B6;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
