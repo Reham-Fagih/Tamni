@@ -13,11 +13,9 @@ header {
 }
 
 #Hiuser{
-   
     width: 180px;
     height: 50px;
     background-color: #44a2b6;
-    display: none;
 }
 
 nav ul {
@@ -315,7 +313,6 @@ h2{
 
 /*Mawadah start*/
 .inbox {
-    display: none;
     background-image: url('/img/imgOfMainHeader.png');
     background-size: cover;
     background-position: center;
