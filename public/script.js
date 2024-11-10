@@ -1,29 +1,25 @@
 async function handleSubmit(event) {
-  event.preventDefault();  // Prevent form submission
+  event.preventDefault();  
 
   const formData = new FormData(event.target);
 
-  // Send the POST request to the backend
   const response = await fetch('/predict', {
       method: 'POST',
       body: formData,
   });
 
   const data = await response.json();
-  console.log('Response from server:', data);  // Log the full response for debugging
+  console.log('Response from server:', data);  
 
-  // Check if the server responded with a message
   const resultContainer = document.getElementById('result-container');
   
   if (data.message) {
-      // Append the success message
       const messageElem = document.createElement('p');
       messageElem.textContent = data.message;
       resultContainer.appendChild(messageElem);
   }
 
   if (data.prediction) {
-      // Append the prediction result
       const predictionElem = document.createElement('p');
       predictionElem.textContent = `Prediction: ${data.prediction}`;
       resultContainer.appendChild(predictionElem);
@@ -34,7 +30,6 @@ async function handleSubmit(event) {
 
 
 
-//showing and hiding items depnding on role
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
@@ -50,7 +45,6 @@ const role = getQueryParam("role");
   }
 
 
-  //adding a new medical report
 async function handleAddReport(event) {
   event.preventDefault();  
 
@@ -66,7 +60,6 @@ async function handleAddReport(event) {
     const data = await response.json();
     console.log('Response from server:', data);
 
-    //success or error messages
     const resultContainer = document.getElementById('result-container');
     resultContainer.innerHTML = ''; 
 
@@ -80,7 +73,6 @@ async function handleAddReport(event) {
   }
 }
 
-//deleting a record
 async function handleDeleteRecord(recordId) {
   try {
     const response = await fetch(`/delete-record/${recordId}`, {
