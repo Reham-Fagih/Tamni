@@ -34,7 +34,7 @@ async function handleSubmit(event) {
 
 
 
-
+//showing and hiding items depnding on role
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
@@ -48,3 +48,52 @@ const role = getQueryParam("role");
   else {
     document.querySelector("#Hiuser").style.display = "none";
   }
+
+
+  //adding a new medical report
+async function handleAddReport(event) {
+  event.preventDefault();  
+
+  
+  const formData = new FormData();
+  formData.append('reportData', 'Sample report data');
+
+  try {
+    const response = await fetch('/add-report', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    console.log('Response from server:', data);
+
+    //success or error messages
+    const resultContainer = document.getElementById('result-container');
+    resultContainer.innerHTML = ''; 
+
+    if (data.message) {
+      const messageElem = document.createElement('p');
+      messageElem.textContent = data.message;
+      resultContainer.appendChild(messageElem);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+//deleting a record
+async function handleDeleteRecord(recordId) {
+  try {
+    const response = await fetch(`/delete-record/${recordId}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    console.log('Delete response:', data);
+
+    if (data.message) {
+      alert(data.message);  
+      document.getElementById(`record-${recordId}`).remove(); 
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
