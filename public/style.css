@@ -10,6 +10,7 @@ body {
 header {
     background-color: #0B2E34;
     padding: 10px 0;
+    border-color: solid red ;
 }
 
 #Hiuser{
@@ -25,10 +26,16 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
+    justify-content: space-around;
+   
+
 }
 
 nav ul li {
-    margin: 0 15px;
+    
+/*Use flex , not padding reham*/
+    padding-top: 10px;
+    /*margin: 15px;*/ 
 }
 
 nav ul li a {
