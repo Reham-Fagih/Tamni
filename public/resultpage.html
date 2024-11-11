@@ -24,56 +24,51 @@
       </nav>
     </header>
 
-  <section class="content">
-    <div class="percentage">
-    <h1>نسبة إصابتك هي</h1>
-    <textarea readonly class="textarea">%70</textarea>
-    </div>
+    <section class="content">
+      <div class="percentage">
+        <h1> إصابتك هي</h1>
+        <textarea readonly class="textarea" id="prediction-text">%70</textarea>
+      </div>
 
-    <div class="textscontainer">
-      <h2>نظرة عامة عن حالتك</h2>
-      <textarea readonly class="textarea1">
-        التهاب الجلد التأتبي (الإكزيما) هو مرض يجعل الجلد جافًا ومثيرًا للحكة وملتهبًا
-        وهو أكثر شيوعًا لدى الأطفال الصغار، ولكن يمكن أن يحدث في أي مرحلة عمرية. حيث يستمر التهاب الجلد التأتبي لفترة طويلة (مزمن) ويمكن أن تزداد شدته في بعض الأحيان. وقد يكون مسببًا للتهيج ولكنه ليس معديًا.
-        الأشخاص المصابون بالتهاب الجلد التأتبي معرضون لخطر الإصابة بحساسية الطعام وحمى القش والربو.
-        ويمكن للمواظبة على الترطيب واتباع عادات أخرى للعناية بالبشرة أن يخفف الحكة ويقي من التفشي لمناطق جديدة (نوبات تهيج). قد يتضمن العلاج أيضًا مراهم علاجية أو كريمات.
-        يمكن أن تظهر أعراض التهاب الجلد التأتبي (الإكزيما) في أي مكان في الجسم وتختلف بشكل كبير من شخص لآخر. وقد تشمل:
-        
-        - جفاف الجلد وتشققه
-        - الحكة
-        - طفح على الجلد المتورم يختلف لونه وفقًا للون بشرتك
-        - نتوءات صغيرة بارزة على البشرة البنية أو السوداء
-        - النز والتقشير
-        - زيادة سُمك الجلد
-        - تصبغ الجلد بلون داكن في المنطقة المحيطة بالعينين
-        - تقرُّح الجلد وحساسيته للحكّ
-        
-        غالبًا ما يبدأ التهاب الجلد التأتبي قبل عمر 5 سنوات وقد يستمر حتى مرحلة المراهقة والبلوغ. وفي بعض الحالات قد يتفاقم الالتهاب ويزول لفترة من الوقت يمكن أن تمتد لعدة سنوات.
-      </textarea>
-      
-      <h3>متى لازم تزور طبيب</h3>
-      <textarea readonly class="textarea2">
-        تحتاج تزور طبيب إذا ظهرت عليك أو على طفلك الأعراض التالية:
-        
-        - أعراض التهاب الجلد التأتبي
-        - تأثير المرض في النوم وممارسة الأنشطة اليومية، ما يسبب عدم الراحة بشكل كبير
-        - الإصابة بالتهاب بالجلد، افحص الجلد لاكتشاف وجود أي خطوط أو صديد أو قشور صفراء
-        - ظهور أعراض حتى بعد اتخاذ خطوات الرعاية الذاتية
-        
-        اطلب الرعاية الطبية العاجلة إذا أُصبت أنت أو طفلك بحمّى أو إذا كان الطفح الجلدي يبدو مصابًا بعدوى.
-      </textarea>
-  </div>
-  
+      <div class="textscontainer" id="result-container">
+        <h2>نظرة عامة عن حالتك</h2>
 
-    <div class="buttonscontainer">
-      <button class="button1" type="button" onclick="window.location.href='DoctorListPage.html'">أنقر هنا لإستشارة طبيب مختص</button>
+        <textarea readonly class="textarea1"></textarea>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const prediction = urlParams.get('prediction');
+
+            const predictionTextArea = document.getElementById('prediction-text');
+            
+            if (predictionTextArea && prediction) {
+              predictionTextArea.value = prediction;  
+            } else {
+              console.error('Prediction not found.');
+            }
+          });
+        </script>
+
+        <h3>متى لازم تزور طبيب</h3>
+        <textarea readonly class="textarea2">
+          تحتاج تزور طبيب إذا ظهرت عليك أو على طفلك الأعراض التالية:
+        </textarea>
+      </div>
+
+      <div class="buttonscontainer">
+        <button class="button1" type="button" onclick="window.location.href='DoctorListPage.html'">أنقر هنا لإستشارة طبيب مختص</button>
         <div class="buttons">
-            <button class="button2" type="button" onclick="window.location.href='index.html'">تشخيص اخر</button>
-            <button class="button2" type="button" onclick="window.location.href='mainrecordpage.html'">رفع ملف مسبق للحاله</button>
+          <button class="button2" type="button" onclick="window.location.href='index.html'">تشخيص اخر</button>
+          <button class="button2" type="button" onclick="window.location.href='mainrecordpage.html'">رفع ملف مسبق للحاله</button>
         </div>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <footer>
-    <p>من خلال رفع صورة، فإنك توافق على شروطنا وقد قرأت سياسة الخصوصية الخاصة بنا</p>
-  </footer>
+    <script src="script.js"></script>
+
+    <footer>
+      <p>من خلال رفع صورة، فإنك توافق على شروطنا وقد قرأت سياسة الخصوصية الخاصة بنا</p>
+    </footer>
+  </body>
+</html>

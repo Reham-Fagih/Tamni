@@ -2,7 +2,6 @@ import sys
 import torch
 from torchvision import transforms
 from PIL import Image
-import json
 
 class SimpleCNN(torch.nn.Module):
     def __init__(self):
@@ -11,12 +10,12 @@ class SimpleCNN(torch.nn.Module):
         self.pool = torch.nn.MaxPool2d(kernel_size=2, stride=2)
         self.conv2 = torch.nn.Conv2d(16, 32, kernel_size=3, padding=1)
         self.fc1 = torch.nn.Linear(32 * 32 * 32, 128)
-        self.fc2 = torch.nn.Linear(128, len(classes)) 
+        self.fc2 = torch.nn.Linear(128, len(classes))
 
     def forward(self, x):
         x = self.pool(torch.nn.functional.relu(self.conv1(x)))
         x = self.pool(torch.nn.functional.relu(self.conv2(x)))
-        x = x.view(-1, 32 * 32 * 32)  
+        x = x.view(-1, 32 * 32 * 32) 
         x = torch.nn.functional.relu(self.fc1(x))
         x = self.fc2(x)
         return x
@@ -36,35 +35,32 @@ classes = [
 
 model = SimpleCNN()
 model.load_state_dict(torch.load('skin_disease_model.pth'))
-model.eval() 
+model.eval()  
 
 transform = transforms.Compose([
     transforms.Resize((128, 128)),
     transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)), 
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),  
 ])
 
 image_path = sys.argv[1]
 
 try:
     image = Image.open(image_path)
-    print(f"Image mode before processing: {image.mode}")
     if image.mode not in ['RGB', 'RGBA']:
-        image = image.convert('RGB')
+        image = image.convert('RGB')  
 except Exception as e:
     print(f"Error opening image {image_path}: {e}")
     sys.exit(1)
 
-print(f"Image size before transformation: {image.size}")
-
 image_tensor = transform(image).unsqueeze(0)  
-print(f"Tensor shape: {image_tensor.shape}")
-
 with torch.no_grad():
-    output = model(image_tensor)
-    print(f"Model output: {output}")
-    _, predicted = torch.max(output.data, 1)
+    output = model(image_tensor)  
+    _, predicted = torch.max(output.data, 1)  
+    
+
 
 prediction = classes[predicted.item()]
 
-print(json.dumps({'prediction': prediction}))
+
+print(prediction)

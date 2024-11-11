@@ -1,32 +1,37 @@
-async function handleSubmit(event) {
-  event.preventDefault();  
+// async function handleSubmit(event) {
+//   event.preventDefault();  
 
-  const formData = new FormData(event.target);
+//   const formData = new FormData(event.target);
 
-  const response = await fetch('/predict', {
-      method: 'POST',
-      body: formData,
-  });
+//   const response = await fetch('/predict', {
+//       method: 'POST',
+//       body: formData,
+//   });
 
-  const data = await response.json();
-  console.log('Response from server:', data);  
+//   const data = await response.json();
+//   console.log('Response from server:', data);  
 
-  const resultContainer = document.getElementById('result-container');
-  
-  if (data.message) {
-      const messageElem = document.createElement('p');
-      messageElem.textContent = data.message;
-      resultContainer.appendChild(messageElem);
-  }
+//   const resultContainer = document.getElementById('result-container');
 
-  if (data.prediction) {
-      const predictionElem = document.createElement('p');
-      predictionElem.textContent = `Prediction: ${data.prediction}`;
-      resultContainer.appendChild(predictionElem);
-  } else {
-      console.error('No prediction data found:', data);
-  }
-}
+// if (resultContainer) {
+//   if (data.message) {
+//     const messageElem = document.createElement('p');
+//     messageElem.textContent = data.message;
+//     resultContainer.appendChild(messageElem);
+//   }
+
+//   if (data.prediction) {
+//     const predictionElem = document.createElement('p');
+//     predictionElem.textContent = `Prediction: ${data.prediction}`;
+//     resultContainer.appendChild(predictionElem);
+//   } else {
+//     console.error('No prediction data found:', data);
+//   }
+// } else {
+//   console.error('Result container not found in the DOM.');
+// }
+
+// }
 
 
 
@@ -87,5 +92,14 @@ async function handleDeleteRecord(recordId) {
     }
   } catch (error) {
     console.error('Error:', error);
+  }
+}
+function sendMessage() {
+  const messageInput = document.getElementById("messageInput");
+  const message = messageInput.value;
+
+  if (message.trim() !== "") {
+      socket.emit("sendMessage", message);
+      messageInput.value = "";
   }
 }

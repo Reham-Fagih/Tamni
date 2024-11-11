@@ -51,7 +51,7 @@
     border: 2px solid #ffffff;
 }
 
-.doctor-name {
+.users-name {
     font-size: 18px;
     font-weight: bold;
 }
@@ -116,3 +116,13 @@
     border-radius: 0 20px 20px 0;
     cursor: pointer;
 }
+.message.sent {
+    color: #ffffff;
+    text-align: right;
+}
+
+.message.received {
+    color: #333333;
+    text-align: left;
+}
+
