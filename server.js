@@ -57,15 +57,18 @@ app.get('/SignUp', (req, res) => {
 
 
 
-// Node.js example (backend)
 app.post('/predict', upload.single('image'), (req, res) => {
-    const imagePath = req.file.path;  
+    const imagePath = req.file.path;
+    console.log('Received file:', imagePath);
+  
     let responseSent = false;
+    let predictionResult = '';
   
     const pythonProcess = spawn('python3', [path.join(__dirname, 'model.py'), imagePath]);
   
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
+      predictionResult += data.toString();  
     });
   
     pythonProcess.stderr.on('data', (data) => {
@@ -76,14 +79,16 @@ app.post('/predict', upload.single('image'), (req, res) => {
       if (responseSent) return;
   
       responseSent = true;
-      
+  
       if (code !== 0) {
+        console.error(`Python process exited with code ${code}`);
         return res.status(500).json({ error: 'Error running the model' });
       }
   
-      // Simulating the result from the Python model
-      const prediction = "Melanocytic Nevi (NV)"; // Change this as per the model output
-      return res.json({ message: 'Prediction successful', prediction: prediction });
+      return res.json({
+        message: 'Prediction successful',
+        prediction: predictionResult.trim() 
+      });
     });
   
     pythonProcess.on('error', (err) => {
@@ -92,8 +97,7 @@ app.post('/predict', upload.single('image'), (req, res) => {
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
-});
-
+  });
 
 app.post('/signUp', async (req, res) => {
     const data = {
