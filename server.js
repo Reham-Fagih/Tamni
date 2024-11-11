@@ -47,16 +47,23 @@ app.get('/SignUp', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e4d745a8d2561d7ee8eb72b72a6687f79e14d504
 app.post('/predict', upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
     console.log('Received file:', imagePath);
   
     let responseSent = false;
+    let predictionResult = '';
   
     const pythonProcess = spawn('python3', [path.join(__dirname, 'model.py'), imagePath]);
   
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
+      predictionResult += data.toString();  
     });
   
     pythonProcess.stderr.on('data', (data) => {
@@ -64,25 +71,32 @@ app.post('/predict', upload.single('image'), (req, res) => {
     });
   
     pythonProcess.on('close', (code) => {
-      if (responseSent) return; 
+      if (responseSent) return;
   
-      responseSent = true;  
-      
+      responseSent = true;
+  
       if (code !== 0) {
         console.error(`Python process exited with code ${code}`);
         return res.status(500).json({ error: 'Error running the model' });
       }
   
-      return res.json({ message: 'Prediction successful', result: 'your prediction here' });
+      return res.json({
+        message: 'Prediction successful',
+        prediction: predictionResult.trim() 
+      });
     });
   
     pythonProcess.on('error', (err) => {
-      if (responseSent) return; 
+      if (responseSent) return;
       responseSent = true;
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
+<<<<<<< HEAD
 });
+=======
+  });
+>>>>>>> e4d745a8d2561d7ee8eb72b72a6687f79e14d504
 
 app.post('/signUp', async (req, res) => {
     const data = {

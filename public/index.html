@@ -29,13 +29,34 @@
           طبيب أو مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
           وما يصير خاطرك إلا طيب
         </p>
-        <form id="upload-form" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+        <form id="upload-form" enctype="multipart/form-data">
           <input type="file" name="image" accept="image/*" required>
           <button type="submit">أرفق الصورة</button>
       </form>
       </div>
     </section>
+    <script>
+document.getElementById('upload-form').addEventListener('submit', async function(event) {
+  event.preventDefault();  
+  
+  const formData = new FormData(event.target);
 
+  const response = await fetch('/predict', {
+    method: 'POST',
+    body: formData,
+  });
+
+  const data = await response.json();
+  console.log('Response from server:', data);
+
+  if (data.prediction) {
+    window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
+  } else {
+    console.error('No prediction data found:', data);
+  }
+});
+
+    </script>
     <footer>
       <ul>
         <li>
@@ -59,7 +80,7 @@
 
     </div>
 
-    <div class="content22" id="result-container">
+    <div class="content22">
 
       <figure>
 
@@ -86,6 +107,7 @@
           والنتائج
         </figcaption>
       </figure>
+     
 
 
 
@@ -96,7 +118,6 @@
     <div class="container">
 
       <div class="content3">
-
          
 
            <div id="p1" style="font-size: 25px;"><b style="font-size: 30px;">طمني رح يطمنك إذا تحتاج إستشارة طبية بنقره زر وحده !</b><br><br>
