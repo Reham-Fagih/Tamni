@@ -5,15 +5,19 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const collection = require('./db');
 const app = express();
+const http = require('http');
+const server = http.createServer(app);  
+const { Server } = require("socket.io");
+const io = new Server(server);  
 const PORT = 5000;
 const { spawn } = require('child_process');
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use(express.json());
-
 app.use(bodyParser.urlencoded({ extended: true }));
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
@@ -26,26 +30,14 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + path.extname(file.originalname)); 
     }
 });
-
 const upload = multer({ storage });
 
 app.get('/resultpage', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'resultpage.html'));
 });
-
-
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
-// app.post('/upload', upload.single('image'), (req, res) => {
-//     if (req.file) {
-//         res.json({ message: 'Image uploaded successfully!', redirectTo: '/resultpage' });
-//     } else {
-//         res.status(400).json({ message: 'Image upload failed!' });
-//     }
-// });
 
 app.get('/LogIn', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'logInPage.html'));
@@ -54,7 +46,6 @@ app.get('/LogIn', (req, res) => {
 app.get('/SignUp', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
-
 
 app.post('/predict', upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
@@ -91,8 +82,7 @@ app.post('/predict', upload.single('image'), (req, res) => {
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
-  });
-  
+});
 
 app.post('/signUp', async (req, res) => {
     const data = {
@@ -125,7 +115,6 @@ app.post('/signUp', async (req, res) => {
     }
 });
 
-
 app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });
@@ -152,7 +141,34 @@ app.post('/logInPage', async (req, res) => {
     }
 });
 
+app.get('/ChatRoom', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'ChatRoom.html'));
+});
+const usersColors = {};  // لتخزين اللون الخاص بكل مستخدم بناءً على الـ socket.id
 
-app.listen(PORT, () => {
+io.on('connection', (socket) => {
+    console.log('A user connected:', socket.id);
+    
+    // تعيين لون عشوائي أو اختيار لون معين للمستخدم عند الاتصال
+    const userColor = '#' + Math.floor(Math.random()*16777215).toString(16);  // يولد لون عشوائي
+    usersColors[socket.id] = userColor;  // تخزين اللون للمستخدم بناءً على الـ socket.id
+
+    // عند إرسال الرسالة، يتم تضمين الـ color الخاص بالمستخدم
+    socket.on('sendMessage', (message) => {
+        const messageData = {
+            id: socket.id,
+            text: message,
+            color: usersColors[socket.id]  // إضافة اللون الخاص بالمستخدم
+        };
+        io.emit('receiveMessage', messageData);  // إرسال الرسالة إلى جميع المستخدمين
+    });
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected:', socket.id);
+        delete usersColors[socket.id];  // حذف اللون عند مغادرة المستخدم
+    });
+});
+
+server.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });

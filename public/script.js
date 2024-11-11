@@ -89,3 +89,12 @@ async function handleDeleteRecord(recordId) {
     console.error('Error:', error);
   }
 }
+function sendMessage() {
+  const messageInput = document.getElementById("messageInput");
+  const message = messageInput.value;
+
+  if (message.trim() !== "") {
+      socket.emit("sendMessage", message);
+      messageInput.value = "";
+  }
+}
