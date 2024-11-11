@@ -47,23 +47,16 @@ app.get('/SignUp', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> e4d745a8d2561d7ee8eb72b72a6687f79e14d504
 app.post('/predict', upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
     console.log('Received file:', imagePath);
   
     let responseSent = false;
-    let predictionResult = '';
   
     const pythonProcess = spawn('python3', [path.join(__dirname, 'model.py'), imagePath]);
   
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
-      predictionResult += data.toString();  
     });
   
     pythonProcess.stderr.on('data', (data) => {
@@ -71,32 +64,25 @@ app.post('/predict', upload.single('image'), (req, res) => {
     });
   
     pythonProcess.on('close', (code) => {
-      if (responseSent) return;
+      if (responseSent) return; 
   
-      responseSent = true;
-  
+      responseSent = true;  
+      
       if (code !== 0) {
         console.error(`Python process exited with code ${code}`);
         return res.status(500).json({ error: 'Error running the model' });
       }
   
-      return res.json({
-        message: 'Prediction successful',
-        prediction: predictionResult.trim() 
-      });
+      return res.json({ message: 'Prediction successful', result: 'your prediction here' });
     });
   
     pythonProcess.on('error', (err) => {
-      if (responseSent) return;
+      if (responseSent) return; 
       responseSent = true;
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
-<<<<<<< HEAD
 });
-=======
-  });
->>>>>>> e4d745a8d2561d7ee8eb72b72a6687f79e14d504
 
 app.post('/signUp', async (req, res) => {
     const data = {
@@ -158,28 +144,27 @@ app.post('/logInPage', async (req, res) => {
 app.get('/ChatRoom', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'ChatRoom.html'));
 });
-const usersColors = {};  // لتخزين اللون الخاص بكل مستخدم بناءً على الـ socket.id
+
+const usersColors = {};  // لتخزين socket.id
 
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
     
-    // تعيين لون عشوائي أو اختيار لون معين للمستخدم عند الاتصال
-    const userColor = '#' + Math.floor(Math.random()*16777215).toString(16);  // يولد لون عشوائي
-    usersColors[socket.id] = userColor;  // تخزين اللون للمستخدم بناءً على الـ socket.id
-
-    // عند إرسال الرسالة، يتم تضمين الـ color الخاص بالمستخدم
+    //  لون عشوائي 
+    const userColor = '#' + Math.floor(Math.random()*16777215).toString(16);  
+    usersColors[socket.id] = userColor; 
     socket.on('sendMessage', (message) => {
         const messageData = {
             id: socket.id,
             text: message,
-            color: usersColors[socket.id]  // إضافة اللون الخاص بالمستخدم
+            color: usersColors[socket.id]
         };
-        io.emit('receiveMessage', messageData);  // إرسال الرسالة إلى جميع المستخدمين
+        io.emit('receiveMessage', messageData); 
     });
 
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
-        delete usersColors[socket.id];  // حذف اللون عند مغادرة المستخدم
+        delete usersColors[socket.id]; 
     });
 });
 
