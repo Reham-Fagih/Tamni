@@ -59,9 +59,7 @@ app.get('/SignUp', (req, res) => {
 
 // Node.js example (backend)
 app.post('/predict', upload.single('image'), (req, res) => {
-    const imagePath = req.file.path;
-    console.log('Received file:', imagePath);
-  
+    const imagePath = req.file.path;  
     let responseSent = false;
   
     const pythonProcess = spawn('python3', [path.join(__dirname, 'model.py'), imagePath]);
@@ -80,7 +78,6 @@ app.post('/predict', upload.single('image'), (req, res) => {
       responseSent = true;
       
       if (code !== 0) {
-        console.error(`Python process exited with code ${code}`);
         return res.status(500).json({ error: 'Error running the model' });
       }
   
