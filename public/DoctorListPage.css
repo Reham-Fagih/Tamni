@@ -166,16 +166,11 @@ body {
     color: #D9534F;
 }
 
-.Button {
-    width: 90px;
-    height: 30px;
-    background: #44a2b6;
+.talk-now {
+    background-color: #44a2b6;
     color: white;
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
