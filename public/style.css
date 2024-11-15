@@ -240,6 +240,8 @@ h2{
     flex-basis: 100%;
 }
 .contact{
+   
+    font-size: larger;
     flex-grow: 1;
     flex-basis: 100%;
 }
@@ -253,13 +255,14 @@ h2{
 }
 
 .footerContainer h4 {
-  
+
     text-decoration:underline;
   
    
 }
 .footerContainer p{
 
+    
     font-size: 18px;
     font-weight: bold;
 }
