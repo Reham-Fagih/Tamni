@@ -47,16 +47,22 @@ app.get('/SignUp', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
 
+
+
+
+
 app.post('/predict', upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
     console.log('Received file:', imagePath);
   
     let responseSent = false;
+    let predictionResult = '';
   
     const pythonProcess = spawn('python3', [path.join(__dirname, 'model.py'), imagePath]);
   
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
+      predictionResult += data.toString();  
     });
   
     pythonProcess.stderr.on('data', (data) => {
@@ -64,57 +70,29 @@ app.post('/predict', upload.single('image'), (req, res) => {
     });
   
     pythonProcess.on('close', (code) => {
-      if (responseSent) return; 
+      if (responseSent) return;
   
-      responseSent = true;  
-      
+      responseSent = true;
+  
       if (code !== 0) {
         console.error(`Python process exited with code ${code}`);
         return res.status(500).json({ error: 'Error running the model' });
       }
   
-      return res.json({ message: 'Prediction successful', result: 'your prediction here' });
+      return res.json({
+        message: 'Prediction successful',
+        prediction: predictionResult.trim() 
+      });
     });
   
     pythonProcess.on('error', (err) => {
-      if (responseSent) return; 
+      if (responseSent) return;
       responseSent = true;
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
-});
-
-app.post('/signUp', async (req, res) => {
-    const data = {
-        name: req.body.username,
-        password: req.body.password
-    };
-
-    if (!data.name || !data.password) {
-        return res.status(400).send('Username and password are required'); 
-    }
-
-    try {
-        const existingUser = await collection.findOne({ name: data.name });
-        if (existingUser) {
-            return res.status(409).send('User already exists'); 
-        }
-
-        const hashedPassword = await bcrypt.hash(data.password, 10); 
-        const userData = {
-            name: data.name,
-            password: hashedPassword 
-        };
-
-        const result = await collection.create(userData); 
-        console.log('User registered:', result);
-        res.status(201).redirect('/'); 
-    } catch (error) {
-        console.error('Registration error:', error);
-        res.status(500).send('Error during registration'); 
-    }
-});
-
+  });
+  
 app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });

@@ -41,28 +41,29 @@
       </form>
       </div>
     </section>
+
     <script>
-document.getElementById('upload-form').addEventListener('submit', async function(event) {
-  event.preventDefault();  
-  
-  const formData = new FormData(event.target);
-
-  const response = await fetch('/predict', {
-    method: 'POST',
-    body: formData,
-  });
-
-  const data = await response.json();
-  console.log('Response from server:', data);
-
-  if (data.prediction) {
-    window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
-  } else {
-    console.error('No prediction data found:', data);
-  }
-});
-
-    </script>
+      document.getElementById('upload-form').addEventListener('submit', async function(event) {
+        event.preventDefault();  
+        
+        const formData = new FormData(event.target);
+      
+        const response = await fetch('/predict', {
+          method: 'POST',
+          body: formData,
+        });
+      
+        const data = await response.json();
+        console.log('Response from server:', data);
+      
+        if (data.prediction) {
+          window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
+        } else {
+          console.error('No prediction data found:', data);
+        }
+      });
+      
+          </script>
     <footer>
       <ul>
         <li>
