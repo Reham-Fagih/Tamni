@@ -10,16 +10,28 @@ body {
 header {
     background-color: #0B2E34;
     padding: 10px 0;
-    border-color: solid red ;
 }
 
 
 #Hiuser{
-    width: 160px;
-    height: 40px;
-    background-color: #44a2b6;
-    padding: 0;
+
+    background-color: #1b717c;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 220px;
+    height: 50px;
+
 }
+
+#Hiuser:hover{
+    background-color: #44a2b6;
+}
+
+
 
 nav ul {
     list-style: none;
@@ -56,7 +68,7 @@ nav ul li a:hover{
 
 
    
-/*add somtheing indecate user can clk on logo to go home page
+/*add somtheing indecate user can clk on it to go home page
 img:hover{}
 */ 
 
