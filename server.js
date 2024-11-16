@@ -93,19 +93,16 @@ app.post('/predict', upload.single('image'), (req, res) => {
     });
   });
   
-// server.js
 
 const session = require('express-session');
 
-// Use express-session middleware
 app.use(session({
-    secret: 'your_secret_key', // Secret key for signing session cookies
-    resave: false, // Don't save session if unmodified
-    saveUninitialized: true, // Save a session that is new but not modified
-    cookie: { secure: false } // Set to true if using HTTPS
+    secret: 'your_secret_key', 
+    resave: false, 
+    saveUninitialized: true, 
+    cookie: { secure: false }
 }));
 
-// Signup route
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
@@ -133,10 +130,8 @@ app.post('/signUp', async (req, res) => {
         const result = await collection.create(userData);
         console.log('User registered:', result);
 
-        // Store user info in the session
         req.session.user = { name: data.name, role: data.role };
 
-        // Redirect to the appropriate page
         if (data.role === 'doctor') {
             return res.redirect('/doctorpage.html');
         } else if (data.role === 'patient') {
@@ -148,7 +143,6 @@ app.post('/signUp', async (req, res) => {
     }
 });
 
-// Login route
 app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });
@@ -159,10 +153,8 @@ app.post('/logInPage', async (req, res) => {
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
 
         if (isPasswordMatch) {
-            // Store user info in the session
             req.session.user = { name: check.name, role: check.role };
 
-            // Redirect based on the user's role
             if (check.role === 'doctor') {
                 return res.redirect('/doctorpage.html');
             } else if (check.role === 'patient') {
