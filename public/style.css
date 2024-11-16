@@ -12,15 +12,29 @@ header {
     padding: 10px 0;
 }
 
+#profileIcon{
+
+ width: 35px;
+ height: 35px;
+ border-radius: 50%;
+
+}
 
 #Hiuser{
 
+        
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 30px;
+    padding-right: 20px;
+    
     background-color: #1b717c;
     color: #fff;
-    padding: 15px 30px;
+    font-weight: bolder;
+    font-size: 27px;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
     cursor: pointer;
     width: 220px;
     height: 50px;
@@ -35,8 +49,10 @@ header {
 
 nav ul {
     list-style: none;
+    /*no need*/
     padding: 0;
     margin: 0;
+     /*no need*/
     display: flex;
     justify-content: center;
     justify-content: space-around;
