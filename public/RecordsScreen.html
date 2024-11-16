@@ -15,8 +15,8 @@
         padding: 0;
         height: 100vh;
         color: #fff;
-        text-align: right; 
-        direction: rtl; 
+        text-align: right;
+        direction: rtl;
       }
 
       .header {
@@ -26,7 +26,7 @@
         width: 100%;
         background-color: #5492a0;
         padding: 20px;
-        direction: rtl; 
+        direction: rtl;
       }
 
       .header h1 {
@@ -72,7 +72,7 @@
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 10px;
-        text-align: right; 
+        text-align: right;
       }
 
       .record .details {
@@ -83,7 +83,7 @@
 
       .record .date {
         font-size: 14px;
-        text-align: right; 
+        text-align: right;
         color: gray;
       }
 
@@ -98,7 +98,7 @@
       }
 
       .record .value {
-        margin-left: 10px; 
+        margin-left: 10px;
       }
 
       .Bg {
@@ -111,7 +111,8 @@
         border-radius: 50%;
       }
 
-      .Ellipse143, .Ellipse142 {
+      .Ellipse143,
+      .Ellipse142 {
         position: absolute;
         top: 50px;
         width: 150px;
@@ -138,7 +139,14 @@
         <div class="Ellipse142"></div>
       </div>
       <header class="header">
-        <button class="go-back">العودة</button>
+        <button class="go-back" onclick="goBack()">العودة</button>
+
+        <script>
+          function goBack() {
+            window.location.href = "mainrecordpage.html";
+          }
+        </script>
+
         <h1 class="title">جميع التقارير الطبية</h1>
       </header>
 
@@ -150,42 +158,58 @@
     <script>
       async function loadPatientRecords() {
         try {
-          const response = await fetch('http://localhost:5000/api/patients');
+          const response = await fetch("http://localhost:5000/api/patients");
           if (!response.ok) {
-            throw new Error('فشل في جلب السجلات');
+            throw new Error("فشل في جلب السجلات");
           }
 
           const records = await response.json();
-          const recordsSection = document.getElementById('records-section');
+          const recordsSection = document.getElementById("records-section");
 
           if (records.length === 0) {
-            recordsSection.innerHTML = '<p class="no-records">لا توجد سجلات طبية حالياً.</p>';
+            recordsSection.innerHTML =
+              '<p class="no-records">لا توجد سجلات طبية حالياً.</p>';
             return;
           }
 
-          records.forEach(patient => {
-            const recordDiv = document.createElement('div');
-            recordDiv.classList.add('record');
+          records.forEach((patient) => {
+            const recordDiv = document.createElement("div");
+            recordDiv.classList.add("record");
 
             recordDiv.innerHTML = `
               <div class="title">السجل الطبي</div>
               <div class="details">
-                <div><span class="label">الاسم:</span><span class="value">${patient.name}</span></div>
-                <div><span class="label">العمر:</span><span class="value">${patient.age}</span></div>
-                <div><span class="label">الجنس:</span><span class="value">${patient.gender}</span></div>
-                <div><span class="label">هل تعرضت لمواد كيميائية:</span><span class="value">${patient.chemicalExposure}</span></div>
-                <div><span class="label">مدة المرض:</span><span class="value">${patient.illnessDuration}</span></div>
-                <div><span class="label">تاريخ العائلة:</span><span class="value">${patient.familyHistory}</span></div>
+                <div><span class="label">الاسم:</span><span class="value">${
+                  patient.name
+                }</span></div>
+                <div><span class="label">العمر:</span><span class="value">${
+                  patient.age
+                }</span></div>
+                <div><span class="label">الجنس:</span><span class="value">${
+                  patient.gender
+                }</span></div>
+                <div><span class="label">هل تعرضت لمواد كيميائية:</span><span class="value">${
+                  patient.chemicalExposure
+                }</span></div>
+                <div><span class="label">مدة المرض:</span><span class="value">${
+                  patient.illnessDuration
+                }</span></div>
+                <div><span class="label">تاريخ العائلة:</span><span class="value">${
+                  patient.familyHistory
+                }</span></div>
               </div>
-              <div class="date">تاريخ السجل: ${new Date(patient.date).toLocaleDateString('ar-SA')}</div>
+              <div class="date">تاريخ السجل: ${new Date(
+                patient.date
+              ).toLocaleDateString("ar-SA")}</div>
             `;
 
             recordsSection.appendChild(recordDiv);
           });
         } catch (error) {
-          console.error('Error fetching patient records:', error);
-          const recordsSection = document.getElementById('records-section');
-          recordsSection.innerHTML = '<p class="no-records">حدث خطأ في تحميل السجلات. الرجاء المحاولة لاحقاً.</p>';
+          console.error("Error fetching patient records:", error);
+          const recordsSection = document.getElementById("records-section");
+          recordsSection.innerHTML =
+            '<p class="no-records">حدث خطأ في تحميل السجلات. الرجاء المحاولة لاحقاً.</p>';
         }
       }
 
