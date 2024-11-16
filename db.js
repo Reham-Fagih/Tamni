@@ -14,7 +14,7 @@ connect
 
 const LoginSchema = new mongoose.Schema({
   name: {
-    type: String,
+    type: String, 
     required: true
   },
   password: {
@@ -22,6 +22,7 @@ const LoginSchema = new mongoose.Schema({
     required: true
   }
 });
+
 
 const collection = mongoose.model('Users', LoginSchema);
 

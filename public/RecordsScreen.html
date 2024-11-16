@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Records Screen</title>
+    <title>جميع التقارير الطبية</title>
     <link rel="stylesheet" href="RecordsScreen.css" />
   </head>
   <body>
@@ -16,47 +16,58 @@
         <button class="go-back">العودة</button>
         <h1 class="title">جميع التقارير الطبية</h1>
       </header>
-      <section class="AllRecords">
-        <div class="Record">
-          <div class="Rectangle505"></div>
-          <div class="Group740">
-            <div class="added-by">تمت إضافته بواسطة @</div>
-            <div class="diagnosis">التشخيص:</div>
-          </div>
-          <div class="Group739">
-            <div class="Rectangle547"></div>
-            <div class="date">Date</div>
-          </div>
-          <!-- <button class="delete-record">إحذف السجل</button> -->
-        </div>
-        <div class="Record">
-          <div class="Rectangle505"></div>
-          <div class="Group740">
-            <div class="added-by">تمت إضافته بواسطة @</div>
-            <div class="diagnosis">التشخيص:</div>
-          </div>
-          <div class="Group739">
-            <div class="Rectangle547"></div>
-            <div class="date">Date</div>
-          </div>
-          <!-- <button class="delete-record">إحذف السجل</button> -->
-        </div>
-        <div class="Record">
-          <div class="Rectangle505"></div>
-          <div class="Group740">
-            <div class="added-by">تمت إضافته بواسطة @</div>
-            <div class="diagnosis">التشخيص:</div>
-          </div>
-          <div class="Group739">
-            <div class="Rectangle547"></div>
-            <div class="date">Date</div>
-          </div>
-          <!-- <button class="delete-record">إحذف السجل</button> -->
-        </div>
+
+      <section class="AllRecords" id="records-section">
       </section>
-      <!-- <div class="Button">
-        <button class="add-report">إضافة تقرير طبي</button>
-      </div> -->
     </div>
+
+    <script>
+      async function loadPatientRecords() {
+        try {
+          const response = await fetch('http://localhost:5000/api/patients');
+          if (!response.ok) {
+            throw new Error('Failed to fetch patient records');
+          }
+
+          const records = await response.json();
+
+          const recordsSection = document.getElementById('records-section');
+
+          if (records.length === 0) {
+            recordsSection.innerHTML = '<p>لا توجد سجلات طبية حالياً.</p>';
+            return;
+          }
+
+          records.forEach(patient => {
+            const recordDiv = document.createElement('div');
+            recordDiv.classList.add('Record');
+            
+            recordDiv.innerHTML = `
+              <div class="Rectangle505"></div>
+              <div class="Group740">
+                <div class="patient-name"><strong>الاسم:</strong> ${patient.name}</div>
+                <div class="patient-age"><strong>العمر:</strong> ${patient.age}</div>
+                <div class="patient-gender"><strong>الجنس:</strong> ${patient.gender}</div>
+                <div class="patient-chemical-exposure"><strong>هل تعرضت لمواد كيميائية:</strong> ${patient.chemicalExposure}</div>
+                <div class="patient-illness-duration"><strong>مدة المرض:</strong> ${patient.illnessDuration}</div>
+                <div class="patient-family-history"><strong>تاريخ العائلة:</strong> ${patient.familyHistory}</div>
+              </div>
+              <div class="Group739">
+                <div class="Rectangle547"></div>
+                <div class="date"><strong>تاريخ السجل:</strong> ${new Date(patient.date).toLocaleDateString('ar-SA')}</div>
+              </div>
+            `;
+            
+            recordsSection.appendChild(recordDiv);
+          });
+        } catch (error) {
+          console.error('Error fetching patient records:', error);
+          const recordsSection = document.getElementById('records-section');
+          recordsSection.innerHTML = '<p>حدث خطأ في تحميل السجلات. الرجاء المحاولة لاحقاً.</p>';
+        }
+      }
+
+      window.onload = loadPatientRecords;
+    </script>
   </body>
 </html>
