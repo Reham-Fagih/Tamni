@@ -402,3 +402,17 @@ h2{
     border-radius: 4px;
     cursor: pointer;
   }
+  .recordbutton button{
+
+    border-radius: 20px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    color: #ffffff;
+    background-color: #0B2E34;
+    
+    align-self: center;
+    width: 300px;
+
+}
