@@ -53,11 +53,9 @@
     <!-- <script src="script.js"></script> -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Retrieve the prediction parameter from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const prediction = urlParams.get('prediction');
     
-        // Map diseases to their descriptions
         const diseaseInfo = {
           'Eczema': {
             info: `التهاب الجلد التأتبي (الإكزيما) هو مرض يجعل الجلد جافًا ومثيرًا للحكة وملتهبًا
@@ -135,12 +133,10 @@
           }
         };
     
-        // Get elements to update
         const predictionTextArea = document.getElementById('prediction-text');
         const predictionInfoTextArea = document.getElementById('prediction-info');
         const predictionDoctorVisitTextArea = document.getElementById('prediction-doctorvisit');
     
-        // Set prediction text if found
         if (prediction) {
           predictionTextArea.value = prediction;  
           const info = diseaseInfo[prediction];

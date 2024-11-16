@@ -4,7 +4,132 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>جميع التقارير الطبية</title>
-    <link rel="stylesheet" href="RecordsScreen.css" />
+    <style>
+      body {
+        background-color: #0b2e34;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        color: #fff;
+        text-align: right; 
+        direction: rtl; 
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: #5492a0;
+        padding: 20px;
+        direction: rtl; 
+      }
+
+      .header h1 {
+        color: white;
+        font-size: 24px;
+        margin: 0;
+      }
+
+      .go-back {
+        background-color: #5492a0;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .go-back:hover {
+        background-color: #0b2e34;
+      }
+
+      .medical-records {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 80%;
+        max-width: 1000px;
+        margin-top: 50px;
+      }
+
+      .record {
+        background-color: #fff;
+        color: #0b2e34;
+        border-radius: 10px;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .record .title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: right; 
+      }
+
+      .record .details {
+        font-size: 16px;
+        margin-bottom: 10px;
+        text-align: right;
+      }
+
+      .record .date {
+        font-size: 14px;
+        text-align: right; 
+        color: gray;
+      }
+
+      .no-records {
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .record .label {
+        font-weight: bold;
+      }
+
+      .record .value {
+        margin-left: 10px; 
+      }
+
+      .Bg {
+        position: absolute;
+        top: -150px;
+        left: -150px;
+        width: 400px;
+        height: 400px;
+        background-color: #5492a0;
+        border-radius: 50%;
+      }
+
+      .Ellipse143, .Ellipse142 {
+        position: absolute;
+        top: 50px;
+        width: 150px;
+        height: 150px;
+        background-color: #5492a0;
+        border-radius: 50%;
+      }
+
+      .Ellipse142 {
+        left: 250px;
+        top: 100px;
+      }
+
+      .Ellipse143 {
+        left: 100px;
+        top: 200px;
+      }
+    </style>
   </head>
   <body>
     <div class="MedicalRecordsScreen03">
@@ -17,7 +142,8 @@
         <h1 class="title">جميع التقارير الطبية</h1>
       </header>
 
-      <section class="AllRecords" id="records-section">
+      <section class="medical-records" id="records-section">
+        <!-- Records will be dynamically loaded here -->
       </section>
     </div>
 
@@ -26,44 +152,40 @@
         try {
           const response = await fetch('http://localhost:5000/api/patients');
           if (!response.ok) {
-            throw new Error('Failed to fetch patient records');
+            throw new Error('فشل في جلب السجلات');
           }
 
           const records = await response.json();
-
           const recordsSection = document.getElementById('records-section');
 
           if (records.length === 0) {
-            recordsSection.innerHTML = '<p>لا توجد سجلات طبية حالياً.</p>';
+            recordsSection.innerHTML = '<p class="no-records">لا توجد سجلات طبية حالياً.</p>';
             return;
           }
 
           records.forEach(patient => {
             const recordDiv = document.createElement('div');
-            recordDiv.classList.add('Record');
-            
+            recordDiv.classList.add('record');
+
             recordDiv.innerHTML = `
-              <div class="Rectangle505"></div>
-              <div class="Group740">
-                <div class="patient-name"><strong>الاسم:</strong> ${patient.name}</div>
-                <div class="patient-age"><strong>العمر:</strong> ${patient.age}</div>
-                <div class="patient-gender"><strong>الجنس:</strong> ${patient.gender}</div>
-                <div class="patient-chemical-exposure"><strong>هل تعرضت لمواد كيميائية:</strong> ${patient.chemicalExposure}</div>
-                <div class="patient-illness-duration"><strong>مدة المرض:</strong> ${patient.illnessDuration}</div>
-                <div class="patient-family-history"><strong>تاريخ العائلة:</strong> ${patient.familyHistory}</div>
+              <div class="title">السجل الطبي</div>
+              <div class="details">
+                <div><span class="label">الاسم:</span><span class="value">${patient.name}</span></div>
+                <div><span class="label">العمر:</span><span class="value">${patient.age}</span></div>
+                <div><span class="label">الجنس:</span><span class="value">${patient.gender}</span></div>
+                <div><span class="label">هل تعرضت لمواد كيميائية:</span><span class="value">${patient.chemicalExposure}</span></div>
+                <div><span class="label">مدة المرض:</span><span class="value">${patient.illnessDuration}</span></div>
+                <div><span class="label">تاريخ العائلة:</span><span class="value">${patient.familyHistory}</span></div>
               </div>
-              <div class="Group739">
-                <div class="Rectangle547"></div>
-                <div class="date"><strong>تاريخ السجل:</strong> ${new Date(patient.date).toLocaleDateString('ar-SA')}</div>
-              </div>
+              <div class="date">تاريخ السجل: ${new Date(patient.date).toLocaleDateString('ar-SA')}</div>
             `;
-            
+
             recordsSection.appendChild(recordDiv);
           });
         } catch (error) {
           console.error('Error fetching patient records:', error);
           const recordsSection = document.getElementById('records-section');
-          recordsSection.innerHTML = '<p>حدث خطأ في تحميل السجلات. الرجاء المحاولة لاحقاً.</p>';
+          recordsSection.innerHTML = '<p class="no-records">حدث خطأ في تحميل السجلات. الرجاء المحاولة لاحقاً.</p>';
         }
       }
 
