@@ -47,16 +47,22 @@ app.get('/SignUp', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
 
+
+
+
+
 app.post('/predict', upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
     console.log('Received file:', imagePath);
   
     let responseSent = false;
+    let predictionResult = '';
   
     const pythonProcess = spawn('python3', [path.join(__dirname, 'model.py'), imagePath]);
   
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
+      predictionResult += data.toString();  
     });
   
     pythonProcess.stderr.on('data', (data) => {
@@ -64,24 +70,53 @@ app.post('/predict', upload.single('image'), (req, res) => {
     });
   
     pythonProcess.on('close', (code) => {
-      if (responseSent) return; 
+      if (responseSent) return;
   
-      responseSent = true;  
-      
+      responseSent = true;
+  
       if (code !== 0) {
         console.error(`Python process exited with code ${code}`);
         return res.status(500).json({ error: 'Error running the model' });
       }
   
-      return res.json({ message: 'Prediction successful', result: 'your prediction here' });
+      return res.json({
+        message: 'Prediction successful',
+        prediction: predictionResult.trim() 
+      });
     });
   
     pythonProcess.on('error', (err) => {
-      if (responseSent) return; 
+      if (responseSent) return;
       responseSent = true;
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
+  });
+  
+app.post('/logInPage', async (req, res) => {
+    try {
+        const check = await collection.findOne({ name: req.body.username });
+        console.log('User found:', check); 
+
+        if (!check) {
+            return res.status(404).send('Username not found'); 
+        }
+
+        console.log('Input Password:', req.body.password); 
+        console.log('Stored Hash:', check.password); 
+
+        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        console.log('Password Match:', isPasswordMatch); 
+
+        if (isPasswordMatch) {
+            return res.redirect('/'); 
+        } else {
+            return res.status(401).send('Wrong password'); 
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        res.status(500).send('Error during login'); 
+    }
 });
 
 app.post('/signUp', async (req, res) => {
@@ -140,7 +175,6 @@ app.post('/logInPage', async (req, res) => {
         res.status(500).send('Error during login'); 
     }
 });
-
 app.get('/ChatRoom', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'ChatRoom.html'));
 });
@@ -167,6 +201,13 @@ io.on('connection', (socket) => {
         delete usersColors[socket.id]; 
     });
 });
+
+const patientRoutes = require('./routes/ patients');
+app.use('/api', patientRoutes);
+app.get('/records', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'RecordsScreen.html'));
+  });
+  
 
 server.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);

@@ -14,12 +14,16 @@
 
           <!--<li class="login"><a href="logInPage.html">✩ التسجيل / تسجيل الدخول</a></li> -->
           <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button></li>
+
+          <!--Just to see the style easly, it will be delated-->
+          <button id="Hiuser"> مرحبا بك </button>
+
           <li><button id="Hiuser">مرحبا بك</button></li> <!-- Appears when already logged in -->
           <li><a href="#">من نحن</a></li>
           <li><a href="#">خدماتنا</a></li>
           <li><a href="#">حساباتنا</a></li>
           <li><a href="#">الدعم الفني</a></li>
-          <img src="/img/imgOfmainLogo.png" alt="طمني Logo" />
+          <img src="/img/imgOfmainLogo.png" alt="طمني Logo" onclick="window.location.href=''" /> 
         </ul>
       </nav>
     </header>
@@ -37,27 +41,28 @@
       </form>
       </div>
     </section>
+
+
     <script>
-document.getElementById('upload-form').addEventListener('submit', async function(event) {
-  event.preventDefault();  
-  
-  const formData = new FormData(event.target);
-
-  const response = await fetch('/predict', {
-    method: 'POST',
-    body: formData,
-  });
-
-  const data = await response.json();
-  console.log('Response from server:', data);
-
-  if (data.prediction) {
-    window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
-  } else {
-    console.error('No prediction data found:', data);
-  }
-});
-
+      document.getElementById('upload-form').addEventListener('submit', async function(event) {
+        event.preventDefault();  
+        
+        const formData = new FormData(event.target);
+      
+        const response = await fetch('/predict', {
+          method: 'POST',
+          body: formData,
+        });
+      
+        const data = await response.json();
+        console.log('Response from server:', data);
+      
+        if (data.prediction) {
+          window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
+        } else {
+          console.error('No prediction data found:', data);
+        }
+      });
     </script>
     <footer>
       <ul>
@@ -187,22 +192,23 @@ document.getElementById('upload-form').addEventListener('submit', async function
 </div>
 
 <div class="contact">
-<h3>معلومات الاتصال</h3>
-<p>العنوان</p>
-<p>الهاتف</p>
-<p>البريد</p>
 
+<p>
+  <sub><img src="/img/iconOfMap.png" alt="icon" style="width: 30x; height: 30px;"></sub> 
+   العنوان</p><p id="contactDesc">المملكة العربية السعودية</p>
+ <p>
+   <sub><img src="/img/iconOfPhone.png" alt="icon" style="width: 30x; height: 30px;"></sub>
+   الهاتف</p><p id="contactDesc">0501234567</p>
+ <p>
+   <sub><img src="/img/iconOfEmail.png" alt="icon" style="width: 30x; height: 30px;"> </sub> 
+   البريد </p><p id="contactDesc">tamni@gmail.com</p>
 
 
 </div>
 
-
-
 </section>
 
 
-
-
-
-
 <section id="footerSec2">  كل الحقوق محفوظة فريق طمني &copy</section>
+
+</footer>

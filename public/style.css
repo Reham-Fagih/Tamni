@@ -10,15 +10,28 @@ body {
 header {
     background-color: #0B2E34;
     padding: 10px 0;
-    border-color: solid red ;
 }
 
+
 #Hiuser{
-    width: 160px;
-    height: 40px;
-    background-color: #44a2b6;
-    padding: 0;
+
+    background-color: #1b717c;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 220px;
+    height: 50px;
+
 }
+
+#Hiuser:hover{
+    background-color: #44a2b6;
+}
+
+
 
 nav ul {
     list-style: none;
@@ -43,6 +56,24 @@ nav ul li a {
     color: #fff;
     font-size: 18px;
 }
+
+nav ul li a:hover{
+
+   background-color:#01353d;
+   border-radius: 20px;
+   padding: 15px;
+   margin-top: 20px;
+
+}
+
+
+   
+/*add somtheing indecate user can clk on it to go home page
+img:hover{}
+*/ 
+
+
+
 
 .login a {
     background-color: #44a2b6;
@@ -159,8 +190,8 @@ footer ul li a img {
 
 /***********/
 h2{
-
     color:#7ce7ff;
+
 }
 /***********/
 
@@ -180,7 +211,10 @@ h2{
     border-radius: 10px;
     text-align:right;
     color: #01353d;
-    background:linear-gradient(to left, rgb(194, 249, 255),#438493);
+    /*background:linear-gradient(to left, rgb(194, 249, 255),#438493);*/
+    background-color:#7ce7ff;
+
+
     height:120x;
     width: 70%;
     margin-top: 70px;
@@ -216,7 +250,8 @@ h2{
 .footerContainer{
  display: flex;
  color:#01353d;
- background:linear-gradient(to left, #7ce7ff, #144d52);
+ /*background:linear-gradient(to left, #7ce7ff, #144d52);*/
+ background-color:#7ce7ff;
  font-size: 20px;
 
 }
@@ -236,6 +271,8 @@ h2{
     flex-basis: 100%;
 }
 .contact{
+   
+    font-size: larger;
     flex-grow: 1;
     flex-basis: 100%;
 }
@@ -249,13 +286,14 @@ h2{
 }
 
 .footerContainer h4 {
-  
+
     text-decoration:underline;
   
    
 }
 .footerContainer p{
 
+    
     font-size: 18px;
     font-weight: bold;
 }
