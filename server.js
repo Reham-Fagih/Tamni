@@ -93,44 +93,24 @@ app.post('/predict', upload.single('image'), (req, res) => {
     });
   });
   
+// server.js
 
-app.post('/logInPage', async (req, res) => {
-    try {
-        const check = await collection.findOne({ name: req.body.username });
-        console.log('User found:', check);
+const session = require('express-session');
 
-        if (!check) {
-            return res.status(404).send('Username not found');
-        }
+// Use express-session middleware
+app.use(session({
+    secret: 'your_secret_key', // Secret key for signing session cookies
+    resave: false, // Don't save session if unmodified
+    saveUninitialized: true, // Save a session that is new but not modified
+    cookie: { secure: false } // Set to true if using HTTPS
+}));
 
-        console.log('Input Password:', req.body.password);
-        console.log('Stored Hash:', check.password);
-
-        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-        console.log('Password Match:', isPasswordMatch);
-
-        if (isPasswordMatch) {
-            if (check.role === 'doctor') {
-                return res.redirect('/doctorpage.html');  
-            } else if (check.role === 'patient') {
-                return res.redirect('/index.html');  
-            }
-        } else {
-            return res.status(401).send('Wrong password');
-        }
-    } catch (error) {
-        console.error('Login error:', error);
-        res.status(500).send('Error during login');
-    }
-});
-
-
-
+// Signup route
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
         password: req.body.password,
-        role: req.body.role 
+        role: req.body.role
     };
 
     if (!data.name || !data.password || !data.role) {
@@ -147,22 +127,56 @@ app.post('/signUp', async (req, res) => {
         const userData = {
             name: data.name,
             password: hashedPassword,
-            role: data.role 
+            role: data.role
         };
 
         const result = await collection.create(userData);
         console.log('User registered:', result);
 
+        // Store user info in the session
+        req.session.user = { name: data.name, role: data.role };
+
+        // Redirect to the appropriate page
         if (data.role === 'doctor') {
-            res.redirect('/doctorpage.html'); 
+            return res.redirect('/doctorpage.html');
         } else if (data.role === 'patient') {
-            res.redirect('/index.html'); 
+            return res.redirect('/index.html');
         }
     } catch (error) {
         console.error('Registration error:', error);
         res.status(500).send('Error during registration');
     }
 });
+
+// Login route
+app.post('/logInPage', async (req, res) => {
+    try {
+        const check = await collection.findOne({ name: req.body.username });
+        if (!check) {
+            return res.status(404).send('Username not found');
+        }
+
+        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+
+        if (isPasswordMatch) {
+            // Store user info in the session
+            req.session.user = { name: check.name, role: check.role };
+
+            // Redirect based on the user's role
+            if (check.role === 'doctor') {
+                return res.redirect('/doctorpage.html');
+            } else if (check.role === 'patient') {
+                return res.redirect('/index.html');
+            }
+        } else {
+            return res.status(401).send('Wrong password');
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        res.status(500).send('Error during login');
+    }
+});
+
 
 app.get('/ChatRoom', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'ChatRoom.html'));

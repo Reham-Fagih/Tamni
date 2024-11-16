@@ -16,9 +16,12 @@
         <ul>
 
           <!--<li class="login"><a href="logInPage.html">✩ التسجيل / تسجيل الدخول</a></li> -->
-          <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button></li>
+          <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button>
+            <button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button>
+
+          </li>
           <li> 
-            <button id="Hiuser">
+            <button id="Hiuser" style="display: none;">
               مرحبا بك<img id="profileIcon" src="/img/profileIcon.jpg"><!-- Appears when already logged in -->
             </button> 
           </li> 
@@ -66,7 +69,26 @@
         } else {
           console.error('No prediction data found:', data);
         }
-      });
+      });       
+
+      function checkLoginStatus() {
+            if (localStorage.getItem('userLoggedIn') === 'true') {
+                document.getElementById('logInbutton').style.display = 'none'; 
+                document.getElementById('logoutButton').style.display = 'inline'; 
+                document.getElementById('Hiuser').style.display = 'inline'; 
+            } else {
+                document.getElementById('logInbutton').style.display = 'inline'; 
+                document.getElementById('logoutButton').style.display = 'none';
+                document.getElementById('Hiuser').style.display = 'none'; 
+            }
+        }
+
+        window.onload = checkLoginStatus;
+
+        function logout() {
+            localStorage.removeItem('userLoggedIn'); 
+            window.location.href = '/index.html'; 
+        }
     </script>
     <footer>
       <ul>
