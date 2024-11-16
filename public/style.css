@@ -364,6 +364,10 @@ h2{
     background-position: center;
     padding: 80px 0;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
   }
   
   .inbox h2 {
@@ -377,6 +381,7 @@ h2{
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 700px;
   }
   
   .patient {
@@ -411,8 +416,8 @@ h2{
     border: none;
     color: #ffffff;
     background-color: #0B2E34;
-    
     align-self: center;
     width: 300px;
+    margin-top: 50px;
 
 }
