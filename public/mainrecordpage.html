@@ -68,7 +68,7 @@
         font-size: 30px;
         font-weight: bold;
         color: #0b2e34;
-        text-align: center; 
+        text-align: center;
         margin-bottom: 20px;
       }
 
@@ -88,7 +88,7 @@
       label {
         font-size: 15px;
         color: #0b2e34;
-        text-align: right; 
+        text-align: right;
       }
 
       input,
@@ -97,10 +97,10 @@
         border-width: 1px;
         border-color: gray;
         border-radius: 5px;
-        width: 70%; 
+        width: 70%;
         padding: 10px;
         font-size: 16px;
-        margin-bottom: 15px; 
+        margin-bottom: 15px;
       }
 
       button:hover {
@@ -110,70 +110,83 @@
     </style>
   </head>
   <body>
-
     <div class="container">
       <h3>رفع ملف طبي</h3>
       <form id="patientForm">
         <label for="name">الاسم</label>
         <input type="text" name="name" placeholder="الاسم" required />
-        
+
         <label for="age">العمر</label>
         <input type="number" name="age" placeholder="العمر" required />
-        
+
         <label for="gender">الجنس</label>
         <select name="gender" required>
           <option value="male">ذكر</option>
           <option value="female">أنثى</option>
         </select>
-        
+
         <label for="chemicalExposure">هل تعرضت لمواد كيميائية؟</label>
-        <input type="text" name="chemicalExposure" placeholder="هل تعرضت لمواد كيميائية؟" />
-        
-        <label for="illnessDuration">كم المدة التي جئت فيها مرضك؟</label>
-        <input type="text" name="illnessDuration" placeholder="كم المدة التي جئت فيها مرضك؟" required />
-        
+        <input
+          type="text"
+          name="chemicalExposure"
+          placeholder="هل تعرضت لمواد كيميائية؟"
+        />
+
+        <label for="illnessDuration">كم المدة التي عانيت فيها من مرضك؟</label>
+        <input
+          type="text"
+          name="illnessDuration"
+          placeholder="كم المدة التي عانيت فيها من مرضك؟"
+          required
+        />
+
         <label for="familyHistory">هل يوجد تاريخ مرضي في العائلة؟</label>
-        <input type="text" name="familyHistory" placeholder="هل يوجد تاريخ مرضي في العائلة؟" />
-        
+        <input
+          type="text"
+          name="familyHistory"
+          placeholder="هل يوجد تاريخ مرضي في العائلة؟"
+        />
+
         <button type="submit">إرسال البيانات</button>
       </form>
     </div>
     <script>
-      document.getElementById('patientForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(e.target);
-        const data = {
-          name: formData.get('name'),
-          age: formData.get('age'),
-          gender: formData.get('gender'),
-          chemicalExposure: formData.get('chemicalExposure'),
-          illnessDuration: formData.get('illnessDuration'),
-          familyHistory: formData.get('familyHistory')
-        };
-    
-        try {
-          const response = await fetch('/api/patients', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          });
-    
-          if (response.ok) {
-            alert('تم إرسال البيانات بنجاح!');
-            window.location.href = 'index.html'; 
-          } else {
-            const errorData = await response.json();
-            alert(`حدث خطأ: ${errorData.message}`);
-          }
-        } catch (error) {
-          alert('حدث خطأ أثناء إرسال البيانات.');
-          console.error(error);
-        }
-      });
-    </script>
+      document
+        .getElementById("patientForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
 
+          const formData = new FormData(e.target);
+          const data = {
+            name: formData.get("name"),
+            age: formData.get("age"),
+            gender: formData.get("gender"),
+            chemicalExposure: formData.get("chemicalExposure"),
+            illnessDuration: formData.get("illnessDuration"),
+            familyHistory: formData.get("familyHistory"),
+          };
+
+          try {
+            const response = await fetch("/api/patients", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              alert("تم إرسال البيانات بنجاح!");
+              window.location.href = "index.html";
+            } else {
+              const errorData = await response.json();
+              alert(`حدث خطأ: ${errorData.message}`);
+            }
+          } catch (error) {
+            alert("حدث خطأ أثناء إرسال البيانات.");
+            console.error(error);
+          }
+        });
+    </script>
   </body>
 </html>
