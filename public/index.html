@@ -16,10 +16,9 @@
         <ul>
 
           <!--<li class="login"><a href="logInPage.html">✩ التسجيل / تسجيل الدخول</a></li> -->
-          <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button>
-            <button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button>
+          <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button></li>
+          <li><button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button></li>
 
-          </li>
           <li> 
             <button id="Hiuser" style="display: none;">
               مرحبا بك<img id="profileIcon" src="/img/profileIcon.jpg"><!-- Appears when already logged in -->
@@ -44,7 +43,7 @@
         </p>
         <form id="upload-form" enctype="multipart/form-data">
           <input type="file" name="image" accept="image/*" required>
-          <button type="submit">أرفق الصورة</button>
+          <button  id="submitButton" type="submit">أرفق الصورة</button>
       </form>
       </div>
     </section>
