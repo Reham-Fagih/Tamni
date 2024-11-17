@@ -111,8 +111,12 @@ h2 {
     height: 250px;
 }
 #prediction-text{
-    width: 650px;
+    width: fit-content;
     text-align: center;
+    padding: 20px;
+    margin: 17px;
+    color: #0B2E34;
+    font-family: 'Arial', sans-serif;
 }
 h3 {
     font-size: 30px;
