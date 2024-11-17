@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>غرفة الدردشة</title>
-    <link rel="stylesheet" href="chatRoom.css">
-</head>
-<body>
-
-<div class="chat-container">
-    <div class="header">
+    <link rel="stylesheet" href="chatRoom.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="header">
         <button class="close-btn" onclick="closeChat()">×</button>
         <div class="users-info">
-            <span class="users-name">مرحباً بك</span>
-            <img src="/img/profileIcon.jpg" alt="صورة المستخدم" class="profile-image">
+          <span class="users-name">مرحباً بك</span>
+          <img
+            src="/img/profileIcon.jpg"
+            alt="صورة المستخدم"
+            class="profile-image"
+          />
         </div>
-    </div>    
+      </div>
 
-    <div class="messages" id="messages"></div>
+      <div class="messages" id="messages"></div>
 
-    <div class="input-container">
-        <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا...">
+      <div class="input-container">
+        <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا..." />
         <button id="sendButton">إرسال</button>
+      </div>
     </div>
-</div>
 
-<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
-<script>
-<<<<<<< HEAD
-    const socket = io('http://localhost:5000'); 
-    socket.on('connect', () => {
-        console.log('Connected to server:', socket.id);
-    });
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script>
+      const socket = io();
+      document
+        .getElementById("sendButton")
+        .addEventListener("click", sendMessage);
+      document
+        .getElementById("messageInput")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") sendMessage();
+        });
 
-=======
-    const socket = io();
->>>>>>> fe0ca1ec323aa09af054df19f78e30581a25619b
-    document.getElementById('sendButton').addEventListener('click', sendMessage);
-    document.getElementById('messageInput').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
-
-    function sendMessage() {
-        const messageInput = document.getElementById('messageInput');
+      function sendMessage() {
+        const messageInput = document.getElementById("messageInput");
         const message = messageInput.value.trim();
 
         if (message !== "") {
-            socket.emit('sendMessage', message);
-            messageInput.value = ''; 
+          socket.emit("sendMessage", message);
+          messageInput.value = "";
         }
-    }
+      }
 
-    socket.on('receiveMessage', (messageData) => {
-        console.log('Received message:', messageData); 
+      socket.on("receiveMessage", (messageData) => {
+        console.log("Received message:", messageData);
 
-        const messagesContainer = document.getElementById('messages');
-        const messageClass = messageData.id === socket.id ? 'sent' : 'received';
+        const messagesContainer = document.getElementById("messages");
+        const messageClass = messageData.id === socket.id ? "sent" : "received";
 
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message', messageClass);
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message", messageClass);
         messageElement.innerText = messageData.text;
 
         messagesContainer.appendChild(messageElement);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight; 
-    });
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      });
 
-    function closeChat() {
-        window.location.href = 'index.html';
-    }
-</script>
-
-</body>
+      function closeChat() {
+        window.location.href = "index.html";
+      }
+    </script>
+  </body>
 </html>

@@ -144,7 +144,7 @@ body {
 }
 
 .BackArrow {
-    font-size: 24px; /* Increase size */
+    font-size: 24px; 
     color: #f8f8f8;
     margin-right: 8px;
     cursor: pointer;
