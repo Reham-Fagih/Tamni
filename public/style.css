@@ -73,6 +73,30 @@ header {
     
 }
 
+#addReport{
+
+    background-color: #1b717c;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+   
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    
+}
+
+.button-container {
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px;
+}
+
+
 #submitButton:hover{
     
     background-color: #44a2b6;

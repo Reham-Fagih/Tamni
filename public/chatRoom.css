@@ -23,12 +23,11 @@
     justify-content: space-between; 
 }
 
-.header .close-btn {
-    order: 4; 
-    background-color: transparent;
+.header .close-btn{
+    background: transparent;
     border: none;
-    font-size: 20px;
     color: #ffffff;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -37,7 +36,6 @@
 }
 
 .header .users-info {
-    order: 3; 
     display: flex;
     align-items: center;
     gap: 10px;
@@ -56,19 +54,6 @@
     font-weight: bold;
 }
 
-.header .back-btn {
-    order: 1; 
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.header .back-btn:hover {
-    color: #69b8ca;
-}
-
 .messages {
     flex-grow: 1;
     overflow-y: auto;
@@ -83,28 +68,32 @@
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
+    max-width: 80%;
 }
 
-.message.patient {
+.message.sent {
     background-color: #69b8ca;
     color: #ffffff;
     text-align: right;
+    margin-left: auto;
 }
 
-.message.doctor {
+.message.received {
     background-color: #e0e0e0;
     color: #333;
     text-align: left;
+    margin-right: auto;
 }
 
 .input-container {
     display: flex;
+    gap: 5px;
 }
 
 .input-container input {
     flex-grow: 1;
     padding: 10px;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px;
     border: 1px solid #ddd;
 }
 
@@ -113,16 +102,10 @@
     color: #ffffff;
     border: none;
     padding: 10px 20px;
-    border-radius: 0 20px 20px 0;
+    border-radius: 20px;
     cursor: pointer;
 }
-.message.sent {
-    color: #ffffff;
-    text-align: right;
-}
 
-.message.received {
-    color: #333333;
-    text-align: left;
+.input-container button:hover {
+    background-color: #48a0b6;
 }
-

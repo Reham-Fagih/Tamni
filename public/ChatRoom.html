@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>غرفة الدردشة</title>
-    <link rel="stylesheet" href="chatRoom.css"/>
+    <link rel="stylesheet" href="chatRoom.css">
 </head>
 <body>
 
@@ -12,53 +12,52 @@
     <div class="header">
         <button class="close-btn" onclick="closeChat()">×</button>
         <div class="users-info">
-            <span class="users-name"> مرحباً بك</span>
-            <img src="/img/profileIcon.jpg" alt="صورة المستخدم" class="profile-image"/>
+            <span class="users-name">مرحباً بك</span>
+            <img src="/img/profileIcon.jpg" alt="صورة المستخدم" class="profile-image">
         </div>
-        <button class="back-btn" onclick="goBack()">←</button>
-    </div>
+    </div>    
 
     <div class="messages" id="messages"></div>
 
     <div class="input-container">
-        <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا..." />
+        <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا...">
         <button id="sendButton">إرسال</button>
     </div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-   const socket = io();
+    const socket = io();
 
-   document.getElementById('sendButton').addEventListener('click', () => {
-    const messageInput = document.getElementById('messageInput');
-    const message = messageInput.value;
+    document.getElementById('sendButton').addEventListener('click', sendMessage);
+    document.getElementById('messageInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
 
-    if (message.trim() !== "") {
-        socket.emit('sendMessage', message);
-        messageInput.value = '';
+    function sendMessage() {
+        const messageInput = document.getElementById('messageInput');
+        const message = messageInput.value.trim();
+
+        if (message !== "") {
+            socket.emit('sendMessage', message);
+            messageInput.value = '';
+        }
     }
-});
 
-socket.on('receiveMessage', (messageData) => {
-    const messagesContainer = document.getElementById('messages');
-    const messageClass = messageData.id === socket.id ? 'sent' : 'received';
+    socket.on('receiveMessage', (messageData) => {
+        const messagesContainer = document.getElementById('messages');
+        const messageClass = messageData.id === socket.id ? 'sent' : 'received';
 
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message', messageClass);
-    messageElement.innerText = messageData.text;
-    messageElement.style.backgroundColor = messageData.color;  
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', messageClass);
+        messageElement.innerText = messageData.text;
 
-    messagesContainer.appendChild(messageElement);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-});
+        messagesContainer.appendChild(messageElement);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+    });
 
     function closeChat() {
-        window.location.href = 'index.html';
-    }
-
-    function goBack() {
-        window.history.back();
+        window.location.href = 'index.html'; 
     }
 </script>
 

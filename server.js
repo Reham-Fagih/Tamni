@@ -5,19 +5,20 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const collection = require('./db');
 const app = express();
+const PORT = 5000;
 const http = require('http');
 const server = http.createServer(app);  
 const { Server } = require("socket.io");
 const io = new Server(server);  
-const PORT = 5000;
 const { spawn } = require('child_process');
 const bodyParser = require("body-parser");
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadDir = path.join(__dirname, 'uploads');
@@ -30,14 +31,26 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + path.extname(file.originalname)); 
     }
 });
+
 const upload = multer({ storage });
 
 app.get('/resultpage', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'resultpage.html'));
 });
+
+
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+// app.post('/upload', upload.single('image'), (req, res) => {
+//     if (req.file) {
+//         res.json({ message: 'Image uploaded successfully!', redirectTo: '/resultpage' });
+//     } else {
+//         res.status(400).json({ message: 'Image upload failed!' });
+//     }
+// });
 
 app.get('/LogIn', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'logInPage.html'));
@@ -46,8 +59,6 @@ app.get('/LogIn', (req, res) => {
 app.get('/SignUp', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'signUp.html'));
 });
-
-
 
 
 
@@ -63,6 +74,7 @@ app.post('/predict', upload.single('image'), (req, res) => {
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
       predictionResult += data.toString();  
+      predictionResult += data.toString();  
     });
   
     pythonProcess.stderr.on('data', (data) => {
@@ -71,6 +83,9 @@ app.post('/predict', upload.single('image'), (req, res) => {
   
     pythonProcess.on('close', (code) => {
       if (responseSent) return;
+      if (responseSent) return;
+  
+      responseSent = true;
   
       responseSent = true;
   
@@ -83,15 +98,20 @@ app.post('/predict', upload.single('image'), (req, res) => {
         message: 'Prediction successful',
         prediction: predictionResult.trim() 
       });
+      return res.json({
+        message: 'Prediction successful',
+        prediction: predictionResult.trim() 
+      });
     });
   
     pythonProcess.on('error', (err) => {
+      if (responseSent) return;
       if (responseSent) return;
       responseSent = true;
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
-  });
+    });
   
 
 const session = require('express-session');
@@ -142,6 +162,7 @@ app.post('/signUp', async (req, res) => {
         res.status(500).send('Error during registration');
     }
 });
+
 
 app.post('/logInPage', async (req, res) => {
     try {
@@ -204,6 +225,6 @@ app.get('/records', (req, res) => {
   });
   
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
