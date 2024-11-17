@@ -62,11 +62,7 @@ section {
     justify-content: center;
     align-items: center;
 }
-.percentage {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-}
+
 .textscontainer {
     background-color:#0e3a42;
     display: flex;
@@ -75,26 +71,26 @@ section {
     justify-content: space-between;
 }
 h1 {
-    font-size: 40px;
-    margin-right: 400px;
-    padding: 24px;
+    font-size: 30px;
+    color: #49CAE0;
+    background-color:#0B2E34;
+    text-align: center;
 }
 .textarea { 
+    background-color: #fff;
+    color: #0B2E34;
     font-family: 'Arial', sans-serif;
-    font-size: 30px;
-    text-align: center;
+    font-size: 20px;
     display: flex;
-    background-color: #D43333;
-    border-radius: 100px;
-    width: 800px;
-    height: 100px;  
-    margin-left: 500px;
+    width: 1000px;
+    height: 150px;
 }
 
 h2 {
     font-size: 30px;
     background-color:#0B2E34;
-    text-align: right;
+    color: #49CAE0;
+    text-align: center;
 }
 .textarea1 {
     background-color: #fff;
@@ -106,12 +102,13 @@ h2 {
     height: 250px;
 }
 #prediction-text{
-    width: fit-content;
+    width: 1000px;
 }
 h3 {
     font-size: 30px;
     background-color:#0B2E34;
-    text-align: right;
+    color: #49CAE0;
+    text-align: center;
 }
 .textarea2 {
     background-color: #fff;
@@ -120,7 +117,7 @@ h3 {
     font-size: 20px;
     display: flex;
     width: 1000px;
-    height: 150px;
+    height: 250px;
     margin-bottom: 50px;
 }
 
