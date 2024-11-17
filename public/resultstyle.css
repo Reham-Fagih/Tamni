@@ -112,6 +112,7 @@ h2 {
 }
 #prediction-text{
     width: 650px;
+    text-align: center;
 }
 h3 {
     font-size: 30px;
