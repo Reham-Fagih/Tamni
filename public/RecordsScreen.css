@@ -183,3 +183,17 @@ body {
     border-radius: 6px;
     cursor: pointer;
 }
+.chat-button {
+    background-color: #5492a0;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .chat-button:hover {
+    background-color: #0b2e34;
+  }
