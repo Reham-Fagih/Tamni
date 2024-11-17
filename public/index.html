@@ -38,18 +38,20 @@
       <div class="content">
         <h1>تبي تطمن؟</h1>
         <p>
-            مريض وتبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
+            مريض تبي تتطمن وتتاكد من مرضك؟ ما عليك إلا انك ترفق صورة المرض
           وما يصير خاطرك إلا طيب وتقدر ايضا تعبي بعض البيانات الطبية عشان الطبيب يقدر يتابعك بشكل أفضل
         </p>
         <form id="upload-form" enctype="multipart/form-data">
           <input type="file" name="image" accept="image/*" required>
-          <button  id="submitButton" type="submit">أرفق الصورة</button>
-          <button id="submitButton" type="button" onclick="window.location.href='mainrecordpage.html'">رفع ملف مسبق للحاله</button>
+          <div class="button-container">
+            <button id="submitButton" type="submit">أرفق الصورة</button>
+            <button id="addReport" type="button" onclick="window.location.href='mainrecordpage.html'">رفع ملف مسبق للحاله</button>
+        </div>
       </form>
       </div>
     </section>
 
-    
+
     <script>
       document.getElementById('upload-form').addEventListener('submit', async function(event) {
         event.preventDefault();  
