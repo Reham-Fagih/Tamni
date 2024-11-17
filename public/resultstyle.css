@@ -86,7 +86,7 @@ h1 {
     margin-left: 25px;
 }
 .textarea { 
-    background-color: #49CAE0;
+    background-color: #80B7C1;
     border-radius: 100px;
     color: #fff;
     font-family: 'Arial', sans-serif;
@@ -102,7 +102,7 @@ h2 {
     text-align: center;
 }
 .textarea1 {
-    background-color: #fff;
+    background-color: #B6DDE4;
     color: #0B2E34;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
@@ -117,6 +117,7 @@ h2 {
     margin: 17px;
     color: #0B2E34;
     font-family: 'Arial', sans-serif;
+    font-weight: bold;
 }
 h3 {
     font-size: 30px;
@@ -125,7 +126,7 @@ h3 {
     text-align: center;
 }
 .textarea2 {
-    background-color: #fff;
+    background-color: #B6DDE4;
     color: #0B2E34;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
