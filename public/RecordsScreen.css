@@ -152,7 +152,7 @@ body {
 }
 
 
-.delete-record {
+/* .delete-record {
     position: absolute;
     left: 20px;
     bottom: 20px;
@@ -163,14 +163,14 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-}
+} */
 
 
-.Button {
+/* .Button {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-}
+}*/
 
 .add-report {
     width: 270px;

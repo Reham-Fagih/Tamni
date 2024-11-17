@@ -6,18 +6,30 @@
     <title>طمني</title>
     <link rel="icon" href="/img/imgOfmainLogo.png" type="image/icon"> 
     <link rel="stylesheet" href="style.css" />
+
+    
+
   </head>
   <body dir="rtl">
     <header>
       <nav>
         <ul>
-          <li class="login"><a href="logInPage.html">✩ التسجيل / تسجيل الدخول</a></li>
-          <button id="Hiuser">مرحبا بك</button> <!--Apears when already log in-->
+
+          <!--<li class="login"><a href="logInPage.html">✩ التسجيل / تسجيل الدخول</a></li> -->
+          <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button></li>
+          <li><button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button></li>
+
+          <li> 
+            <button id="Hiuser" style="display: none;">
+              مرحبا بك<img id="profileIcon" src="/img/profileIcon.jpg"><!-- Appears when already logged in -->
+            </button> 
+          </li> 
+           
           <li><a href="#">من نحن</a></li>
           <li><a href="#">خدماتنا</a></li>
           <li><a href="#">حساباتنا</a></li>
           <li><a href="#">الدعم الفني</a></li>
-          <img src="/img/imgOfmainLogo.png" alt="طمني Logo" />
+          <img src="/img/imgOfmainLogo.png" alt="طمني Logo" onclick="window.location.href=''" /> 
         </ul>
       </nav>
     </header>
@@ -31,31 +43,51 @@
         </p>
         <form id="upload-form" enctype="multipart/form-data">
           <input type="file" name="image" accept="image/*" required>
-          <button type="submit">أرفق الصورة</button>
+          <button  id="submitButton" type="submit">أرفق الصورة</button>
       </form>
       </div>
     </section>
+
+
     <script>
-document.getElementById('upload-form').addEventListener('submit', async function(event) {
-  event.preventDefault();  
-  
-  const formData = new FormData(event.target);
+      document.getElementById('upload-form').addEventListener('submit', async function(event) {
+        event.preventDefault();  
+        
+        const formData = new FormData(event.target);
+      
+        const response = await fetch('/predict', {
+          method: 'POST',
+          body: formData,
+        });
+      
+        const data = await response.json();
+        console.log('Response from server:', data);
+      
+        if (data.prediction) {
+          window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
+        } else {
+          console.error('No prediction data found:', data);
+        }
+      });       
 
-  const response = await fetch('/predict', {
-    method: 'POST',
-    body: formData,
-  });
+      function checkLoginStatus() {
+            if (localStorage.getItem('userLoggedIn') === 'true') {
+                document.getElementById('logInbutton').style.display = 'none'; 
+                document.getElementById('logoutButton').style.display = 'inline'; 
+                document.getElementById('Hiuser').style.display = 'inline'; 
+            } else {
+                document.getElementById('logInbutton').style.display = 'inline'; 
+                document.getElementById('logoutButton').style.display = 'none';
+                document.getElementById('Hiuser').style.display = 'none'; 
+            }
+        }
 
-  const data = await response.json();
-  console.log('Response from server:', data);
+        window.onload = checkLoginStatus;
 
-  if (data.prediction) {
-    window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
-  } else {
-    console.error('No prediction data found:', data);
-  }
-});
-
+        function logout() {
+            localStorage.removeItem('userLoggedIn'); 
+            window.location.href = '/index.html'; 
+        }
     </script>
     <footer>
       <ul>
@@ -185,22 +217,23 @@ document.getElementById('upload-form').addEventListener('submit', async function
 </div>
 
 <div class="contact">
-<h3>معلومات الاتصال</h3>
-<p>العنوان</p>
-<p>الهاتف</p>
-<p>البريد</p>
 
+<p>
+  <sub><img src="/img/iconOfMap.png" alt="icon" style="width: 30x; height: 30px;"></sub> 
+   العنوان</p><p id="contactDesc">المملكة العربية السعودية</p>
+ <p>
+   <sub><img src="/img/iconOfPhone.png" alt="icon" style="width: 30x; height: 30px;"></sub>
+   الهاتف</p><p id="contactDesc">0501234567</p>
+ <p>
+   <sub><img src="/img/iconOfEmail.png" alt="icon" style="width: 30x; height: 30px;"> </sub> 
+   البريد </p><p id="contactDesc">tamni@gmail.com</p>
 
 
 </div>
 
-
-
 </section>
 
 
-
-
-
-
 <section id="footerSec2">  كل الحقوق محفوظة فريق طمني &copy</section>
+
+</footer>

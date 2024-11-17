@@ -25,23 +25,28 @@
 
 <div class="content2">
 
-    <form action="/signUp" method="POST">
-        <label for="username">اسم المستخدم</label>
-        <input type="text" name="username" id="username" required>
-    
-        <label for="password">كلمة المرور</label>
-        <input type="password" name="password" id="password" required>
-    
-       
-        <button  type="submit" onclick="window.location.href='index.html?role=patient'">
-                إنشاءالحساب مريض</button>
+<form action="/signUp" method="POST">
+    <label for="username">اسم المستخدم</label>
+    <input type="text" name="username" id="username" required>
 
-        <button id="doctorSignUp" type="submit" onclick="window.location.href='doctorpage.html'"> <!--Here Show the inbox + Remove  uploud imge-->
-                  إنشاءالحساب طبيب</button>
+    <label for="password">كلمة المرور</label>
+    <input type="password" name="password" id="password" required>
+
+    <label for="role">اختر دورك</label>
+    <select name="role" id="role" required>
+        <option value="patient">مريض</option>
+        <option value="doctor">طبيب</option>
+    </select>
+
+    <button type="submit" id="button">إنشاء الحساب</button>
+
     <h5>بإنشاءك هذا الحساب انت توافق على شروط الإستخدام والخصوصيه</h5>
-    
-
- </form>
+</form>
+<script>
+    window.onload = function() {
+        localStorage.setItem('userLoggedIn', 'true');
+    }
+</script>
 
 </div>
 

@@ -27,33 +27,18 @@
     <section class="content">
       <div class="percentage">
         <h1> إصابتك هي</h1>
-        <textarea readonly class="textarea" id="prediction-text">%70</textarea>
+        <textarea readonly class="textarea" id="prediction-text"></textarea>
       </div>
 
       <div class="textscontainer" id="result-container">
         <h2>نظرة عامة عن حالتك</h2>
 
-        <textarea readonly class="textarea1"></textarea>
-
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const prediction = urlParams.get('prediction');
-
-            const predictionTextArea = document.getElementById('prediction-text');
-            
-            if (predictionTextArea && prediction) {
-              predictionTextArea.value = prediction;  
-            } else {
-              console.error('Prediction not found.');
-            }
-          });
-        </script>
-
+        <textarea readonly class="textarea1" id="prediction-info"></textarea>
         <h3>متى لازم تزور طبيب</h3>
-        <textarea readonly class="textarea2">
-          تحتاج تزور طبيب إذا ظهرت عليك أو على طفلك الأعراض التالية:
+        <textarea readonly class="textarea2" id="prediction-doctorvisit">
         </textarea>
+
+        
       </div>
 
       <div class="buttonscontainer">
@@ -65,8 +50,107 @@
       </div>
     </section>
 
-    <script src="script.js"></script>
-
+    <!-- <script src="script.js"></script> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const prediction = urlParams.get('prediction');
+    
+        const diseaseInfo = {
+          'Eczema': {
+            info: `التهاب الجلد التأتبي (الإكزيما) هو مرض يجعل الجلد جافًا ومثيرًا للحكة وملتهبًا
+            وهو أكثر شيوعًا لدى الأطفال الصغار، ولكن يمكن أن يحدث في أي مرحلة عمرية. حيث يستمر التهاب الجلد التأتبي لفترة طويلة (مزمن) ويمكن أن تزداد شدته في بعض الأحيان. وقد يكون مسببًا للتهيج ولكنه ليس معديًا.
+            الأشخاص المصابون بالتهاب الجلد التأتبي معرضون لخطر الإصابة بحساسية الطعام وحمى القش والربو.`,
+            doctorVisit: `تحتاج تزور طبيب إذا ظهرت عليك أو على طفلك الأعراض التالية:
+            - أعراض التهاب الجلد التأتبي
+            - تأثير المرض في النوم وممارسة الأنشطة اليومية، ما يسبب عدم الراحة بشكل كبير
+            - الإصابة بالتهاب بالجلد، افحص الجلد لاكتشاف وجود أي خطوط أو صديد أو قشور صفراء
+            - ظهور أعراض حتى بعد اتخاذ خطوات الرعاية الذاتية`
+          },
+          'Warts Molluscum and other Viral Infections': {
+            info: `الثآليل والموليوم (الفيروسية) هي عبارة عن تكوّنات جلدية ناتجة عن الإصابة بفيروسات. قد تكون الثآليل شائعة في اليدين، بينما يصيب الموليوم عادة الأجزاء العلوية من الجسم. 
+            هذه العدوى قد تكون معدية وتهدد الأشخاص الآخرين عند ملامسة الجلد المصاب.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - كانت الإصابة تسبب الألم أو النزيف
+            - كانت الثآليل أو الموليوم تتزايد بسرعة
+            - لم تتحسن الحالة بعد استخدام العلاج المنزلي`
+          },
+          'Melanoma': {
+            info: `الميلانوما هو نوع من السرطان يتكون في خلايا الجلد المنتجة للميلانين. قد يظهر على شكل شامة غير طبيعية أو تغير في شامة موجودة. الميلانوما يمكن أن تنتشر في أجزاء أخرى من الجسم إذا لم يتم علاجها في وقت مبكر.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - لاحظت تغيرًا في شكل أو لون الشامات أو النمش
+            - لاحظت أي شامة جديدة أو نمو غير طبيعي
+            - شعرت بأي ألم أو نزيف من الشامة`
+          },
+          'Atopic Dermatitis': {
+            info: `التهاب الجلد التأتبي (الإكزيما) هو مرض يجعل الجلد جافًا ومثيرًا للحكة وملتهبًا. يشمل الأسباب الوراثية والعوامل البيئية مثل المهيجات أو الحساسية. قد يعاني المصابون من حالات مزمنة من الطفح الجلدي أو الجفاف.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - كانت الحكة أو الالتهاب يؤثر بشكل كبير على حياتك اليومية
+            - ظهرت علامات عدوى مثل الحمى أو القيح
+            - لم تتحسن الحالة مع العناية الذاتية`
+          },
+          'Basal Cell Carcinoma (BCC)': {
+            info: `سرطان الخلايا القاعدية (BCC) هو أكثر أنواع سرطان الجلد شيوعًا، ويظهر عادة ككتلة أو تورم غير مؤلم في الجلد. لا ينتشر عادة إلى أجزاء أخرى من الجسم لكنه يمكن أن يتسبب في أضرار محلية إذا ترك دون علاج.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - ظهرت كتلة أو تورم على الجلد يتغير بمرور الوقت
+            - بدأ الجرح أو الكدمة في النزيف أو القيح
+            - كان لديك تاريخ من التعرض المستمر لأشعة الشمس`
+          },
+          'Melanocytic Nevi (NV)': {
+            info: `الشامات الميلانوما هي عبارة عن تجمعات من خلايا الميلانين في الجلد. قد تكون موجودة منذ الولادة أو تظهر في مراحل لاحقة من الحياة. معظم الشامات غير ضارة ولكن قد تتغير بمرور الوقت.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - لاحظت تغييرات في الشامة مثل تغير اللون أو الشكل
+            - كانت الشامة مؤلمة أو تنزف
+            - كنت تشك في وجود شامة غير طبيعية`
+          },
+          'Benign Keratosis-like Lesions (BKL)': {
+            info: `التكتلات غير السرطانية مثل التقرن الدهني هي نمو غير طبيعي للجلد يظهر عادة على الأشخاص في مرحلة العمر المتقدمة. رغم أنها غير ضارة، إلا أنها قد تتسبب في بعض الأحيان في تهيج الجلد.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - كانت التكتلات مؤلمة أو تتغير
+            - كنت تشك في أنها قد تؤدي إلى مشاكل صحية
+            - بدأت التكتلات بالنزيف أو التقرح`
+          },
+          'Psoriasis pictures Lichen Planus and related diseases': {
+            info: `الصَّدَفَة (الصدفية) هي حالة جلدية مزمنة تتميز بتراكم خلايا الجلد السريعة التي تشكل بقعًا حمراء متقشرة. يمكن أن تسبب أعراضًا مزعجة مثل الحكة أو الألم. مرض الحزاز المسطح مشابه ولكن غالبًا ما يتسبب في طفح جلدي مائل للأرجواني.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - كانت الأعراض لا تتحسن مع العلاج
+            - كان المرض يؤثر على الجوانب اليومية من حياتك
+            - ظهور أعراض جديدة أو تغيرات في الجلد`
+          },
+          'Seborrheic Keratoses and other Benign Tumors': {
+            info: `الكيراتوز الشحمي هو نمو غير سرطاني على الجلد يظهر في العادة ككتلة مرتفعة ومسطحة ذات لون بني. هذه الحالة غير مؤلمة وعادة لا تتطلب العلاج إلا إذا كانت تسبب إزعاجًا.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - بدأت الكتل في النزيف أو التقرح
+            - تغير شكل أو حجم الكيراتوز بشكل مفاجئ
+            - كانت تسبب ألمًا أو حكة`
+          },
+          'Tinea Ringworm Candidiasis and other Fungal Infections': {
+            info: `السعفة أو التينيا هي عدوى فطرية تصيب الجلد وتسبب طفحًا دائريًا أحمر أو متقشر. الكانديدا هو نوع آخر من العدوى الفطرية التي تصيب الجلد، الفم أو الأعضاء التناسلية.`,
+            doctorVisit: `تحتاج تزور طبيب إذا:
+            - كانت العدوى لا تتحسن مع العلاج المنزلي
+            - كانت العدوى منتشرة أو تسبب ألمًا
+            - كنت تعاني من ارتفاع في درجة الحرارة أو أعراض عدوى أخرى`
+          }
+        };
+    
+        const predictionTextArea = document.getElementById('prediction-text');
+        const predictionInfoTextArea = document.getElementById('prediction-info');
+        const predictionDoctorVisitTextArea = document.getElementById('prediction-doctorvisit');
+    
+        if (prediction) {
+          predictionTextArea.value = prediction;  
+          const info = diseaseInfo[prediction];
+          if (info) {
+            predictionInfoTextArea.value = info.info;
+            predictionDoctorVisitTextArea.value = info.doctorVisit;
+          } else {
+            console.error('No information available for this prediction.');
+          }
+        } else {
+          console.error('Prediction not found.');
+        }
+      });
+    </script>
     <footer>
       <p>من خلال رفع صورة، فإنك توافق على شروطنا وقد قرأت سياسة الخصوصية الخاصة بنا</p>
     </footer>

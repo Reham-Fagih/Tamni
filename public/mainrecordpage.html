@@ -1,50 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Medical Records</title>
-    <link rel="stylesheet" href="mainrecordpage.css" />
+    <title>رفع ملف طبي</title>
+    <style>
+      body {
+        background-color: #0b2e34;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        flex-wrap: wrap-reverse;
+        column-gap: 50px;
+        height: 100vh;
+      }
+
+      img {
+        width: 300px;
+      }
+
+      button {
+        border-radius: 20px;
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        align-self: center;
+        width: 300px;
+        margin-top: 50px;
+        background-color: #5492a0;
+        border: thin;
+        color: aliceblue;
+      }
+
+      button:hover {
+        background-color: #0b2e34;
+      }
+
+      a:any-link {
+        color: #0b2e34;
+      }
+
+      a:visited {
+        color: #0b2e34;
+      }
+
+      a:hover {
+        color: #69b8ca;
+      }
+
+      .container {
+        background-color: aliceblue;
+        width: 400px;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .content1 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+        gap: 10px;
+      }
+
+      h3 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #0b2e34;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      h5 {
+        align-self: center;
+        text-decoration-line: underline;
+        color: #0b2e34;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 10px;
+      }
+
+      label {
+        font-size: 15px;
+        color: #0b2e34;
+        text-align: right;
+      }
+
+      input,
+      select {
+        background-color: aliceblue;
+        border-width: 1px;
+        border-color: gray;
+        border-radius: 5px;
+        width: 70%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      button:hover {
+        background-color: #0b2e34;
+        color: aliceblue;
+      }
+    </style>
   </head>
   <body>
-    <div class="MedicalRecordsScreen01">
-      <div class="Bg">
-        <div class="Ellipse143"></div>
-        <div class="Ellipse142"></div>
-      </div>
+    <div class="container">
+      <h3>رفع ملف طبي</h3>
+      <form id="patientForm">
+        <label for="name">الاسم</label>
+        <input type="text" name="name" placeholder="الاسم" required />
 
-      <div class="AccountSection">
-        <div class="FooterIcon">@</div>
-        <img
-          class="AccountIcon"
-          src="/img/profileIcon.jpg"
-          alt="Account Icon"
+        <label for="age">العمر</label>
+        <input type="number" name="age" placeholder="العمر" required />
+
+        <label for="gender">الجنس</label>
+        <select name="gender" required>
+          <option value="male">ذكر</option>
+          <option value="female">أنثى</option>
+        </select>
+
+        <label for="chemicalExposure">هل تعرضت لمواد كيميائية؟</label>
+        <input
+          type="text"
+          name="chemicalExposure"
+          placeholder="هل تعرضت لمواد كيميائية؟"
         />
-      </div>
 
-      <div class="HeaderSection">
-        <button class="go-back" onclick="window.location.href='index.html'">العودة</button>
-        <div class="MainTitle">السجل الطبي</div>
-      </div>
+        <label for="illnessDuration">كم المدة التي عانيت فيها من مرضك؟</label>
+        <input
+          type="text"
+          name="illnessDuration"
+          placeholder="كم المدة التي عانيت فيها من مرضك؟"
+          required
+        />
 
-      <img
-        class="Medicalrecord1"
-        src="/img/MedicalRecord.webp"
-        alt="Medical Record Placeholder"
-      />
+        <label for="familyHistory">هل يوجد تاريخ مرضي في العائلة؟</label>
+        <input
+          type="text"
+          name="familyHistory"
+          placeholder="هل يوجد تاريخ مرضي في العائلة؟"
+        />
 
-      <div class="Text">
-        <div class="Title">أضف لسجلك الطبي</div>
-        <div class="Subtitle">
-          السجل الطبي المفصل يساعد الطبيب في تشخيصك بشكل أفضل
-        </div>
-      </div>
-
-      <div class="Button">
-        <div class="ButtonText">إضافة تقرير طبي</div>
-      </div>
-
-      <div class="Vector"></div>
+        <button type="submit">إرسال البيانات</button>
+      </form>
     </div>
+    <script>
+      document
+        .getElementById("patientForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(e.target);
+          const data = {
+            name: formData.get("name"),
+            age: formData.get("age"),
+            gender: formData.get("gender"),
+            chemicalExposure: formData.get("chemicalExposure"),
+            illnessDuration: formData.get("illnessDuration"),
+            familyHistory: formData.get("familyHistory"),
+          };
+
+          try {
+            const response = await fetch("/api/patients", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              alert("تم إرسال البيانات بنجاح!");
+              window.location.href = "index.html";
+            } else {
+              const errorData = await response.json();
+              alert(`حدث خطأ: ${errorData.message}`);
+            }
+          } catch (error) {
+            alert("حدث خطأ أثناء إرسال البيانات.");
+            console.error(error);
+          }
+        });
+    </script>
   </body>
 </html>

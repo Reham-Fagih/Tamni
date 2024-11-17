@@ -12,22 +12,102 @@ header {
     padding: 10px 0;
 }
 
-#Hiuser{
-    width: 180px;
+#logoutButton{
+
+    background-color: #1b717c;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+   
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
     height: 50px;
+
+    
+}
+
+#logoutButton:hover{
+
+    background-color: #44a2b6;
+
+}
+
+#submitButton{
+
+    background-color: #1b717c;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+   
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    
+}
+
+#submitButton:hover{
+    
+    background-color: #44a2b6;
+
+}
+
+#profileIcon{
+
+ width: 35px;
+ height: 35px;
+ border-radius: 50%;
+
+}
+
+#Hiuser{
+
+        
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 30px;
+    padding-right: 20px;
+    
+    background-color: #1b717c;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 27px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 220px;
+    height: 50px;
+
+}
+
+#Hiuser:hover{
     background-color: #44a2b6;
 }
 
+
+
 nav ul {
     list-style: none;
+    /*no need*/
     padding: 0;
     margin: 0;
+     /*no need*/
     display: flex;
     justify-content: center;
+    justify-content: space-around;
+   
+
 }
 
 nav ul li {
-    margin: 0 15px;
+    
+/*Use flex , not padding reham*/
+    padding-top: 10px;
+    /*margin: 15px;*/ 
 }
 
 nav ul li a {
@@ -35,6 +115,24 @@ nav ul li a {
     color: #fff;
     font-size: 18px;
 }
+
+nav ul li a:hover{
+
+   background-color:#01353d;
+   border-radius: 20px;
+   padding: 15px;
+   margin-top: 20px;
+
+}
+
+
+   
+/*add somtheing indecate user can clk on it to go home page
+img:hover{}
+*/ 
+
+
+
 
 .login a {
     background-color: #44a2b6;
@@ -59,7 +157,7 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
-button {
+#logInbutton {
     background-color: #1b717c;
     color: #fff;
     padding: 15px 30px;
@@ -69,7 +167,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#logInbutton:hover {
     background-color: #44a2b6;
 }
 
@@ -151,8 +249,8 @@ footer ul li a img {
 
 /***********/
 h2{
-
     color:#7ce7ff;
+
 }
 /***********/
 
@@ -172,7 +270,10 @@ h2{
     border-radius: 10px;
     text-align:right;
     color: #01353d;
-    background:linear-gradient(to left, rgb(194, 249, 255),#438493);
+    /*background:linear-gradient(to left, rgb(194, 249, 255),#438493);*/
+    background-color:#7ce7ff;
+
+
     height:120x;
     width: 70%;
     margin-top: 70px;
@@ -208,7 +309,8 @@ h2{
 .footerContainer{
  display: flex;
  color:#01353d;
- background:linear-gradient(to left, #7ce7ff, #144d52);
+ /*background:linear-gradient(to left, #7ce7ff, #144d52);*/
+ background-color:#7ce7ff;
  font-size: 20px;
 
 }
@@ -228,6 +330,8 @@ h2{
     flex-basis: 100%;
 }
 .contact{
+   
+    font-size: larger;
     flex-grow: 1;
     flex-basis: 100%;
 }
@@ -241,13 +345,14 @@ h2{
 }
 
 .footerContainer h4 {
-  
+
     text-decoration:underline;
   
    
 }
 .footerContainer p{
 
+    
     font-size: 18px;
     font-weight: bold;
 }
@@ -318,6 +423,10 @@ h2{
     background-position: center;
     padding: 80px 0;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
   }
   
   .inbox h2 {
@@ -331,6 +440,7 @@ h2{
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 700px;
   }
   
   .patient {
@@ -356,3 +466,17 @@ h2{
     border-radius: 4px;
     cursor: pointer;
   }
+  .recordbutton button{
+
+    border-radius: 20px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    color: #ffffff;
+    background-color: #0B2E34;
+    align-self: center;
+    width: 300px;
+    margin-top: 50px;
+
+}

@@ -68,11 +68,13 @@ app.post('/predict', upload.single('image'), (req, res) => {
   
     let responseSent = false;
     let predictionResult = '';
+    let predictionResult = '';
   
     const pythonProcess = spawn('python3', [path.join(__dirname, 'model.py'), imagePath]);
   
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
+      predictionResult += data.toString();  
       predictionResult += data.toString();  
     });
   
@@ -82,6 +84,9 @@ app.post('/predict', upload.single('image'), (req, res) => {
   
     pythonProcess.on('close', (code) => {
       if (responseSent) return;
+      if (responseSent) return;
+  
+      responseSent = true;
   
       responseSent = true;
   
@@ -94,44 +99,68 @@ app.post('/predict', upload.single('image'), (req, res) => {
         message: 'Prediction successful',
         prediction: predictionResult.trim() 
       });
+      return res.json({
+        message: 'Prediction successful',
+        prediction: predictionResult.trim() 
+      });
     });
   
     pythonProcess.on('error', (err) => {
+      if (responseSent) return;
       if (responseSent) return;
       responseSent = true;
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
-  });
+    });
+  
+
+const session = require('express-session');
+
+app.use(session({
+    secret: 'your_secret_key', 
+    resave: false, 
+    saveUninitialized: true, 
+    cookie: { secure: false }
+}));
 
 app.post('/signUp', async (req, res) => {
     const data = {
         name: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        role: req.body.role
     };
 
-    if (!data.name || !data.password) {
-        return res.status(400).send('Username and password are required'); 
+    if (!data.name || !data.password || !data.role) {
+        return res.status(400).send('Username, password, and role are required');
     }
 
     try {
         const existingUser = await collection.findOne({ name: data.name });
         if (existingUser) {
-            return res.status(409).send('User already exists'); 
+            return res.status(409).send('User already exists');
         }
 
-        const hashedPassword = await bcrypt.hash(data.password, 10); 
+        const hashedPassword = await bcrypt.hash(data.password, 10);
         const userData = {
             name: data.name,
-            password: hashedPassword 
+            password: hashedPassword,
+            role: data.role
         };
 
-        const result = await collection.create(userData); 
+        const result = await collection.create(userData);
         console.log('User registered:', result);
-        res.status(201).redirect('/'); 
+
+        req.session.user = { name: data.name, role: data.role };
+
+        if (data.role === 'doctor') {
+            return res.redirect('/doctorpage.html');
+        } else if (data.role === 'patient') {
+            return res.redirect('/index.html');
+        }
     } catch (error) {
         console.error('Registration error:', error);
-        res.status(500).send('Error during registration'); 
+        res.status(500).send('Error during registration');
     }
 });
 
@@ -139,28 +168,29 @@ app.post('/signUp', async (req, res) => {
 app.post('/logInPage', async (req, res) => {
     try {
         const check = await collection.findOne({ name: req.body.username });
-        console.log('User found:', check); 
-
         if (!check) {
-            return res.status(404).send('Username not found'); 
+            return res.status(404).send('Username not found');
         }
 
-        console.log('Input Password:', req.body.password); 
-        console.log('Stored Hash:', check.password); 
-
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-        console.log('Password Match:', isPasswordMatch); 
 
         if (isPasswordMatch) {
-            return res.redirect('/'); 
+            req.session.user = { name: check.name, role: check.role };
+
+            if (check.role === 'doctor') {
+                return res.redirect('/doctorpage.html');
+            } else if (check.role === 'patient') {
+                return res.redirect('/index.html');
+            }
         } else {
-            return res.status(401).send('Wrong password'); 
+            return res.status(401).send('Wrong password');
         }
     } catch (error) {
         console.error('Login error:', error);
-        res.status(500).send('Error during login'); 
+        res.status(500).send('Error during login');
     }
 });
+
 
 app.get('/ChatRoom', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'ChatRoom.html'));
@@ -188,6 +218,13 @@ io.on('connection', (socket) => {
         delete usersColors[socket.id]; 
     });
 });
+
+const patientRoutes = require('./routes/ patients');
+app.use('/api', patientRoutes);
+app.get('/records', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'RecordsScreen.html'));
+  });
+  
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);

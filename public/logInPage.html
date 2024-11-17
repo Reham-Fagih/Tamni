@@ -28,18 +28,15 @@
 
 <div class="content2">
 
-    <form action="/logInPage" method="POST">
-        <label for="username">اسم المستخدم</label>
-        <input type="text" name="username" id="username" required>
-    
-        <label for="password">كلمة المرور</label>
-        <input type="password" name="password" id="password" required>
-    
+<form action="/logInPage" method="POST">
+    <label for="username">اسم المستخدم</label>
+    <input type="text" name="username" id="username" required>
 
-        <button  id="button2" type="submit" onclick="window.location.href='index.html'">
-        تسجيل الدخول</button>
-        
-    </form>    
+    <label for="password">كلمة المرور</label>
+    <input type="password" name="password" id="password" required>
+
+    <button type="submit" id = "button2">تسجيل الدخول</button>
+</form>
 
 </div>
 
@@ -47,7 +44,11 @@
 
 </div>
 
-
+<script>
+    window.onload = function() {
+        localStorage.setItem('userLoggedIn', 'true');
+    }
+</script>
 
 
 </body>
