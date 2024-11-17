@@ -14,10 +14,7 @@
         <div class="users-info">
             <span class="users-name"> مرحباً بك</span>
             <img src="/img/profileIcon.jpg" alt="صورة المستخدم" class="profile-image"/>
-        </div>
-        <button class="back-btn" onclick="goBack()">←</button>
-    </div>
-
+       
     <div class="messages" id="messages"></div>
 
     <div class="input-container">
@@ -57,9 +54,6 @@ socket.on('receiveMessage', (messageData) => {
         window.location.href = 'index.html';
     }
 
-    function goBack() {
-        window.history.back();
-    }
 </script>
 
 </body>
