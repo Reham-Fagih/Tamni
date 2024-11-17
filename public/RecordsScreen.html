@@ -176,7 +176,6 @@
             recordDiv.classList.add("record");
 
             recordDiv.innerHTML = `
-<button>heeeey</button>
               <div class="title">السجل الطبي</div>
               <div class="details">
                 <div><span class="label">الاسم:</span><span class="value">${
@@ -202,6 +201,12 @@
                 patient.date
               ).toLocaleDateString("ar-SA")}</div>
             `;
+        const chatButton = document.createElement("button");
+        chatButton.textContent = "بدء محادثة مع المريض";
+        chatButton.classList.add("chat-button");
+        chatButton.onclick = () => {
+          window.location.href = `ChatRoom.html?patientId=${patient.id}`;
+        };
 
             recordsSection.appendChild(recordDiv);
           });
