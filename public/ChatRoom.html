@@ -28,7 +28,6 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
     const socket = io();
-
     document.getElementById('sendButton').addEventListener('click', sendMessage);
     document.getElementById('messageInput').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') sendMessage();

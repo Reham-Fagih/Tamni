@@ -143,13 +143,12 @@
 
         <script>
           function goBack() {
-            window.location.href = "mainrecordpage.html";
+            window.location.href = "doctorpage.html";
           }
         </script>
 
         <h1 class="title">جميع التقارير الطبية</h1>
       </header>
-
       <section class="medical-records" id="records-section">
         <!-- Records will be dynamically loaded here -->
       </section>
@@ -177,6 +176,7 @@
             recordDiv.classList.add("record");
 
             recordDiv.innerHTML = `
+<button>heeeey</button>
               <div class="title">السجل الطبي</div>
               <div class="details">
                 <div><span class="label">الاسم:</span><span class="value">${
