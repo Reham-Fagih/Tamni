@@ -15,8 +15,8 @@
 .choose a {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
-    color: #007bff;
-    text-decoration: underline;
+    color: #ffffff;
+    text-decoration: none;
     padding: 10px 15px;
     border-radius: 8px;
     display: inline-block;
