@@ -6,22 +6,34 @@
     <title>تقرير الحالة</title>
     <link rel="icon" href="/img/imgOfmainLogo.png" type="image/icon"> 
     <link rel="stylesheet" href="resultstyle.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body dir="rtl">
-    <header id="head">
+    
+    <header >
+
+      
       <nav>
-        <ul>
-          <li class="login"><a href="#">✩ التسجيل / تسجيل الدخول</a></li>
-          <li><a href="#">من نحن</a></li>
-          <li><a href="#">خدماتنا</a></li>
-          <li><a href="#">حساباتنا</a></li>
-          <li><a href="#">الدعم الفني</a></li>
-          <li><a href="index.html"></a>
-            <img id="Logo" src="/img/imgOfmainLogo.png" alt="طمني Logo" />
-          </li>
+        <ul class="nav-element">
+
+          <li><img id="logo" src="/img/imgOfmainLogo.png" alt="logo"></li>
+          <li>من نحن</li> 
+          <li>خدماتنا</li> 
+          <li> حساباتنا</li> 
+          <li> الدعم الفني</li> 
+          <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button></li>
+
+          <!--<li><button id="Hiuser" style="display: none;"> مرحبا بك <img id="profileIcon" src="/img/profileIcon.jpg"></button></li>-->
+          <li><button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button></li>
+
+          <li><button id="Hiuser" style="display: none;"> مرحبا بك </button></li><!-- Appears when already logged in -->
+
+          
         </ul>
+        
       </nav>
+      
     </header>
 
     <section class="content">
@@ -149,6 +161,25 @@
           console.error('Prediction not found.');
         }
       });
+
+      function checkLoginStatus() {
+            if (localStorage.getItem('userLoggedIn') === 'true') {
+                document.getElementById('logInbutton').style.display = 'none'; 
+                document.getElementById('logoutButton').style.display = 'inline'; 
+                document.getElementById('Hiuser').style.display = 'inline'; 
+            } else {
+                document.getElementById('logInbutton').style.display = 'inline'; 
+                document.getElementById('logoutButton').style.display = 'none';
+                document.getElementById('Hiuser').style.display = 'none'; 
+            }
+        }
+
+        window.onload = checkLoginStatus;
+
+        function logout() {
+            localStorage.removeItem('userLoggedIn'); 
+            window.location.href = '/index.html'; 
+        }
     </script>
     <footer>
       <p>من خلال رفع صورة، فإنك توافق على شروطنا وقد قرأت سياسة الخصوصية الخاصة بنا</p>

@@ -11,14 +11,24 @@
 
   </head>
   <body dir="rtl">
-    <header>
-      <nav>
-        <ul>
 
-          <!--<li class="login"><a href="logInPage.html">✩ التسجيل / تسجيل الدخول</a></li> -->
+    <header>
+
+      
+      <nav>
+        <ul class="nav-element">
+
+          <li><img id="logo" src="/img/imgOfmainLogo.png" alt="logo"></li>
+          <li>من نحن</li> 
+          <li>خدماتنا</li> 
+          <li> حساباتنا</li> 
+          <li> الدعم الفني</li> 
           <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button></li>
+
+          <!--<li><button id="Hiuser" style="display: none;"> مرحبا بك <img id="profileIcon" src="/img/profileIcon.jpg"></button></li>-->
           <li><button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button></li>
 
+<<<<<<< HEAD
           <li> 
             <button id="Hiuser" style="display: none;">
               مرحبا بك<img id="profileIcon" src="/img/profileIcon.jpg">
@@ -31,8 +41,15 @@
           <li><a href="#">حساباتنا</a></li>
           <li><a href="#">الدعم الفني</a></li>
           <img src="/img/imgOfmainLogo.png" alt="طمني Logo" onclick="window.location.href=''" /> 
+=======
+          <li><button id="Hiuser" style="display: none;"> مرحبا بك </button></li><!-- Appears when already logged in -->
+
+          
+>>>>>>> fe0ca1ec323aa09af054df19f78e30581a25619b
         </ul>
+        
       </nav>
+      
     </header>
 
     <section class="back">
@@ -46,7 +63,7 @@
           <input type="file" name="image" accept="image/*" required>
           <div class="button-container">
             <button id="submitButton" type="submit">أرفق الصورة</button>
-            <button id="addReport" type="button" onclick="window.location.href='mainrecordpage.html'">رفع ملف مسبق للحاله</button>
+            <button id="addReport" type="button" onclick="window.location.href='mainrecordpage.html'">ارفع ملفك الطبي</button>
         </div>
       </form>
       </div>

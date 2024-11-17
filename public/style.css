@@ -4,16 +4,37 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #0B2E34;
     color: #fff;
-    text-align: center;
+   
 }
 
 header {
+    
     background-color: #0B2E34;
-    padding: 10px 0;
+    padding: 10px 20px;
+  
+}
+.nav-element {
+    
+    direction: ltr;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 20px; 
+    padding: 0;
+    margin: 0;
+    
+}
+#logo{
+
+   padding-right: 200px;
+    height:80px;
 }
 
-#logoutButton{
 
+#logoutButton ,#logInbutton{
+
+    margin-left: 150px;
     background-color: #1b717c;
     color: #fff;
     font-weight: bolder;
@@ -26,6 +47,9 @@ header {
     height: 50px;
 
     
+}
+#logInbutton{
+    width: 250px;
 }
 
 #logoutButton:hover{
@@ -98,12 +122,13 @@ header {
     
     background-color: #1b717c;
     color: #fff;
-    font-weight: bolder;
-    font-size: 27px;
+   
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 220px;
+    font-weight: bolder;
+    font-size: 20px;
+    width: 150px;
     height: 50px;
 
 }
@@ -113,25 +138,26 @@ header {
 }
 
 
-
+/*
 nav ul {
     list-style: none;
-    /*no need*/
+   
     padding: 0;
     margin: 0;
-     /*no need*/
+   
     display: flex;
     justify-content: center;
     justify-content: space-around;
    
 
 }
-
+*/
+/*
 nav ul li {
     
-/*Use flex , not padding reham*/
+
     padding-top: 10px;
-    /*margin: 15px;*/ 
+   
 }
 
 nav ul li a {
@@ -159,6 +185,7 @@ img:hover{}
 
 
 .login a {
+   
     background-color: #44a2b6;
     padding: 8px 15px;
     border-radius: 5px;
@@ -170,6 +197,7 @@ img:hover{}
     background-position: center;
     padding: 80px 0;
     color: #fff;
+    text-align: center;
 }
 
 .content h1 {
@@ -211,10 +239,7 @@ footer ul li a img {
     width: 30px;
     height: 30px;
 }
- img {
-    height: 60px;
-    margin-right: 40px;
-}
+ 
 /* shatha end*/
 
 /* Reham start*/
@@ -273,6 +298,7 @@ footer ul li a img {
 
 /***********/
 h2{
+    text-align: center;
     color:#7ce7ff;
 
 }
@@ -331,6 +357,7 @@ h2{
 /****************/
 
 .footerContainer{
+ text-align: center;
  display: flex;
  color:#01353d;
  /*background:linear-gradient(to left, #7ce7ff, #144d52);*/
@@ -338,6 +365,7 @@ h2{
  font-size: 20px;
 
 }
+
 
 .aboutUs{
     
@@ -384,6 +412,7 @@ h2{
 
 #footerSec2{
 
+    text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: larger;

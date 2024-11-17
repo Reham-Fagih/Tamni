@@ -62,11 +62,7 @@ section {
     justify-content: center;
     align-items: center;
 }
-.percentage {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-}
+
 .textscontainer {
     background-color:#0e3a42;
     display: flex;
@@ -74,30 +70,39 @@ section {
     justify-content: center;
     justify-content: space-between;
 }
+
+.percentage {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 h1 {
-    font-size: 40px;
-    margin-right: 400px;
-    padding: 24px;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    margin-left: 25px;
 }
 .textarea { 
-    font-family: 'Arial', sans-serif;
-    font-size: 30px;
-    text-align: center;
-    display: flex;
-    background-color: #D43333;
+    background-color: #80B7C1;
     border-radius: 100px;
-    width: 800px;
-    height: 100px;  
-    margin-left: 500px;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    display: flex;
+    height: 100px;
 }
 
 h2 {
     font-size: 30px;
     background-color:#0B2E34;
-    text-align: right;
+    color: #49CAE0;
+    text-align: center;
 }
 .textarea1 {
-    background-color: #fff;
+    background-color: #B6DDE4;
     color: #0B2E34;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
@@ -107,20 +112,27 @@ h2 {
 }
 #prediction-text{
     width: fit-content;
+    text-align: center;
+    padding: 20px;
+    margin: 17px;
+    color: #0B2E34;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
 }
 h3 {
     font-size: 30px;
     background-color:#0B2E34;
-    text-align: right;
+    color: #49CAE0;
+    text-align: center;
 }
 .textarea2 {
-    background-color: #fff;
+    background-color: #B6DDE4;
     color: #0B2E34;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
     display: flex;
     width: 1000px;
-    height: 150px;
+    height: 250px;
     margin-bottom: 50px;
 }
 

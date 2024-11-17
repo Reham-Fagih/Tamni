@@ -27,11 +27,15 @@
 
 <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 <script>
+<<<<<<< HEAD
     const socket = io('http://localhost:5000'); 
     socket.on('connect', () => {
         console.log('Connected to server:', socket.id);
     });
 
+=======
+    const socket = io();
+>>>>>>> fe0ca1ec323aa09af054df19f78e30581a25619b
     document.getElementById('sendButton').addEventListener('click', sendMessage);
     document.getElementById('messageInput').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') sendMessage();
