@@ -70,20 +70,29 @@ section {
     justify-content: center;
     justify-content: space-between;
 }
+
+.percentage {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 h1 {
     font-size: 30px;
-    color: #49CAE0;
-    background-color:#0B2E34;
+    color: #fff;
     text-align: center;
+    margin-left: 25px;
 }
 .textarea { 
-    background-color: #fff;
-    color: #0B2E34;
+    background-color: #49CAE0;
+    border-radius: 100px;
+    color: #fff;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
     display: flex;
-    width: 1000px;
-    height: 150px;
+    height: 100px;
 }
 
 h2 {
@@ -102,7 +111,7 @@ h2 {
     height: 250px;
 }
 #prediction-text{
-    width: 1000px;
+    width: 650px;
 }
 h3 {
     font-size: 30px;
