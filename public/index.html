@@ -11,27 +11,30 @@
 
   </head>
   <body dir="rtl">
-    <header>
-      <nav>
-        <ul>
 
-          <!--<li class="login"><a href="logInPage.html">✩ التسجيل / تسجيل الدخول</a></li> -->
+    <header>
+
+      
+      <nav>
+        <ul class="nav-element">
+
+          <li><img id="logo" src="/img/imgOfmainLogo.png" alt="logo"></li>
+          <li>من نحن</li> 
+          <li>خدماتنا</li> 
+          <li> حساباتنا</li> 
+          <li> الدعم الفني</li> 
           <li><button id="logInbutton" onclick="window.location.href='logInPage.html'">✩ التسجيل / تسجيل الدخول</button></li>
+
+          <!--<li><button id="Hiuser" style="display: none;"> مرحبا بك <img id="profileIcon" src="/img/profileIcon.jpg"></button></li>-->
           <li><button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button></li>
 
-          <li> 
-            <button id="Hiuser" style="display: none;">
-              مرحبا بك<img id="profileIcon" src="/img/profileIcon.jpg"><!-- Appears when already logged in -->
-            </button> 
-          </li> 
-           
-          <li><a href="#">من نحن</a></li>
-          <li><a href="#">خدماتنا</a></li>
-          <li><a href="#">حساباتنا</a></li>
-          <li><a href="#">الدعم الفني</a></li>
-          <img src="/img/imgOfmainLogo.png" alt="طمني Logo" onclick="window.location.href=''" /> 
+          <li><button id="Hiuser" style="display: none;"> مرحبا بك </button></li><!-- Appears when already logged in -->
+
+          
         </ul>
+        
       </nav>
+      
     </header>
 
     <section class="back">
