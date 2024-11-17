@@ -94,12 +94,32 @@
 //     console.error('Error:', error);
 //   }
 // }
-// function sendMessage() {
-//   const messageInput = document.getElementById("messageInput");
-//   const message = messageInput.value;
+socket.on('receiveMessage', (messageData) => {
+    try {
+        if (!messageData || !messageData.text || !messageData.id) {
+            console.error("Invalid message data:", messageData);
+            return;
+        }
 
-//   if (message.trim() !== "") {
-//       socket.emit("sendMessage", message);
-//       messageInput.value = "";
-//   }
-// }
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.innerText = messageData.text;
+
+        if (messageData.id === socket.id) {
+            messageElement.classList.add('sent');
+        } else {
+            messageElement.classList.add('received');
+        }
+
+        const messagesContainer = document.getElementById('messages');
+        if (messagesContainer) {
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        } else {
+            console.error("Messages container not found.");
+        }
+    } catch (error) {
+        console.error("Error in receiveMessage handler:", error);
+    }
+});
+

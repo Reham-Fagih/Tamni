@@ -195,36 +195,28 @@ app.get('/ChatRoom', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'ChatRoom.html'));
 });
 
-const usersColors = {};  // لتخزين socket.id
-
+const usersColors = {};
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
-    
-    //  لون عشوائي 
-    const userColor = '#' + Math.floor(Math.random()*16777215).toString(16);  
-    usersColors[socket.id] = userColor; 
+
+    const userColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    usersColors[socket.id] = userColor;
+
     socket.on('sendMessage', (message) => {
         const messageData = {
             id: socket.id,
             text: message,
             color: usersColors[socket.id]
         };
-        io.emit('receiveMessage', messageData); 
+        io.emit('receiveMessage', messageData);
     });
 
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
-        delete usersColors[socket.id]; 
+        delete usersColors[socket.id];
     });
 });
-
-const patientRoutes = require('./routes/ patients');
-app.use('/api', patientRoutes);
-app.get('/records', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'RecordsScreen.html'));
-  });
   
-
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });

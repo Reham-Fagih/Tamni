@@ -25,9 +25,12 @@
     </div>
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 <script>
-    const socket = io();
+    const socket = io('http://localhost:5000'); 
+    socket.on('connect', () => {
+        console.log('Connected to server:', socket.id);
+    });
 
     document.getElementById('sendButton').addEventListener('click', sendMessage);
     document.getElementById('messageInput').addEventListener('keypress', (e) => {
@@ -40,11 +43,13 @@
 
         if (message !== "") {
             socket.emit('sendMessage', message);
-            messageInput.value = '';
+            messageInput.value = ''; 
         }
     }
 
     socket.on('receiveMessage', (messageData) => {
+        console.log('Received message:', messageData); 
+
         const messagesContainer = document.getElementById('messages');
         const messageClass = messageData.id === socket.id ? 'sent' : 'received';
 
@@ -57,7 +62,7 @@
     });
 
     function closeChat() {
-        window.location.href = 'index.html'; 
+        window.location.href = 'index.html';
     }
 </script>
 
