@@ -30,43 +30,59 @@
 
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script>
-      const socket = io('http://localhost:5000'); 
-      socket.on('connect', () => {
-          console.log('Connected to server:', socket.id);
+      // Initialize Socket.io connection
+      const socket = io("http://localhost:5000");
+
+      socket.on("connect", () => {
+        console.log("Connected to server:", socket.id);
       });
-  
-      document.getElementById('sendButton').addEventListener('click', sendMessage);
-      document.getElementById('messageInput').addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') sendMessage();
-      });
-  
+
+      // Sending a message
+      document
+        .getElementById("sendButton")
+        .addEventListener("click", sendMessage);
+      document
+        .getElementById("messageInput")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") sendMessage();
+        });
+
       function sendMessage() {
-          const messageInput = document.getElementById('messageInput');
-          const message = messageInput.value.trim();
-  
-          if (message !== "") {
-              socket.emit('sendMessage', message);
-              messageInput.value = ''; 
-          }
+        const messageInput = document.getElementById("messageInput");
+        const message = messageInput.value.trim();
+
+        if (message !== "") {
+          socket.emit("sendMessage", message);
+          messageInput.value = "";
+        }
       }
-  
-      socket.on('receiveMessage', (messageData) => {
-          console.log('Received message:', messageData); 
-  
-          const messagesContainer = document.getElementById('messages');
-          const messageClass = messageData.id === socket.id ? 'sent' : 'received';
-  
-          const messageElement = document.createElement('div');
-          messageElement.classList.add('message', messageClass);
-          messageElement.innerText = messageData.text;
-  
-          messagesContainer.appendChild(messageElement);
-          messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+
+      // Receiving a message
+      socket.on("receiveMessage", (messageData) => {
+        console.log("Received message:", messageData);
+
+        const messagesContainer = document.getElementById("messages");
+        const messageClass = messageData.id === socket.id ? "sent" : "received";
+
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message", messageClass);
+        messageElement.innerText = messageData.text;
+
+        messagesContainer.appendChild(messageElement);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
       });
-  
+
+      // Close chat function
       function closeChat() {
-          window.location.href = 'index.html';
+        const userType = localStorage.getItem("userRole");
+        if (userType === "doctor") {
+          window.location.href = "doctorpage.html";
+        } else if (userType === "patient") {
+          window.location.href = "index.html";
+        } else {
+          alert("لم يتم العثور على دور المستخدم");
+        }
       }
-  </script>
+    </script>
   </body>
 </html>

@@ -1,61 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>إنشاء حساب على طمني</title>
     <link rel="stylesheet" href="signUp.css" />
+  </head>
+  <body>
+    <img src="/img/imgOfmainLogo.png" alt="طمني Logo" />
 
-</head>
+    <div class="container">
+      <div class="content1">
+        <div id="element1">إنشاء حساب على طمني</div>
+        <div id="element2">
+          عندك حساب ؟
+          <a href="./logInPage.html"><b> سجل الدخول بالضغط هنا </b></a>
+        </div>
+      </div>
 
-<body>
-    <img src="/img/imgOfmainLogo.png" alt="طمني Logo" /> 
-    
-<div class="container">
+      <div class="content2">
+        <form id="signUpForm">
+          <label for="username">اسم المستخدم</label>
+          <input type="text" name="username" id="username" required />
 
-<div class="content1">
+          <label for="password">كلمة المرور</label>
+          <input type="password" name="password" id="password" required />
 
-    <div id="element1">إنشاء حساب على طمني</div>
-    <div id="element2"> عندك حساب ؟ <a href="./logInPage.html"><b> سجل الدخول بالضغط هنا </b></a> </div>
+          <label for="role">اختر دورك</label>
+          <select name="role" id="role" required>
+            <option value="patient">مريض</option>
+            <option value="doctor">طبيب</option>
+          </select>
 
+          <button type="submit" id="button">إنشاء الحساب</button>
 
+          <h5>بإنشاءك هذا الحساب انت توافق على شروط الإستخدام والخصوصيه</h5>
+        </form>
 
-</div>
+        <script>
+          document
+            .getElementById("signUpForm")
+            .addEventListener("submit", function (event) {
+              event.preventDefault();
 
-<div class="content2">
+              const username = document.getElementById("username").value;
+              const password = document.getElementById("password").value;
+              const userType = document.getElementById("role").value;
 
-<form action="/signUp" method="POST">
-    <label for="username">اسم المستخدم</label>
-    <input type="text" name="username" id="username" required>
+              if (!username || !password || !userType) {
+                alert("يرجى تعبئة جميع الحقول");
+                return;
+              }
 
-    <label for="password">كلمة المرور</label>
-    <input type="password" name="password" id="password" required>
+              localStorage.setItem("userRole", userType);
+              localStorage.setItem("userLoggedIn", "true");
 
-    <label for="role">اختر دورك</label>
-    <select name="role" id="role" required>
-        <option value="patient">مريض</option>
-        <option value="doctor">طبيب</option>
-    </select>
-
-    <button type="submit" id="button">إنشاء الحساب</button>
-
-    <h5>بإنشاءك هذا الحساب انت توافق على شروط الإستخدام والخصوصيه</h5>
-</form>
-<script>
-    window.onload = function() {
-        localStorage.setItem('userLoggedIn', 'true');
-    }
-</script>
-
-</div>
-
-
-
-</div>
-
-
-
-
-</body>
+              if (userType === "doctor") {
+                window.location.href = "doctorpage.html";
+              } else {
+                window.location.href = "index.html";
+              }
+            });
+        </script>
+      </div>
+    </div>
+  </body>
 </html>
