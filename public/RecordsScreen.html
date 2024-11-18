@@ -150,10 +150,8 @@
         <h1 class="title">جميع التقارير الطبية</h1>
       </header>
       <section class="medical-records" id="records-section">
-        <!-- Records will be dynamically loaded here -->
       </section>
     </div>
-
     <script>
       async function loadPatientRecords() {
         try {
@@ -161,53 +159,42 @@
           if (!response.ok) {
             throw new Error("فشل في جلب السجلات");
           }
-
+    
           const records = await response.json();
           const recordsSection = document.getElementById("records-section");
-
+    
           if (records.length === 0) {
             recordsSection.innerHTML =
               '<p class="no-records">لا توجد سجلات طبية حالياً.</p>';
             return;
           }
-
+    
           records.forEach((patient) => {
             const recordDiv = document.createElement("div");
             recordDiv.classList.add("record");
-
+    
             recordDiv.innerHTML = `
               <div class="title">السجل الطبي</div>
               <div class="details">
-                <div><span class="label">الاسم:</span><span class="value">${
-                  patient.name
-                }</span></div>
-                <div><span class="label">العمر:</span><span class="value">${
-                  patient.age
-                }</span></div>
-                <div><span class="label">الجنس:</span><span class="value">${
-                  patient.gender
-                }</span></div>
-                <div><span class="label">هل تعرضت لمواد كيميائية:</span><span class="value">${
-                  patient.chemicalExposure
-                }</span></div>
-                <div><span class="label">مدة المرض:</span><span class="value">${
-                  patient.illnessDuration
-                }</span></div>
-                <div><span class="label">تاريخ العائلة:</span><span class="value">${
-                  patient.familyHistory
-                }</span></div>
+                <div><span class="label">الاسم:</span><span class="value">${patient.name}</span></div>
+                <div><span class="label">العمر:</span><span class="value">${patient.age}</span></div>
+                <div><span class="label">الجنس:</span><span class="value">${patient.gender}</span></div>
+                <div><span class="label">هل تعرضت لمواد كيميائية:</span><span class="value">${patient.chemicalExposure}</span></div>
+                <div><span class="label">مدة المرض:</span><span class="value">${patient.illnessDuration}</span></div>
+                <div><span class="label">تاريخ العائلة:</span><span class="value">${patient.familyHistory}</span></div>
               </div>
-              <div class="date">تاريخ السجل: ${new Date(
-                patient.date
-              ).toLocaleDateString("ar-SA")}</div>
+              <div class="date">تاريخ السجل: ${new Date(patient.date).toLocaleDateString("ar-SA")}</div>
             `;
-        const chatButton = document.createElement("button");
-        chatButton.textContent = "بدء محادثة مع المريض";
-        chatButton.classList.add("chat-button");
-        chatButton.onclick = () => {
-          window.location.href = `ChatRoom.html?patientId=${patient.id}`;
-        };
-
+    
+            const chatButton = document.createElement("button");
+            chatButton.textContent = "بدء محادثة مع المريض";
+            chatButton.classList.add("chat-button");
+            chatButton.onclick = () => {
+              window.location.href = `ChatRoom.html?patientId=${patient.id}`;
+            };
+    
+            recordDiv.appendChild(chatButton);
+    
             recordsSection.appendChild(recordDiv);
           });
         } catch (error) {
@@ -217,8 +204,9 @@
             '<p class="no-records">حدث خطأ في تحميل السجلات. الرجاء المحاولة لاحقاً.</p>';
         }
       }
-
+    
       window.onload = loadPatientRecords;
     </script>
+    
   </body>
 </html>

@@ -94,6 +94,7 @@
 //     console.error('Error:', error);
 //   }
 // }
+
 socket.on('receiveMessage', (messageData) => {
     try {
         if (!messageData || !messageData.text || !messageData.id) {

@@ -30,43 +30,43 @@
 
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script>
-      const socket = io();
-      document
-        .getElementById("sendButton")
-        .addEventListener("click", sendMessage);
-      document
-        .getElementById("messageInput")
-        .addEventListener("keypress", (e) => {
-          if (e.key === "Enter") sendMessage();
-        });
-
-      function sendMessage() {
-        const messageInput = document.getElementById("messageInput");
-        const message = messageInput.value.trim();
-
-        if (message !== "") {
-          socket.emit("sendMessage", message);
-          messageInput.value = "";
-        }
-      }
-
-      socket.on("receiveMessage", (messageData) => {
-        console.log("Received message:", messageData);
-
-        const messagesContainer = document.getElementById("messages");
-        const messageClass = messageData.id === socket.id ? "sent" : "received";
-
-        const messageElement = document.createElement("div");
-        messageElement.classList.add("message", messageClass);
-        messageElement.innerText = messageData.text;
-
-        messagesContainer.appendChild(messageElement);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      const socket = io('http://localhost:5000'); 
+      socket.on('connect', () => {
+          console.log('Connected to server:', socket.id);
       });
-
-      function closeChat() {
-        window.location.href = "index.html";
+  
+      document.getElementById('sendButton').addEventListener('click', sendMessage);
+      document.getElementById('messageInput').addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') sendMessage();
+      });
+  
+      function sendMessage() {
+          const messageInput = document.getElementById('messageInput');
+          const message = messageInput.value.trim();
+  
+          if (message !== "") {
+              socket.emit('sendMessage', message);
+              messageInput.value = ''; 
+          }
       }
-    </script>
+  
+      socket.on('receiveMessage', (messageData) => {
+          console.log('Received message:', messageData); 
+  
+          const messagesContainer = document.getElementById('messages');
+          const messageClass = messageData.id === socket.id ? 'sent' : 'received';
+  
+          const messageElement = document.createElement('div');
+          messageElement.classList.add('message', messageClass);
+          messageElement.innerText = messageData.text;
+  
+          messagesContainer.appendChild(messageElement);
+          messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+      });
+  
+      function closeChat() {
+          window.location.href = 'index.html';
+      }
+  </script>
   </body>
 </html>
