@@ -283,7 +283,10 @@ footer ul li a img {
     height: 350px;
     width: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+   
     
   
 }
@@ -291,9 +294,13 @@ footer ul li a img {
     width: 150px; 
     height: auto; 
     
+    
 }
 .picDesc{
+    
 
+    text-align: center; 
+    
     font-size: 25px;
     font-weight: bold;
    margin-top: 20px;
