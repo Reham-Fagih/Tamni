@@ -20,7 +20,9 @@ header {
     display: flex;
     align-items: center;
     justify-content:center;
-    gap: 20px; 
+    gap: 50px; 
+    white-space: nowrap;
+    
     padding: 0;
     margin: 0;
     
@@ -38,7 +40,7 @@ header {
     background-color: #1b717c;
     color: #fff;
     font-weight: bolder;
-    font-size: 2.5vw;
+    font-size: 20px;
    
     border: none;
     border-radius: 5px;
