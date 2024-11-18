@@ -180,7 +180,6 @@ app.post('/logInPage', async (req, res) => {
 });
 
 
-
 app.get('/ChatRoom', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'ChatRoom.html'));
 });
@@ -213,6 +212,6 @@ app.use('/api', patientRoutes);
 app.get('/records', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'RecordsScreen.html'));
   });
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
