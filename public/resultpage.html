@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <title>تقرير الحالة</title>
     <link rel="icon" href="/img/imgOfmainLogo.png" type="image/icon"> 
     <link rel="stylesheet" href="resultstyle.css" />
@@ -27,7 +31,7 @@
           <!--<li><button id="Hiuser" style="display: none;"> مرحبا بك <img id="profileIcon" src="/img/profileIcon.jpg"></button></li>-->
           <li><button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button></li>
 
-          <li><button id="Hiuser" style="display: none;"> مرحبا بك </button></li><!-- Appears when already logged in -->
+          <li><button id="Hiuser" style="display: none;"> مرحبا بك </button></li>
 
           
         </ul>
@@ -62,12 +66,18 @@
     </section>
 
     <!-- <script src="script.js"></script> -->
+
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const prediction = urlParams.get('prediction');
-    
-        const diseaseInfo = {
+          const urlParams = new URLSearchParams(window.location.search);
+          let prediction = urlParams.get('prediction');
+
+          if (!prediction) {
+              prediction = sessionStorage.getItem('prediction');
+          }
+
+          if (prediction) {
+              const diseaseInfo = {
           'Eczema': {
             info: `التهاب الجلد التأتبي (الإكزيما) هو مرض يجعل الجلد جافًا ومثيرًا للحكة وملتهبًا
             وهو أكثر شيوعًا لدى الأطفال الصغار، ولكن يمكن أن يحدث في أي مرحلة عمرية. حيث يستمر التهاب الجلد التأتبي لفترة طويلة (مزمن) ويمكن أن تزداد شدته في بعض الأحيان. وقد يكون مسببًا للتهيج ولكنه ليس معديًا.
@@ -143,44 +153,45 @@
             - كنت تعاني من ارتفاع في درجة الحرارة أو أعراض عدوى أخرى`
           }
         };
-    
-        const predictionTextArea = document.getElementById('prediction-text');
-        const predictionInfoTextArea = document.getElementById('prediction-info');
-        const predictionDoctorVisitTextArea = document.getElementById('prediction-doctorvisit');
-    
-        if (prediction) {
-          predictionTextArea.value = prediction;  
-          const info = diseaseInfo[prediction];
-          if (info) {
-            predictionInfoTextArea.value = info.info;
-            predictionDoctorVisitTextArea.value = info.doctorVisit;
+              const info = diseaseInfo[prediction];
+              if (info) {
+                  document.getElementById('prediction-text').value = prediction;
+                  document.getElementById('prediction-info').value = info.info;
+                  document.getElementById('prediction-doctorvisit').value = info.doctorVisit;
+              } else {
+                  console.error('No information available for this prediction.');
+              }
           } else {
-            console.error('No information available for this prediction.');
+              console.error('Prediction not found.');
           }
-        } else {
-          console.error('Prediction not found.');
-        }
       });
 
+      function newDiagnosis() {
+          localStorage.removeItem('prediction');
+          localStorage.removeItem('diseaseInfo');
+          sessionStorage.removeItem('prediction');
+          window.location.href = '/index.html'; 
+      }
       function checkLoginStatus() {
-            if (localStorage.getItem('userLoggedIn') === 'true') {
-                document.getElementById('logInbutton').style.display = 'none'; 
-                document.getElementById('logoutButton').style.display = 'inline'; 
-                document.getElementById('Hiuser').style.display = 'inline'; 
-            } else {
-                document.getElementById('logInbutton').style.display = 'inline'; 
-                document.getElementById('logoutButton').style.display = 'none';
-                document.getElementById('Hiuser').style.display = 'none'; 
-            }
-        }
-
-        window.onload = checkLoginStatus;
-
-        function logout() {
-            localStorage.removeItem('userLoggedIn'); 
-            window.location.href = '/index.html'; 
-        }
-    </script>
+          if (localStorage.getItem('userLoggedIn') === 'true') {
+              document.getElementById('logInbutton').style.display = 'none'; 
+              document.getElementById('logoutButton').style.display = 'inline'; 
+              document.getElementById('Hiuser').style.display = 'inline'; 
+          } else {
+              document.getElementById('logInbutton').style.display = 'inline'; 
+              document.getElementById('logoutButton').style.display = 'none';
+              document.getElementById('Hiuser').style.display = 'none'; 
+          }
+      }
+  
+      window.onload = checkLoginStatus;
+  
+      function logout() {
+          localStorage.removeItem('userLoggedIn');
+          window.location.href = '/index.html';
+      }
+  </script>
+    
     <footer>
       <p>من خلال رفع صورة، فإنك توافق على شروطنا وقد قرأت سياسة الخصوصية الخاصة بنا</p>
     </footer>

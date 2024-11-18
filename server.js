@@ -61,7 +61,6 @@ app.get('/SignUp', (req, res) => {
 });
 
 
-
 app.post('/predict', upload.single('image'), (req, res) => {
     const imagePath = req.file.path;
     console.log('Received file:', imagePath);
@@ -74,7 +73,6 @@ app.post('/predict', upload.single('image'), (req, res) => {
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
       predictionResult += data.toString();  
-      predictionResult += data.toString();  
     });
   
     pythonProcess.stderr.on('data', (data) => {
@@ -83,9 +81,6 @@ app.post('/predict', upload.single('image'), (req, res) => {
   
     pythonProcess.on('close', (code) => {
       if (responseSent) return;
-      if (responseSent) return;
-  
-      responseSent = true;
   
       responseSent = true;
   
@@ -98,22 +93,16 @@ app.post('/predict', upload.single('image'), (req, res) => {
         message: 'Prediction successful',
         prediction: predictionResult.trim() 
       });
-      return res.json({
-        message: 'Prediction successful',
-        prediction: predictionResult.trim() 
-      });
     });
   
     pythonProcess.on('error', (err) => {
-      if (responseSent) return;
       if (responseSent) return;
       responseSent = true;
       console.error(`Error spawning Python process: ${err}`);
       res.status(500).json({ error: 'Error with the Python process' });
     });
-    });
+  });
   
-
 const session = require('express-session');
 
 app.use(session({

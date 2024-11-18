@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <title>طمني</title>
     <link rel="icon" href="/img/imgOfmainLogo.png" type="image/icon"> 
     <link rel="stylesheet" href="style.css" />
@@ -28,24 +32,9 @@
           <!--<li><button id="Hiuser" style="display: none;"> مرحبا بك <img id="profileIcon" src="/img/profileIcon.jpg"></button></li>-->
           <li><button id="logoutButton" style="display: none;" onclick="logout()">تسجيل الخروج</button></li>
 
-<<<<<<< HEAD
-          <li> 
-            <button id="Hiuser" style="display: none;">
-              مرحبا بك<img id="profileIcon" src="/img/profileIcon.jpg">
-              <!-- Appears when already logged in -->
-            </button> 
-          </li> 
-           
-          <li><a href="#">من نحن</a></li>
-          <li><a href="#">خدماتنا</a></li>
-          <li><a href="#">حساباتنا</a></li>
-          <li><a href="#">الدعم الفني</a></li>
-          <img src="/img/imgOfmainLogo.png" alt="طمني Logo" onclick="window.location.href=''" /> 
-=======
           <li><button id="Hiuser" style="display: none;"> مرحبا بك </button></li><!-- Appears when already logged in -->
 
           
->>>>>>> fe0ca1ec323aa09af054df19f78e30581a25619b
         </ul>
         
       </nav>
@@ -72,44 +61,55 @@
 
     <script>
       document.getElementById('upload-form').addEventListener('submit', async function(event) {
-        event.preventDefault();  
-        
-        const formData = new FormData(event.target);
-      
-        const response = await fetch('/predict', {
-          method: 'POST',
-          body: formData,
-        });
-      
-        const data = await response.json();
-        console.log('Response from server:', data);
-      
-        if (data.prediction) {
-          window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
-        } else {
-          console.error('No prediction data found:', data);
-        }
-      });       
-
+          event.preventDefault();
+  
+          localStorage.removeItem('prediction');
+          localStorage.removeItem('diseaseInfo');
+  
+          const formData = new FormData(event.target);  
+  
+          try {
+              const response = await fetch('/predict', {
+                  method: 'POST',
+                  body: formData,
+              });
+  
+              const data = await response.json();
+              console.log('Response from server:', data);
+  
+              if (data.prediction) {
+                  sessionStorage.setItem('prediction', data.prediction);
+                  window.location.href = `resultpage.html?prediction=${encodeURIComponent(data.prediction)}`;
+              } else {
+                  alert('No prediction data found. Please try again.');
+                  console.error('No prediction data found:', data);
+              }
+          } catch (error) {
+              alert('An error occurred while processing the image.');
+              console.error('Error:', error);
+          }
+      });
+  
       function checkLoginStatus() {
-            if (localStorage.getItem('userLoggedIn') === 'true') {
-                document.getElementById('logInbutton').style.display = 'none'; 
-                document.getElementById('logoutButton').style.display = 'inline'; 
-                document.getElementById('Hiuser').style.display = 'inline'; 
-            } else {
-                document.getElementById('logInbutton').style.display = 'inline'; 
-                document.getElementById('logoutButton').style.display = 'none';
-                document.getElementById('Hiuser').style.display = 'none'; 
-            }
-        }
-
-        window.onload = checkLoginStatus;
-
-        function logout() {
-            localStorage.removeItem('userLoggedIn'); 
-            window.location.href = '/index.html'; 
-        }
-    </script>
+          if (localStorage.getItem('userLoggedIn') === 'true') {
+              document.getElementById('logInbutton').style.display = 'none'; 
+              document.getElementById('logoutButton').style.display = 'inline'; 
+              document.getElementById('Hiuser').style.display = 'inline'; 
+          } else {
+              document.getElementById('logInbutton').style.display = 'inline'; 
+              document.getElementById('logoutButton').style.display = 'none';
+              document.getElementById('Hiuser').style.display = 'none'; 
+          }
+      }
+  
+      window.onload = checkLoginStatus;
+  
+      function logout() {
+          localStorage.removeItem('userLoggedIn');
+          window.location.href = '/index.html';
+      }
+  </script>
+  
     <footer>
       <ul>
         <li>
