@@ -38,6 +38,8 @@ app.get('/resultpage', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'resultpage.html'));
 });
 
+
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -121,15 +123,6 @@ app.post('/signUp', async (req, res) => {
         return res.status(400).send('Username, password, and role are required');
     }
 
-    const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{1,}$/; 
-    if (!usernameRegex.test(data.name)) {
-        return res.status(400).send('Username must contain at least 2 characters and cannot start with a number');
-    }
-
-    if (data.password.length < 8) {
-        return res.status(400).send('Password must be at least 8 characters long');
-    }
-
     try {
         const existingUser = await collection.findOne({ name: data.name });
         if (existingUser) {
@@ -167,11 +160,6 @@ app.post('/logInPage', async (req, res) => {
             return res.status(404).send('Username not found');
         }
 
-        const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{1,}$/;
-        if (!usernameRegex.test(req.body.username)) {
-            return res.status(400).send('Invalid username format');
-        }
-        
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
 
         if (isPasswordMatch) {
@@ -190,6 +178,7 @@ app.post('/logInPage', async (req, res) => {
         res.status(500).send('Error during login');
     }
 });
+
 
 
 app.get('/ChatRoom', (req, res) => {
@@ -217,13 +206,12 @@ io.on('connection', (socket) => {
         delete usersColors[socket.id];
     });
 });
-
+  
 const patientRoutes = require('./routes/ patients');
 app.use('/api', patientRoutes);
 app.get('/records', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'RecordsScreen.html'));
   });
-
 server.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
