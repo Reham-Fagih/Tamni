@@ -1,182 +1,182 @@
 /*Start of header css*/
 #head {
-    background-color: #0B2E34;
-    padding: 10px 0;
+  background-color: #0b2e34;
+  padding: 10px 0;
 }
-.login{
-    display: flex;
-    align-items: center
+.login {
+  display: flex;
+  align-items: center;
 }
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
-ul{
-    align-items: center
+ul {
+  align-items: center;
 }
 
 nav ul li {
-    margin: 0 15px;
+  margin: 0 15px;
 }
 
-
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
 }
 
 .login a {
-    background-color: #44a2b6;
-    padding: 8px 15px;
-    border-radius: 5px;
+  background-color: #44a2b6;
+  padding: 8px 15px;
+  border-radius: 5px;
 }
 img {
-    height: 60px;
-    margin-right: 40px;
+  height: 60px;
+  margin-right: 40px;
 }
 /*End of header css*/
 
 /*Start of Body css*/
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #0B2E34;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #0b2e34;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 section {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #1A4A51;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #1a4a51;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .textscontainer {
-    background-color:#0e3a42;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-content: space-between;
+  background-color: #0e3a42;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
 }
 
 .percentage {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h1 {
-    font-size: 30px;
-    color: #fff;
-    text-align: center;
-    margin-left: 25px;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  margin-left: 25px;
 }
-.textarea { 
-    background-color: #80B7C1;
-    border-radius: 100px;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    font-size: 20px;
-    display: flex;
-    height: 100px;
+.textarea {
+  background-color: #80b7c1;
+  border-radius: 100px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  display: flex;
+  height: 100px;
 }
 
 h2 {
-    font-size: 30px;
-    background-color:#0B2E34;
-    color: #49CAE0;
-    text-align: center;
+  font-size: 30px;
+  background-color: #0b2e34;
+  color: #49cae0;
+  text-align: center;
 }
 .textarea1 {
-    background-color: #B6DDE4;
-    color: #0B2E34;
-    font-family: 'Arial', sans-serif;
-    font-size: 20px;
-    display: flex;
-    width: 1000px;
-    height: 250px;
+  background-color: #b6dde4;
+  color: #0b2e34;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  display: flex;
+  width: 1000px;
+  height: 250px;
 }
-#prediction-text{
-    width: fit-content;
-    text-align: center;
-    padding: 20px;
-    margin: 17px;
-    color: #0B2E34;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
+#prediction-text {
+  width: fit-content;
+  text-align: center;
+  padding: 20px;
+  margin: 17px;
+  color: #0b2e34;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
 }
 h3 {
-    font-size: 30px;
-    background-color:#0B2E34;
-    color: #49CAE0;
-    text-align: center;
+  font-size: 30px;
+  background-color: #0b2e34;
+  color: #49cae0;
+  text-align: center;
 }
 .textarea2 {
-    background-color: #B6DDE4;
-    color: #0B2E34;
-    font-family: 'Arial', sans-serif;
-    font-size: 20px;
-    display: flex;
-    width: 1000px;
-    height: 250px;
-    margin-bottom: 50px;
+  background-color: #b6dde4;
+  color: #0b2e34;
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  display: flex;
+  width: 1000px;
+  height: 250px;
+  margin-bottom: 50px;
 }
 
 /* Start of buttons CSS */
 .buttonscontainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .button1 {
-    font-size: 20px;
-    width: 300px;
-    height: 50px;
-    background-color: #0B2E34;
-    color: #49CAE0;
-    text-decoration: underline;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
+  font-size: 20px;
+  width: 300px;
+  height: 50px;
+  background-color: #0b2e34;
+  color: #49cae0;
+  text-decoration: underline;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
 .buttons {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 
-.button2, .button3 {
-    font-size: 20px;
-    width: 200px;
-    height: 50px;
-    background-color: #3AA8B7;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    margin-bottom: 50px;
+.button2,
+.button3 {
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  background-color: #3aa8b7;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-bottom: 50px;
 }
 
 /* End of buttons CSS */
 
 footer {
-    font-size: 20px;
+  font-size: 20px;
 }

@@ -1,61 +1,46 @@
-body{
-
-    background-color: #0B2E34;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    flex-wrap: wrap-reverse;
-    column-gap: 50px;
-
+body {
+  background-color: #0b2e34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  flex-wrap: wrap-reverse;
+  column-gap: 50px;
 }
-img{
-    
-
-    width: 300px;
+img {
+  width: 300px;
 }
 
-
-button{
-
-    border-radius: 20px;
-    font-size: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    align-self: center;
-    width: 300px;
-    margin-top: 50px;
-    
-
+button {
+  border-radius: 20px;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-self: center;
+  width: 300px;
+  margin-top: 50px;
 }
-#doctorSignUp{
-    margin-top: -1px;
+#doctorSignUp {
+  margin-top: -1px;
 }
-button:hover{
-    background-color:#0B2E34
+button:hover {
+  background-color: #0b2e34;
 }
 
-a:any-link{
+a:any-link {
+  color: #0b2e34;
+}
+a:visited {
+  color: #0b2e34;
+}
+a:hover {
+  color: #69b8ca;
+}
 
-    color: #0B2E34;  
-  }
-  a:visited{
-  
-    color: #0B2E34; 
-  
-  }
-  a:hover{
-  
-      color:#69b8ca;
-  
-  }
-
-.container{
-    
-   
-background-color: aliceblue;
-width: 400px;
-border-radius: 10px;
+.container {
+  background-color: aliceblue;
+  width: 400px;
+  border-radius: 10px;
 }
 /* center the container 
 
@@ -68,65 +53,54 @@ transform: translate(-50%, -50%);
 }*/
 
 /*h3 in content1*/
-h3{
-
-    display: flex;
-
+h3 {
+  display: flex;
 }
 
-
-.content1{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding:  50px;
+.content1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px;
 }
-#element1{
-
-    font-size: 30px;
-    font-weight: bold;
+#element1 {
+  font-size: 30px;
+  font-weight: bold;
 }
 
-#element2{
-
-    margin-top: 5px;
-    margin-bottom: 25px;
+#element2 {
+  margin-top: 5px;
+  margin-bottom: 25px;
 }
-
-
 
 form {
-    margin-top: -65px;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    padding: 30px;
-    gap: 10px;
-    
+  margin-top: -65px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 30px;
+  gap: 10px;
 }
 
-label{
-
-    font-size: 15px;
-} 
-
-input{
-
-    background-color: aliceblue;
-    border-width: 1px; border-color:gray;
-    border-radius: 5px;
-    width: 300px;
+label {
+  font-size: 15px;
 }
 
-button{
-
-background-color: #69b8ca;
-border: thin;
-color: aliceblue;
-
+input {
+  background-color: aliceblue;
+  border-width: 1px;
+  border-color: gray;
+  border-radius: 5px;
+  width: 300px;
 }
 
-h5{
-    align-self: center;
-    text-decoration-line: underline;
+button {
+  background-color: #69b8ca;
+  border: thin;
+  color: aliceblue;
+}
+
+h5 {
+  align-self: center;
+  text-decoration-line: underline;
 }

@@ -1,146 +1,121 @@
 /* shatha start*/
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #0B2E34;
-    color: #fff;
-   
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #0b2e34;
+  color: #fff;
 }
 
 header {
-    
-    background-color: #0B2E34;
-    padding: 10px 20px;
-  
+  background-color: #0b2e34;
+  padding: 10px 20px;
 }
 .nav-element {
-    
-    direction: ltr;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    gap: 50px; 
-    white-space: nowrap;
-    
-    padding: 0;
-    margin: 0;
-    
-}
-#logo{
+  direction: ltr;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  white-space: nowrap;
 
-   padding-right: 200px;
-    height:80px;
+  padding: 0;
+  margin: 0;
+}
+#logo {
+  padding-right: 200px;
+  height: 80px;
 }
 
+#logoutButton,
+#logInbutton {
+  margin-left: 150px;
+  background-color: #1b717c;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
 
-#logoutButton ,#logInbutton{
-
-    margin-left: 150px;
-    background-color: #1b717c;
-    color: #fff;
-    font-weight: bolder;
-    font-size: 20px;
-   
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 150px;
-    height: 50px;
-
-    
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
 }
-#logInbutton{
-
-    white-space: nowrap; 
-    width: 70%;
+#logInbutton {
+  white-space: nowrap;
+  width: 70%;
 }
 
-#logoutButton:hover{
-
-    background-color: #44a2b6;
-
+#logoutButton:hover {
+  background-color: #44a2b6;
 }
 
-#submitButton{
+#submitButton {
+  background-color: #1b717c;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
 
-    background-color: #1b717c;
-    color: #fff;
-    font-weight: bolder;
-    font-size: 20px;
-   
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 150px;
-    height: 50px;
-    
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
 }
 
-#addReport{
+#addReport {
+  background-color: #1b717c;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
 
-    background-color: #1b717c;
-    color: #fff;
-    font-weight: bolder;
-    font-size: 20px;
-   
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 150px;
-    height: 50px;
-    
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
 }
 
 .button-container {
-    display: flex; 
-    gap: 10px; 
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-
-#submitButton:hover{
-    
-    background-color: #44a2b6;
-
+#submitButton:hover {
+  background-color: #44a2b6;
 }
 
-#profileIcon{
-
- width: 35px;
- height: 35px;
- border-radius: 50%;
-
+#profileIcon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }
 
-#Hiuser{
+#Hiuser {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 30px;
+  padding-right: 20px;
 
-        
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding-left: 30px;
-    padding-right: 20px;
-    
-    background-color: #1b717c;
-    color: #fff;
-   
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bolder;
-    font-size: 20px;
-    width: 150px;
-    height: 50px;
+  background-color: #1b717c;
+  color: #fff;
 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 20px;
+  width: 150px;
+  height: 50px;
 }
 
-#Hiuser:hover{
-    background-color: #44a2b6;
+#Hiuser:hover {
+  background-color: #44a2b6;
 }
-
 
 /*
 nav ul {
@@ -183,364 +158,330 @@ nav ul li a:hover{
    
 /*add somtheing indecate user can clk on it to go home page
 img:hover{}
-*/ 
-
-
-
+*/
 
 .login a {
-   
-    background-color: #44a2b6;
-    padding: 8px 15px;
-    border-radius: 5px;
+  background-color: #44a2b6;
+  padding: 8px 15px;
+  border-radius: 5px;
 }
 
 .back {
-    background-image: url('/img/imgOfMainHeader.png');
-    background-size: cover;
-    background-position: center;
-    padding: 80px 0;
-    color: #fff;
-    text-align: center;
+  background-image: url("/img/imgOfMainHeader.png");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  color: #fff;
+  text-align: center;
 }
 
 .content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 .content p {
-    font-size: 20px;
-    margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 #logInbutton {
-    background-color: #1b717c;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
+  background-color: #1b717c;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 #logInbutton:hover {
-    background-color: #44a2b6;
+  background-color: #44a2b6;
 }
 
 footer ul {
-    list-style: none;
-    display: flex;
-    justify-content: left;
-    margin: 10px;
-    padding: 30px 0;
+  list-style: none;
+  display: flex;
+  justify-content: left;
+  margin: 10px;
+  padding: 30px 0;
 }
 
 footer ul li {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 footer ul li a img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
- 
+
 /* shatha end*/
 
 /* Reham start*/
-.content2{
-
-   
-    padding-right: 50px;
-    background-color: #01353d;
-    height: 200px;
-    width: auto;
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-    
+.content2 {
+  padding-right: 50px;
+  background-color: #01353d;
+  height: 200px;
+  width: auto;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
 }
-#text1{
-
-    padding-top: 50px;
-    color:#7ce7ff;
-    font-size: 48px;
-    font-weight: bold;
-    
+#text1 {
+  padding-top: 50px;
+  color: #7ce7ff;
+  font-size: 48px;
+  font-weight: bold;
 }
-#text2{
-    
-    padding-top: 20px;
-    font-size: 35px;
-    font-weight: bold;
-
+#text2 {
+  padding-top: 20px;
+  font-size: 35px;
+  font-weight: bold;
 }
 
-
-.content22{
-    
-    padding-top: 50px;
-    background-color: #01353d;
-    height: 350px;
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-   
-    
-  
+.content22 {
+  padding-top: 50px;
+  background-color: #01353d;
+  height: 350px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 .content22 img {
-    width: 150px; 
-    height: auto; 
-    
-    
+  width: 150px;
+  height: auto;
 }
-.picDesc{
-    
+.picDesc {
+  text-align: center;
 
-    text-align: center; 
-    
-    font-size: 25px;
-    font-weight: bold;
-   margin-top: 20px;
-   
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 /***********/
-h2{
-    text-align: center;
-    color:#7ce7ff;
-
+h2 {
+  text-align: center;
+  color: #7ce7ff;
 }
 /***********/
 
-.container{
-    
-    display: flex;
-    justify-content: space-around;
-    height: 1000px;
-
-    }
-
-    
-   
-#p1 , #p2, #p3, #p4{
-
-    padding: 20px;
-    border-radius: 10px;
-    text-align:right;
-    color: #01353d;
-    /*background:linear-gradient(to left, rgb(194, 249, 255),#438493);*/
-    background-color:#7ce7ff;
-
-
-    height:120x;
-    width: 70%;
-    margin-top: 70px;
-    
+.container {
+  display: flex;
+  justify-content: space-around;
+  height: 1000px;
 }
 
+#p1,
+#p2,
+#p3,
+#p4 {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: right;
+  color: #01353d;
+  /*background:linear-gradient(to left, rgb(194, 249, 255),#438493);*/
+  background-color: #7ce7ff;
+
+  height: 120x;
+  width: 70%;
+  margin-top: 70px;
+}
 
 .content3 img {
-
-    margin-left: 50px;
-    width: 170px; 
-    height: auto;  
-    margin-top: -160px;
-    float: left;
-    box-shadow: -30px 30px 0px rgba(0, 0, 0, 0.5);
- 
-
+  margin-left: 50px;
+  width: 170px;
+  height: auto;
+  margin-top: -160px;
+  float: left;
+  box-shadow: -30px 30px 0px rgba(0, 0, 0, 0.5);
 }
 
-#p3pic3{
-   margin-top: 15px;
+#p3pic3 {
+  margin-top: 15px;
 }
 
 /*******Assign id = EndPageFooter *********/
-#EndPageFooter{
-   background-color:#144d52;
-   padding: 0;
-   display: flex;
-   flex-direction: column;
+#EndPageFooter {
+  background-color: #144d52;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 /****************/
 
-.footerContainer{
- text-align: center;
- display: flex;
- color:#01353d;
- /*background:linear-gradient(to left, #7ce7ff, #144d52);*/
- background-color:#7ce7ff;
- font-size: 20px;
-
+.footerContainer {
+  text-align: center;
+  display: flex;
+  color: #01353d;
+  /*background:linear-gradient(to left, #7ce7ff, #144d52);*/
+  background-color: #7ce7ff;
+  font-size: 20px;
 }
 
-
-.aboutUs{
-    
-    flex-grow: 1;
-    flex-basis: 100%;
+.aboutUs {
+  flex-grow: 1;
+  flex-basis: 100%;
 }
-.fastLink{
-
-    flex-grow: 1;
-    flex-basis: 100%;
+.fastLink {
+  flex-grow: 1;
+  flex-basis: 100%;
 }
-.impotLink{
-    flex-grow: 1;
-    flex-basis: 100%;
+.impotLink {
+  flex-grow: 1;
+  flex-basis: 100%;
 }
-.contact{
-   
-    font-size: larger;
-    flex-grow: 1;
-    flex-basis: 100%;
+.contact {
+  font-size: larger;
+  flex-grow: 1;
+  flex-basis: 100%;
 }
 
-#contactDesc{
-
-    font-size: 15px;
-    font-weight: lighter;
-    margin-top: -15px;
-    margin-left: -100px;
+#contactDesc {
+  font-size: 15px;
+  font-weight: lighter;
+  margin-top: -15px;
+  margin-left: -100px;
 }
 
 .footerContainer h4 {
-
-    text-decoration:underline;
-  
-   
+  text-decoration: underline;
 }
-.footerContainer p{
-
-    
-    font-size: 18px;
-    font-weight: bold;
+.footerContainer p {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-
-#footerSec2{
-
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: larger;
+#footerSec2 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: larger;
 }
-
 
 /***Reham end****/
 
 /*****Shatha start*****/
 .BodyPart3 {
-    width: 80%;
-    max-width: 861px;
-    height: 396px;
-    position: relative;
-    margin: 0 auto;
-    top: 5%;
+  width: 80%;
+  max-width: 861px;
+  height: 396px;
+  position: relative;
+  margin: 0 auto;
+  top: 5%;
 }
 
 .Bubble {
-    width: 20%;
-    height: auto;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: linear-gradient(to bottom, #286e7a, #49c9e0);
-    position: absolute;
+  width: 20%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #286e7a, #49c9e0);
+  position: absolute;
 }
 
-.Bubble1 { left: 0; top: 0; }
-.Bubble2 { left: 10%; top: 5%; }
-.Bubble3 { left: 65%; top: 50%; }
-.Bubble4 { left: 75%; top: 58%; }
+.Bubble1 {
+  left: 0;
+  top: 0;
+}
+.Bubble2 {
+  left: 10%;
+  top: 5%;
+}
+.Bubble3 {
+  left: 65%;
+  top: 50%;
+}
+.Bubble4 {
+  left: 75%;
+  top: 58%;
+}
 
 .TextMainBackground {
-    width: 90%;
-    max-width: 716px;
-    height: 289px;
-    border-radius: 30px;
-    background: linear-gradient(to bottom, #1a4a51, #257b88);
-    position: absolute;
-    left: 5%;
-    top: 12%;
+  width: 90%;
+  max-width: 716px;
+  height: 289px;
+  border-radius: 30px;
+  background: linear-gradient(to bottom, #1a4a51, #257b88);
+  position: absolute;
+  left: 5%;
+  top: 12%;
 }
 
 .SupportText {
-    width: 80%;
-    max-width: 445px;
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 35%;
+  width: 80%;
+  max-width: 445px;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 35%;
 }
 /********Shatha end********/
 
 /*Mawadah start*/
 .inbox {
-    background-image: url('/img/imgOfMainHeader.png');
-    background-size: cover;
-    background-position: center;
-    padding: 80px 0;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-  }
-  
-  .inbox h2 {
-    font-size: 40px;
-    color: #0B2E34;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .patient-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 700px;
-  }
-  
-  .patient {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px;
-    background-color: #44a2b6;
-    border-radius: 5px;
-  }
-  
-  .patient p {
-    margin: 0;
-    font-size: 20px;
-  }
-  
-  .patient button {
-    padding: 5px 10px;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #1a4a51;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .recordbutton button{
+  background-image: url("/img/imgOfMainHeader.png");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
 
-    border-radius: 20px;
-    font-size: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: none;
-    color: #ffffff;
-    background-color: #0B2E34;
-    align-self: center;
-    width: 300px;
-    margin-top: 50px;
+.inbox h2 {
+  font-size: 40px;
+  color: #0b2e34;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
+.patient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 700px;
+}
+
+.patient {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  background-color: #44a2b6;
+  border-radius: 5px;
+}
+
+.patient p {
+  margin: 0;
+  font-size: 20px;
+}
+
+.patient button {
+  padding: 5px 10px;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #1a4a51;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.recordbutton button {
+  border-radius: 20px;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  color: #ffffff;
+  background-color: #0b2e34;
+  align-self: center;
+  width: 300px;
+  margin-top: 50px;
 }

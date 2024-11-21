@@ -1,229 +1,225 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 #head {
-    background-color: #0B2E34;
-    padding: 10px 0;
+  background-color: #0b2e34;
+  padding: 10px 0;
 }
 .choose {
-    list-style: none;
-    margin: 10px 0;
+  list-style: none;
+  margin: 10px 0;
 }
 
 .choose a {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    display: inline-block;
-    transition: all 0.3s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .choose a:hover {
-    background-color: #f0f8ff;
-    color: #0056b3;
-    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.2);
+  background-color: #f0f8ff;
+  color: #0056b3;
+  box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.2);
 }
-
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
-ul{
-    align-items: center
+ul {
+  align-items: center;
 }
 
 nav ul li {
-    margin: 0 15px;
+  margin: 0 15px;
 }
 
-
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
 }
 
 img {
-    height: 60px;
-    margin-right: 40px;
+  height: 60px;
+  margin-right: 40px;
 }
 body {
-    font-family: 'Rubik', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #0B2E34;
+  font-family: "Rubik", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0b2e34;
 }
 
 .FindDoctorsScreen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background: #0B2E34;
-    overflow: hidden;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #0b2e34;
+  overflow: hidden;
+  position: relative;
 }
 
 .Bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
-.Ellipse142, .Ellipse143 {
-    position: absolute;
-    border-radius: 9999px;
+.Ellipse142,
+.Ellipse143 {
+  position: absolute;
+  border-radius: 9999px;
 }
 
 .Ellipse142 {
-    width: 250px;
-    height: 250px;
-    background: rgba(96, 205, 255, 0.67);
-    top: -80px;
-    left: -80px;
-    filter: blur(100px);
+  width: 250px;
+  height: 250px;
+  background: rgba(96, 205, 255, 0.67);
+  top: -80px;
+  left: -80px;
+  filter: blur(100px);
 }
 
 .Ellipse143 {
-    width: 250px;
-    height: 250px;
-    background: rgba(14, 190, 126, 0.30);
-    bottom: -80px;
-    right: -80px;
-    filter: blur(100px);
+  width: 250px;
+  height: 250px;
+  background: rgba(14, 190, 126, 0.3);
+  bottom: -80px;
+  right: -80px;
+  filter: blur(100px);
 }
 
 .Search {
-    width: 90%;
-    max-width: 500px;
-    margin-top: 20px;
-    z-index: 1;
+  width: 90%;
+  max-width: 500px;
+  margin-top: 20px;
+  z-index: 1;
 }
 
 .Rectangle17 {
-    width: 100%;
-    height: 50px;
-    background: white;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
+  width: 100%;
+  height: 50px;
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
 }
 
 .SearchInput {
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
 }
 
 .Headline {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  z-index: 1;
 }
 
 .Group {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .BackArrow {
-    font-size: 24px; 
-    color: #f8f8f8;
-    margin-right: 8px;
-    cursor: pointer;
-    
+  font-size: 24px;
+  color: #f8f8f8;
+  margin-right: 8px;
+  cursor: pointer;
 }
 
-
 .HeadlineText {
-    color: #f8f8f8;
-    font-size: 20px;
+  color: #f8f8f8;
+  font-size: 20px;
 }
 
 .AllDoctors {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 20px 0;
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  overflow-y: auto;
 }
 
 .Doctor {
-    display: flex;
-    align-items: center;
-    width: 90%;
-    max-width: 500px;
-    background: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
 }
 
 .Image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 15px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 .Text {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .DoctorName {
-    font-size: 18px;
-    color: #333;
-    font-weight: 600;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
 }
 
 .Specialization {
-    font-size: 13px;
-    color: #44a2b6;
-    margin-top: 4px;
+  font-size: 13px;
+  color: #44a2b6;
+  margin-top: 4px;
 }
 
 .Availability {
-    font-size: 12px;
-    color: #333;
-    margin-top: 6px;
+  font-size: 12px;
+  color: #333;
+  margin-top: 6px;
 }
 
 .Available {
-    color: #0EBE7F;
+  color: #0ebe7f;
 }
 
 .Unavailable {
-    color: #D9534F;
+  color: #d9534f;
 }
 
 .talk-now {
-    background-color: #44a2b6;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
+  background-color: #44a2b6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}

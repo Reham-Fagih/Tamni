@@ -1,5 +1,5 @@
 // // async function handleSubmit(event) {
-// //   event.preventDefault();  
+// //   event.preventDefault();
 
 // //   const formData = new FormData(event.target);
 
@@ -9,7 +9,7 @@
 // //   });
 
 // //   const data = await response.json();
-// //   console.log('Response from server:', data);  
+// //   console.log('Response from server:', data);
 
 // //   const resultContainer = document.getElementById('result-container');
 
@@ -33,8 +33,6 @@
 
 // // }
 
-
-
 // function getQueryParam(param) {
 //     const urlParams = new URLSearchParams(window.location.search);
 //     return urlParams.get(param);
@@ -49,11 +47,9 @@
 //     document.querySelector("#Hiuser").style.display = "none";
 //   }
 
-
 // async function handleAddReport(event) {
-//   event.preventDefault();  
+//   event.preventDefault();
 
-  
 //   const formData = new FormData();
 //   formData.append('reportData', 'Sample report data');
 
@@ -66,7 +62,7 @@
 //     console.log('Response from server:', data);
 
 //     const resultContainer = document.getElementById('result-container');
-//     resultContainer.innerHTML = ''; 
+//     resultContainer.innerHTML = '';
 
 //     if (data.message) {
 //       const messageElem = document.createElement('p');
@@ -87,40 +83,39 @@
 //     console.log('Delete response:', data);
 
 //     if (data.message) {
-//       alert(data.message);  
-//       document.getElementById(`record-${recordId}`).remove(); 
+//       alert(data.message);
+//       document.getElementById(`record-${recordId}`).remove();
 //     }
 //   } catch (error) {
 //     console.error('Error:', error);
 //   }
 // }
 
-socket.on('receiveMessage', (messageData) => {
-    try {
-        if (!messageData || !messageData.text || !messageData.id) {
-            console.error("Invalid message data:", messageData);
-            return;
-        }
-
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message');
-        messageElement.innerText = messageData.text;
-
-        if (messageData.id === socket.id) {
-            messageElement.classList.add('sent');
-        } else {
-            messageElement.classList.add('received');
-        }
-
-        const messagesContainer = document.getElementById('messages');
-        if (messagesContainer) {
-            messagesContainer.appendChild(messageElement);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        } else {
-            console.error("Messages container not found.");
-        }
-    } catch (error) {
-        console.error("Error in receiveMessage handler:", error);
+socket.on("receiveMessage", (messageData) => {
+  try {
+    if (!messageData || !messageData.text || !messageData.id) {
+      console.error("Invalid message data:", messageData);
+      return;
     }
-});
 
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("message");
+    messageElement.innerText = messageData.text;
+
+    if (messageData.id === socket.id) {
+      messageElement.classList.add("sent");
+    } else {
+      messageElement.classList.add("received");
+    }
+
+    const messagesContainer = document.getElementById("messages");
+    if (messagesContainer) {
+      messagesContainer.appendChild(messageElement);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    } else {
+      console.error("Messages container not found.");
+    }
+  } catch (error) {
+    console.error("Error in receiveMessage handler:", error);
+  }
+});

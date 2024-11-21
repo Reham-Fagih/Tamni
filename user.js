@@ -1,5 +1,5 @@
-const User = require('./db');
-const bcrypt = require('bcrypt');
+const User = require("./db");
+const bcrypt = require("bcrypt");
 
 async function createUser(name, password) {
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -13,5 +13,5 @@ async function findUserByName(name) {
 
 module.exports = {
   createUser,
-  findUserByName
+  findUserByName,
 };

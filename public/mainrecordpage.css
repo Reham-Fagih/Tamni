@@ -1,147 +1,145 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Rubik', sans-serif;
-  }
-  
-  .MedicalRecordsScreen01 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
-    position: relative;
-  }
-  
-
-  .Bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  
-  .Ellipse143, .Ellipse142 {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-  }
-  
-  .Ellipse143 {
-    width: 250px;
-    height: 250px;
-    left: 20%;
-    top: 60%;
-    background: rgba(44, 185, 255, 0.3);
-  }
-  
-  .Ellipse142 {
-    width: 200px;
-    height: 200px;
-    left: 10px;
-    top: 10px;
-    background: rgba(96, 205, 255, 0.72);
-  }
-  
-  .HeaderSection {
-    display: flex;
-    align-items: center;
-    margin-top: 60px;
-    justify-content: center;
-  }
-  
-  .go-back {
-    font-size: 16px;
-    padding: 8px 12px;
-    margin-right: 10px;
-    background-color: #44A2B6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-  
-  .MainTitle {
-    color: #333;
-    font-size: 32px;
-    font-weight: 500;
-    text-align: left;
-    margin-top: 0;
-  }
-  
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Rubik", sans-serif;
+}
 
-  .Medicalrecord1 {
-    width: 158px;
-    height: 180px;
-    margin: 20px 0;
-    position: relative;
-    z-index: 1; 
-  }
+.MedicalRecordsScreen01 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  position: relative;
+}
 
-  .Text {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .Title {
-    color: #222;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  
-  .Subtitle {
-    color: #677294;
-    font-size: 14px;
-    line-height: 1.5;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .Button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 270px;
-    height: 58px;
-    background-color: #44A2B6;
-    border-radius: 6px;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    margin: 40px 0;
-  }
-  
-  .AccountSection {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .FooterIcon {
-    color: black;
-    font-size: 24px;
-    text-decoration: underline;
-  }
-  
-  .AccountIcon {
-    width: 30px;
-    height: 30px;
-    margin-left: 8px;
-    cursor: pointer;
-  }
+.Bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.Ellipse143,
+.Ellipse142 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.Ellipse143 {
+  width: 250px;
+  height: 250px;
+  left: 20%;
+  top: 60%;
+  background: rgba(44, 185, 255, 0.3);
+}
+
+.Ellipse142 {
+  width: 200px;
+  height: 200px;
+  left: 10px;
+  top: 10px;
+  background: rgba(96, 205, 255, 0.72);
+}
+
+.HeaderSection {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  justify-content: center;
+}
+
+.go-back {
+  font-size: 16px;
+  padding: 8px 12px;
+  margin-right: 10px;
+  background-color: #44a2b6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.MainTitle {
+  color: #333;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: left;
+  margin-top: 0;
+}
+
+.Medicalrecord1 {
+  width: 158px;
+  height: 180px;
+  margin: 20px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.Text {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.Title {
+  color: #222;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.Subtitle {
+  color: #677294;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
+  height: 58px;
+  background-color: #44a2b6;
+  border-radius: 6px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 40px 0;
+}
+
+.AccountSection {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.FooterIcon {
+  color: black;
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+.AccountIcon {
+  width: 30px;
+  height: 30px;
+  margin-left: 8px;
+  cursor: pointer;
+}
