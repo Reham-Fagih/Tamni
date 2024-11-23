@@ -103,10 +103,8 @@ app.post("/predict", upload.single("image"), (req, res) => {
 });
 app.get("/api/doctors", async (req, res) => {
   try {
-    // Use the Mongoose model to query for doctors
-    const doctors = await collection.find({ role: "doctor" }); // Query users with role "doctor"
+    const doctors = await collection.find({ role: "doctor" });
 
-    // Send the doctors data as a JSON response
     res.json(doctors);
   } catch (error) {
     console.error("Error fetching doctors:", error);
