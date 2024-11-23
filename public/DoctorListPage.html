@@ -13,17 +13,19 @@
         <div class="Ellipse143"></div>
       </div>
 
-      <body dir="rtl">
-        <header id="head">
-          <nav>
-            <ul>
-              <li class="choose"><a href="#">يرجى اختيار الطبيب الذي ترغب في التواصل معه</a></li>
-              <li><a href="index.html"></a>
-                <img id="Logo" src="/img/imgOfmainLogo.png" alt="طمني Logo" />
-              </li>
-            </ul>
-          </nav>
-        </header>
+      <header id="head">
+        <nav>
+          <ul>
+            <li class="choose">
+              <a href="#">يرجى اختيار الطبيب الذي ترغب في التواصل معه</a>
+            </li>
+            <li>
+              <a href="index.html"></a>
+              <img id="Logo" src="/img/imgOfmainLogo.png" alt="طمني Logo" />
+            </li>
+          </ul>
+        </nav>
+      </header>
 
       <div class="Headline">
         <div class="Group">
@@ -32,58 +34,69 @@
             class="BackArrow"
             onclick="window.location.href='resultpage.html'"
           >
-            &#8592;
+            ←
           </div>
         </div>
       </div>
 
-      <div class="AllDoctors">
-        <div class="Doctor">
-          <img class="Image" src="/img/femDoctor.png" alt="Doctor Yara" />
-          <div class="Text">
-            <div class="DoctorName">د.يارا الشريف</div>
-            <div class="Specialization">أخصائي واستشاري امراض جلدية</div>
-            
-          </div>
-          <button
-            class="talk-now"
-            onclick="window.location.href='ChatRoom.html'"
-          >
-            تحدث الان
-          </button>
-        </div>
-        <div class="Doctor">
-          <img class="Image" src="/img/femDoctor.png" alt="Doctor Nora" />
-          <div class="Text">
-            <div class="DoctorName">د.نوره القحطاني</div>
-            <div class="Specialization">أخصائي واستشاري امراض جلدية</div>
-          </div>
-          <button
-            class="talk-now"
-            onclick="window.location.href='ChatRoom.html'"
-          >
-            تحدث الان
-          </button>
-        </div>
-        <div class="Doctor">
-          <img class="Image" src="/img/NEWMALEICON.png" alt="Doctor Hamdan" />
-          <div class="Text">
-            <div class="DoctorName">د.حمدان العبدالله</div>
-            <div class="Specialization">أخصائي واستشاري امراض جلدية</div>
-          </div>
-          <button
-            class="talk-now"
-            onclick="window.location.href='ChatRoom.html'"
-          >
-            تحدث الان
-          </button>
-        </div>
+      <div class="AllDoctors" id="doctor-list-container">
+        <!-- Doctors will be dynamically added here -->
       </div>
     </div>
+
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          sessionStorage.setItem('prediction', sessionStorage.getItem('prediction'));
+      document.addEventListener("DOMContentLoaded", async function () {
+        try {
+          const response = await fetch("/api/doctors");
+          const doctors = await response.json();
+
+          console.log("Doctors:", doctors);
+
+          if (Array.isArray(doctors)) {
+            const doctorListContainer = document.getElementById(
+              "doctor-list-container"
+            );
+
+            doctors.forEach((doctor) => {
+              const doctorDiv = document.createElement("div");
+              doctorDiv.classList.add("Doctor");
+
+              const doctorImage = document.createElement("img");
+              doctorImage.classList.add("Image");
+              doctorImage.src = "img/profileIcon.jpg";
+              doctorImage.alt = doctor.name;
+
+              const doctorNameDiv = document.createElement("div");
+              doctorNameDiv.classList.add("DoctorName");
+              doctorNameDiv.textContent = doctor.name; // Set the doctor's name from the data
+
+              const talkButton = document.createElement("button");
+              talkButton.classList.add("talk-now");
+              talkButton.textContent = "تحدث الان";
+              talkButton.onclick = function () {
+                window.location.href = `ChatRoom.html?doctorId=${doctor._id}`;
+              };
+
+              doctorDiv.appendChild(doctorImage);
+              doctorDiv.appendChild(doctorNameDiv);
+              doctorDiv.appendChild(talkButton);
+
+              doctorListContainer.appendChild(doctorDiv);
+            });
+          } else {
+            console.error("Doctors data is not an array:", doctors);
+          }
+        } catch (error) {
+          console.error("Error fetching doctor data:", error);
+        }
       });
-  </script>
+
+      document.addEventListener("DOMContentLoaded", function () {
+        sessionStorage.setItem(
+          "prediction",
+          sessionStorage.getItem("prediction")
+        );
+      });
+    </script>
   </body>
 </html>

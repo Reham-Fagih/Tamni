@@ -64,7 +64,7 @@ app.post("/predict", upload.single("image"), (req, res) => {
   let responseSent = false;
   let predictionResult = "";
 
-  const pythonProcess = spawn("python", [
+  const pythonProcess = spawn("python3", [
     path.join(__dirname, "model.py"),
     imagePath,
   ]);
@@ -100,6 +100,18 @@ app.post("/predict", upload.single("image"), (req, res) => {
     console.error(`Error spawning Python process: ${err}`);
     res.status(500).json({ error: "Error with the Python process" });
   });
+});
+app.get("/api/doctors", async (req, res) => {
+  try {
+    // Use the Mongoose model to query for doctors
+    const doctors = await collection.find({ role: "doctor" }); // Query users with role "doctor"
+
+    // Send the doctors data as a JSON response
+    res.json(doctors);
+  } catch (error) {
+    console.error("Error fetching doctors:", error);
+    res.status(500).json({ message: "Error fetching doctors" });
+  }
 });
 
 const session = require("express-session");
