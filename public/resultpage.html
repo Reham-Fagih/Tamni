@@ -46,13 +46,20 @@
     <section class="content">
       <div class="percentage">
         <h1>إصابتك هي</h1>
-        <textarea readonly class="textarea" id="prediction-text"></textarea>
+        <button readonly class="predictionbutton" id="prediction-text"></button>
       </div>
 
       <div class="textscontainer" id="result-container">
         <h2>نظرة عامة عن حالتك</h2>
 
         <textarea readonly class="textarea1" id="prediction-info"></textarea>
+        <div class="piccontainer">
+          <div class="picture" id="picture1">No Image</div>
+          <div class="picture" id="picture2">No Image</div>
+          <div class="picture" id="picture3">No Image</div>
+          <div class="picture" id="picture4">No Image</div>
+          <div class="picture" id="picture5">No Image</div>
+        </div>
         <h3>متى لازم تزور طبيب</h3>
         <textarea readonly class="textarea2" id="prediction-doctorvisit">
         </textarea>
@@ -165,7 +172,13 @@
             - الإصابة بالتهاب بالجلد، افحص الجلد لاكتشاف وجود أي خطوط أو صديد أو قشور صفراء
             - ظهور أعراض حتى بعد اتخاذ خطوات الرعاية الذاتية
             اطلب الرعاية الطبية العاجلة إذا أُصبت أنت أو طفلك بحمّى أو إذا كان الطفح الجلدي يبدو مصابًا بعدوى.`,
-            },
+            images: [
+          "eczema.jpg", 
+          "eczema1.jpg", 
+          "eczema2.jpg", 
+          "eczema3.jpg", 
+          "eczema4.jpg"]
+      },
             "Warts Molluscum and other Viral Infections": {
               info: `الثآليل والموليوم (الفيروسية) هي عبارة عن تكوّنات جلدية ناتجة عن الإصابة بفيروسات. قد تكون الثآليل شائعة في اليدين، بينما يصيب الموليوم عادة الأجزاء العلوية من الجسم. 
             هذه العدوى قد تكون معدية وتهدد الأشخاص الآخرين عند ملامسة الجلد المصاب.

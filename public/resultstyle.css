@@ -72,26 +72,33 @@ section {
 
 .percentage {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  flex-direction: column;
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 40px;
   color: #fff;
   text-align: center;
-  margin-left: 25px;
 }
-.textarea {
+
+.predictionbutton {
   background-color: #80b7c1;
   border-radius: 100px;
   color: #fff;
   font-family: "Arial", sans-serif;
   font-size: 20px;
   display: flex;
-  height: 100px;
+  height: fit-content;
+  width: fit-content;
+}
+
+#prediction-text {
+  text-align: center;
+    padding: 20px;
+    margin: 17px;
+    color: #0b2e34;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
 }
 
 h2 {
@@ -106,18 +113,10 @@ h2 {
   font-family: "Arial", sans-serif;
   font-size: 20px;
   display: flex;
-  width: 1000px;
-  height: 250px;
+  width: 900px;
+  height: 200px;
 }
-#prediction-text {
-  width: fit-content;
-  text-align: center;
-  padding: 20px;
-  margin: 17px;
-  color: #0b2e34;
-  font-family: "Arial", sans-serif;
-  font-weight: bold;
-}
+
 h3 {
   font-size: 30px;
   background-color: #0b2e34;
@@ -130,9 +129,26 @@ h3 {
   font-family: "Arial", sans-serif;
   font-size: 20px;
   display: flex;
-  width: 1000px;
-  height: 250px;
+  width: 900px;
+  height: 150px;
   margin-bottom: 50px;
+}
+
+.piccontainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.picture {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* Start of buttons CSS */

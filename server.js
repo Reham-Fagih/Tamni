@@ -64,7 +64,7 @@ app.post("/predict", upload.single("image"), (req, res) => {
   let responseSent = false;
   let predictionResult = "";
 
-  const pythonProcess = spawn("python3", [
+  const pythonProcess = spawn("python", [
     path.join(__dirname, "model.py"),
     imagePath,
   ]);
