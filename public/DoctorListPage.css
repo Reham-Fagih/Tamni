@@ -53,6 +53,7 @@ nav ul li a {
 img {
   height: 60px;
   margin-right: 40px;
+  margin-left: 20px;
 }
 body {
   font-family: "Rubik", sans-serif;
@@ -145,7 +146,7 @@ body {
 .BackArrow {
   font-size: 24px;
   color: #f8f8f8;
-  margin-right: 8px;
+  margin-right: 50px;
   cursor: pointer;
 }
 
@@ -222,4 +223,6 @@ body {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+  border-radius: 15px;
+
 }
