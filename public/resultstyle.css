@@ -55,15 +55,28 @@ section {
   border-radius: 12px;
   width: 80%;
 }
+#prediction-text {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #a4e7fa;
+  font-size: 18px;
+  color: #333;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 1pc;
+}
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-size: 30px;
   font-family: "Arial", sans-serif;
   text-align: center;
   margin-bottom: 15px;
 }
 
-h2, h3 {
+h2,
+h3 {
   color: #49cae0;
   background: linear-gradient(to right, #0b2e34, #17646f);
   padding: 15px 20px;
@@ -83,11 +96,12 @@ h2, h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; 
+  width: 100%;
   padding: 20px 0;
 }
 
-.textarea1, .textarea2 {
+.textarea1,
+.textarea2 {
   display: flex;
   background: linear-gradient(to bottom, #2d5b63, #5ca0aa);
   color: #ffffff;
@@ -96,10 +110,10 @@ h2, h3 {
   padding: 15px 20px;
   font-size: 18px;
   resize: none;
-  width: 90%; 
-  max-width: 700px; 
+  width: 90%;
+  max-width: 700px;
   height: 120px;
-  margin: 20px auto; 
+  margin: 20px auto;
 }
 
 .percentage {
@@ -119,9 +133,9 @@ h2, h3 {
 
 #prediction-text {
   text-align: center;
-    padding: 20px;
-    font-family: "Arial", sans-serif;
-    font-weight: bold;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
 }
 
 /*pics css*/
